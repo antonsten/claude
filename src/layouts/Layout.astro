@@ -7,7 +7,7 @@ import Footer from '../components/Footer.astro';
 import CanonicalUrl from '../components/CanonicalUrl.astro';
 import PersonSchema from '../components/PersonSchema.astro';
 
-interface Props {
+export interface Props {
         title: string;
         description?: string;
         path?: string;
@@ -31,7 +31,7 @@ const criticalCSS = await Astro.slots.render('critical-css');
 <!doctype html>
 <html lang="en">
 	<head>
-  <HtmlHead title={title} description={description} />
+  <HtmlHead title={title} description={description} image={image} />
   <CanonicalUrl path={Astro.url.pathname} />
   <style is:inline>{criticalCSS}</style>
 		<link rel="stylesheet" href="/styles/global.css" media="print" onload="this.media='all'" />
