@@ -44,7 +44,8 @@ const frontmatter = {
     title: article.data.title,
     description: article.data.description,
     date: article.data.date instanceof Date ? article.data.date.toISOString() : article.data.date || '',
-    minutesToRead: typeof article.data.readingTime === 'string' ? parseInt(article.data.readingTime, 10) : article.data.readingTime || 5
+    minutesToRead: typeof article.data.readingTime === 'string' ? parseInt(article.data.readingTime, 10) : article.data.readingTime || 5,
+    image: article.data.image
 };
 ---
 
