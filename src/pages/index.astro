@@ -4,6 +4,7 @@ import NewsletterForm from '../components/NewsletterForm.astro';
 import Testimonial from '../components/Testimonial.astro';
 import { Image } from 'astro:assets';
 import anton from '../assets/anton.png';
+import { getCollection } from 'astro:content';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -11,39 +12,19 @@ import anton from '../assets/anton.png';
 // Get the success state from the URL
 const success = Astro.url.searchParams.get('success') === 'true';
 
-// Define featured articles with their dates
-const featuredArticles = [
-	{
-		title: "Designing for anyone: the power of accessible products",
-		url: "/articles/designing-for-anyone",
-		date: "2024-10-25"
-	},
-	{
-		title: "Designers don't need to code. They need to learn to prompt.",
-		url: "/articles/designers-prompt",
-		date: "2025-04-09"
-	},
-	{
-		title: "The Product Design Process",
-		url: "/articles/the-product-design-process",
-		date: "2025-03-08"
-	},
-	{
-		title: "The Solo Designer: Lessons from a Startup Journey",
-		url: "/articles/the-solo-designer",
-		date: "2025-01-27"
-	},
-	{
-		title: "The Stakeholder Interview",
-		url: "/articles/stakeholder",
-		date: "2020-05-20"
-	},
-	{
-		title: "Why Designers Need to Write",
-		url: "/articles/designers-write",
-		date: "2017-05-25"
-	}
-].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+// Fetch the five most recent articles
+const featuredArticles = (await getCollection('articles'))
+        .sort((a, b) => {
+                const dateA = a.data.date ? new Date(a.data.date) : new Date(0);
+                const dateB = b.data.date ? new Date(b.data.date) : new Date(0);
+                return dateB.getTime() - dateA.getTime();
+        })
+        .slice(0, 5)
+        .map(article => ({
+                title: article.data.title,
+                url: `/articles/${article.slug}`,
+                date: article.data.date
+        }));
 ---
 
 <Layout title="Home | Anton Sten – UX Lead & Product Designer" description="I'm a UX lead and product designer helping startups build user-focused digital products and brands.">
@@ -261,9 +242,9 @@ const featuredArticles = [
 			</div>
 		</section>
 
-		<!-- Featured Writing Section -->
-		<section>
-			<h2 class="text-black body-xxl mb-8">Featured writing</h2>
+                <!-- Recent Writing Section -->
+                <section>
+                        <h2 class="text-black body-xxl mb-8">Recent writing</h2>
 			<div class="h-px bg-light-grey mb-8"></div>
 			<div class="space-y-8">
 				{featuredArticles.map(article => (
