@@ -1,5 +1,8 @@
 import type { APIRoute } from 'astro';
 
+// Disable prerendering so this API route isn't executed at build time
+export const prerender = false;
+
 export const GET: APIRoute = async () => {
     try {
         const CONVERTKIT_API_KEY = import.meta.env.CONVERTKIT_API_KEY;
