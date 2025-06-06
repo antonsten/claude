@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "add-slugs": "tsx scripts/add-slugs.ts",
-    "generate-og-images": "tsx scripts/generate-og-images.ts"
+    "generate-og-images": "tsx scripts/generate-og-images.ts",
+    "prebuild": "npm run generate-og-images"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.3",
