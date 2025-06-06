@@ -14,20 +14,23 @@ export interface Props {
         date: string;
         minutesToRead?: number;
         keywords?: string[];
+        image?: string;
     };
     title?: string;
     description?: string;
     date?: string;
     minutesToRead?: number;
     keywords?: string[];
+    image?: string;
 }
 
-const { 
-    title = 'Untitled Post', 
+const {
+    title = 'Untitled Post',
     description = '',
     date = '',
     minutesToRead = 5,
-    keywords = []
+    keywords = [],
+    image = '/images/og-image.png'
 } = Astro.props.frontmatter || Astro.props;
 
 const formattedDate = formatDate(date);
@@ -40,15 +43,17 @@ const success = Astro.url.searchParams.get('success') === 'true';
 const url = Astro.url.toString();
 ---
 
-<Layout 
-	title={`${title} | Anton Sten`} 
-	description={description}
-	path={path}
+<Layout
+        title={`${title} | Anton Sten`}
+        description={description}
+        path={path}
+        image={image}
 >
     <ArticleSchema
         title={title}
         description={description}
         publishDate={new Date(date)}
+        image={`https://www.antonsten.com${image}`}
         url={url}
         readingTime={minutesToRead}
         keywords={keywords}
