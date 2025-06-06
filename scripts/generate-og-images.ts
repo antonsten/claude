@@ -34,11 +34,14 @@ for (const file of files) {
     continue;
   }
   const title: string = data.title || 'Untitled';
-  const slug: string = data.slug || (
-    (data.date ? (new Date(data.date).toISOString().split('T')[0]) : '') + '-' +
-    title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
-  );
-  const url = `https://www.antonsten.com/articles/${slug}/`;
+  const slug = data.slug;
+  const slugFromFile = file.replace(/\.mdx$/, '');
+
+  if (slug && slug !== slugFromFile) {
+    console.warn(`Slug mismatch in ${file}: frontmatter slug \"${slug}\" does not match filename.`);
+  }
+
+  const url = `https://www.antonsten.com/articles/${slugFromFile}/`;
 
   const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
   <rect width="100%" height="100%" fill="#ffffff"/>
@@ -51,7 +54,7 @@ for (const file of files) {
 </svg>`;
 
   const svgBuffer = Buffer.from(svg);
-  const outputPath = path.join(outputDir, `${slug}.png`);
+  const outputPath = path.join(outputDir, `${slugFromFile}.png`);
   await sharp(svgBuffer).png().toFile(outputPath);
   console.log('Generated', outputPath);
 }
