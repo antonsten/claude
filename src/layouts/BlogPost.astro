@@ -30,8 +30,14 @@ const {
     date = '',
     minutesToRead = 5,
     keywords = [],
-    image = '/images/og-image.png'
+    image: frontImage
 } = Astro.props.frontmatter || Astro.props;
+
+const slugFromPath = Astro.url.pathname
+  .replace(/^\/articles\//, '')
+  .replace(/\/$/, '');
+const defaultOgImage = `/images/og/${slugFromPath}.png`;
+const ogImage = frontImage || defaultOgImage;
 
 const formattedDate = formatDate(date);
 const path = Astro.url.pathname;
@@ -47,13 +53,13 @@ const url = Astro.url.toString();
         title={`${title} | Anton Sten`}
         description={description}
         path={path}
-        image={image}
+        image={ogImage}
 >
     <ArticleSchema
         title={title}
         description={description}
         publishDate={new Date(date)}
-        image={`https://www.antonsten.com${image}`}
+        image={`https://www.antonsten.com${ogImage}`}
         url={url}
         readingTime={minutesToRead}
         keywords={keywords}
