@@ -2,11 +2,16 @@
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
-const { title, description = "Anton Sten - Product designer" } = Astro.props;
+const {
+  title,
+  description = "Anton Sten - Product designer",
+  image = '/images/og-image.png'
+} = Astro.props;
 const currentUrl = Astro.url.toString();
-const ogImageUrl = new URL('/images/og-image.png', currentUrl).href;
+const ogImageUrl = new URL(image, currentUrl).href;
 ---
 
 <head>

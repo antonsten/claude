@@ -8,15 +8,17 @@ import CanonicalUrl from '../components/CanonicalUrl.astro';
 import PersonSchema from '../components/PersonSchema.astro';
 
 interface Props {
-	title: string;
-	description?: string;
-	path?: string;
+        title: string;
+        description?: string;
+        path?: string;
+        image?: string;
 }
 
-const { 
-	title, 
-	description = "Anton Sten is a UX lead and product designer helping teams build better digital products through thoughtful design, collaboration, and strategy.",
-	path = ''
+const {
+        title,
+        description = "Anton Sten is a UX lead and product designer helping teams build better digital products through thoughtful design, collaboration, and strategy.",
+        path = '',
+        image = '/images/og-image.png'
 } = Astro.props;
 
 // Get the success state from the URL
@@ -29,9 +31,9 @@ const criticalCSS = await Astro.slots.render('critical-css');
 <!doctype html>
 <html lang="en">
 	<head>
-               <HtmlHead title={title} description={description} />
-               <CanonicalUrl path={Astro.url.pathname} />
-               <style is:inline>{criticalCSS}</style>
+  <HtmlHead title={title} description={description} />
+  <CanonicalUrl path={Astro.url.pathname} />
+  <style is:inline>{criticalCSS}</style>
 		<link rel="stylesheet" href="/styles/global.css" media="print" onload="this.media='all'" />
 		<noscript><link rel="stylesheet" href="/styles/global.css" /></noscript>
 	</head>
