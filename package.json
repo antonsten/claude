@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "prebuild": "npm run generate-og-images",
     "preview": "astro preview",
     "astro": "astro",
-    "add-slugs": "tsx scripts/add-slugs.ts"
+    "add-slugs": "tsx scripts/add-slugs.ts",
+    "generate-og-images": "tsx scripts/generate-og-images.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.3",
@@ -25,7 +27,8 @@
     "node-fetch": "^3.3.2",
     "path-scurry": "^2.0.0",
     "turndown": "^7.2.0",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@types/node": "^22.13.13",
