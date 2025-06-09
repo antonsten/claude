@@ -43,10 +43,6 @@ for (const file of files) {
   const slug = data.slug;
   const slugFromFile = file.replace(/\.mdx$/, '');
 
-  if (slug && slug !== slugFromFile) {
-    console.warn(`Slug mismatch in ${file}: frontmatter slug \"${slug}\" does not match filename.`);
-  }
-
   const url = `https://www.antonsten.com/articles/${slugFromFile}/`;
 
   const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
