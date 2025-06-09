@@ -6,6 +6,12 @@ import sharp from 'sharp';
 const articlesDir = path.join(process.cwd(), 'src/content/articles');
 const outputDir = path.join(process.cwd(), 'public/images/og');
 
+const semiBoldFontPath = path.join(process.cwd(), 'public/fonts/SuisseIntl-SemiBold-WebM.woff2');
+const regularFontPath = path.join(process.cwd(), 'public/fonts/SuisseIntl-Regular-WebM.woff2');
+
+const semiBoldFont = fs.readFileSync(semiBoldFontPath).toString('base64');
+const regularFont = fs.readFileSync(regularFontPath).toString('base64');
+
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
@@ -44,14 +50,38 @@ for (const file of files) {
   const url = `https://www.antonsten.com/articles/${slugFromFile}/`;
 
   const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#ffffff"/>
-  <style>
-    .title { font-family: Helvetica, Arial, sans-serif; font-size: 64px; font-weight: bold; fill: #000; }
-    .url { font-family: Helvetica, Arial, sans-serif; font-size: 32px; fill: #000; }
-  </style>
-  <text x="50%" y="45%" text-anchor="middle" class="title">${escapeXML(title)}</text>
-  <text x="50%" y="80%" text-anchor="middle" class="url">${escapeXML(url)}</text>
-</svg>`;
+    <defs>
+      <style type="text/css">
+        @font-face {
+          font-family: 'SuisseIntl';
+          src: url('data:font/woff2;base64,${semiBoldFont}') format('woff2');
+          font-weight: 600;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: 'SuisseIntl';
+          src: url('data:font/woff2;base64,${regularFont}') format('woff2');
+          font-weight: 400;
+          font-style: normal;
+        }
+        .title {
+          font-family: 'SuisseIntl', Arial, sans-serif;
+          font-size: 48px;
+          font-weight: 600;
+          fill: #111;
+        }
+        .url {
+          font-family: 'SuisseIntl', Arial, sans-serif;
+          font-size: 32px;
+          font-weight: 400;
+          fill: #888;
+        }
+      </style>
+    </defs>
+    <rect width="100%" height="100%" fill="#fff"/>
+    <text x="60" y="540" class="title">${escapeXML(title)}</text>
+    <text x="60" y="590" class="url">${escapeXML(url)}</text>
+  </svg>`;
 
   const svgBuffer = Buffer.from(svg);
   const outputPath = path.join(outputDir, `${slugFromFile}.png`);

@@ -12,9 +12,6 @@ export default defineConfig({
     mdx(),
     netlify()
   ],
-  experimental: {
-    session: true
-  },
   vite: {
     envDir: './'
   },

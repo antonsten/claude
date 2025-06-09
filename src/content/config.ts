@@ -68,51 +68,6 @@ const sourceCodeSchema = z.object({
     url: z.string()
 });
 
-const pages = defineCollection({
-    type: 'content',
-    schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        path: z.string(),
-        personSchema: z.object({
-            "@context": z.string(),
-            "@type": z.string(),
-            name: z.string(),
-            jobTitle: z.string(),
-            description: z.string(),
-            image: z.string(),
-            url: z.string(),
-            sameAs: z.array(z.string()),
-            address: z.object({
-                "@type": z.string(),
-                addressCountry: z.string()
-            }),
-            worksFor: z.object({
-                "@type": z.string(),
-                name: z.string(),
-                url: z.string()
-            })
-        }).optional(),
-        appearances: z.array(z.object({
-            title: z.string(),
-            url: z.string(),
-            date: z.string(),
-            type: z.string()
-        })).optional(),
-        testimonials: z.array(testimonialSchema).optional(),
-        featuredWriting: z.array(featuredWritingSchema).optional(),
-        contactInfo: contactInfoSchema.optional(),
-        coachingOptions: z.array(coachingOptionSchema).optional(),
-        contactEmail: z.string().email().optional(),
-        image: imageSchema.optional(),
-        technology: z.array(technologyItemSchema).optional(),
-        design: z.array(designItemSchema).optional(),
-        privacy: privacySchema.optional(),
-        sourceCode: sourceCodeSchema.optional()
-    })
-});
-
 export const collections = {
     'articles': articles,
-    'pages': pages
 }; 
