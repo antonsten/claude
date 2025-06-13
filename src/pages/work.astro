@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Testimonial from '../components/Testimonial.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 ---
 
 <Layout 
@@ -15,10 +16,18 @@ import Testimonial from '../components/Testimonial.astro';
         <p class="body-xxl mb-12">I've helped build user experiences that made customers happier—and businesses more profitable.</p>
 
         <p class="body-xxl mb-12">My background in design and business means I'm not just here to make your product look good. I'm here to make it work. Happy users are what drive good businesses.</p>
-
+        <!-- Work Image -->
+        <OptimizedImage 
+            src="/images/work.webp" 
+            alt="Work" 
+            className="w-full mb-24" 
+        />
         <p class="body-xxl mb-12">I've always believed that design starts with people. Understand them first, and everything else follows.</p>
 
         <p class="body-xxl text-dark-grey mb-24">(Not looking for new opportunities right now.)</p>
+
+
+
 
         <!-- Work Experience -->
         <section class="mt-40">
