@@ -9,7 +9,7 @@
     font-feature-settings: 'ss01' 1, 'ss02' 1, 'ss03' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply text-base font-regular text-gray-900 overflow-x-hidden;
+    @apply text-base font-regular text-gray-900 dark:text-dark-text overflow-x-hidden;
   }
 
   body {
@@ -67,7 +67,7 @@
   }
 
   .caption {
-    @apply text-xs font-regular text-gray-500;
+    @apply text-xs font-regular text-gray-500 dark:text-dark-text-secondary;
   }
 
   .text-lg {

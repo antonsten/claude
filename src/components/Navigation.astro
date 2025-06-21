@@ -5,11 +5,11 @@ const currentPath = pathname.slice(1); // Remove the leading slash
 ---
 
 <div class="sticky top-0 z-50 px-[20px] pt-[20px]">
-  <nav class="bg-light-grey/90 backdrop-blur-sm rounded-[4px]">
+  <nav class="bg-light-grey/90 dark:bg-dark-surface/90 backdrop-blur-sm rounded-[4px]">
     <div class="px-[20px] py-[8px]">
       <div class="flex items-center justify-between">
         <!-- Logo/Home link -->
-        <a href="/" class="text-black">
+        <a href="/" class="text-black dark:text-dark-text">
           <span class="text-[14px] font-semibold">Anton Sten</span>
         </a>
 
@@ -17,31 +17,31 @@ const currentPath = pathname.slice(1); // Remove the leading slash
         <div class="hidden md:flex items-center gap-2">
           <a 
             href="/about" 
-            class={`text-[14px] font-semibold text-black hover:bg-white px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'about' ? 'bg-white' : ''}`}
+            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'about' ? 'bg-white dark:bg-dark-border' : ''}`}
           >
             About
           </a>
           <a 
             href="/articles" 
-            class={`text-[14px] font-semibold text-black hover:bg-white px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'articles' ? 'bg-white' : ''}`}
+            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'articles' ? 'bg-white dark:bg-dark-border' : ''}`}
           >
             Articles
           </a>
           <a 
             href="/work" 
-            class={`text-[14px] font-semibold text-black hover:bg-white px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'work' ? 'bg-white' : ''}`}
+            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'work' ? 'bg-white dark:bg-dark-border' : ''}`}
           >
             Work
           </a>
           <a 
             href="/coaching" 
-            class={`text-[14px] font-semibold text-black hover:bg-white px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'coaching' ? 'bg-white' : ''}`}
+            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'coaching' ? 'bg-white dark:bg-dark-border' : ''}`}
           >
             Coaching
           </a>
           <a 
             href="/newsletter" 
-            class={`text-[14px] font-semibold text-black hover:bg-white px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'newsletter' ? 'bg-white' : ''}`}
+            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'newsletter' ? 'bg-white dark:bg-dark-border' : ''}`}
           >
             Newsletter
           </a>
@@ -49,7 +49,7 @@ const currentPath = pathname.slice(1); // Remove the leading slash
 
         <!-- Mobile menu button -->
         <button 
-          class="md:hidden text-[14px] font-semibold text-black flex items-center gap-2"
+          class="md:hidden text-[14px] font-semibold text-black dark:text-dark-text flex items-center gap-2"
           aria-label="Toggle menu"
           id="menuButton"
         >
@@ -62,37 +62,37 @@ const currentPath = pathname.slice(1); // Remove the leading slash
 
       <!-- Mobile menu -->
       <div 
-        class="hidden md:hidden pt-4 pb-6 border-t border-gray-200 mt-4"
+        class="hidden md:hidden pt-4 pb-6 border-t border-gray-200 dark:border-dark-border mt-4"
         id="mobileMenu"
       >
         <div class="flex flex-col space-y-4">
           <a 
             href="/about" 
-            class={`text-[14px] font-semibold text-black hover:bg-white px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'about' ? 'bg-white' : ''}`}
+            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'about' ? 'bg-white dark:bg-dark-border' : ''}`}
           >
             About
           </a>
           <a 
             href="/articles" 
-            class={`text-[14px] font-semibold text-black hover:bg-white px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'articles' ? 'bg-white' : ''}`}
+            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'articles' ? 'bg-white dark:bg-dark-border' : ''}`}
           >
             Articles
           </a>
           <a 
             href="/work" 
-            class={`text-[14px] font-semibold text-black hover:bg-white px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'work' ? 'bg-white' : ''}`}
+            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'work' ? 'bg-white dark:bg-dark-border' : ''}`}
           >
             Work
           </a>
           <a 
             href="/coaching" 
-            class={`text-[14px] font-semibold text-black hover:bg-white px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'coaching' ? 'bg-white' : ''}`}
+            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'coaching' ? 'bg-white dark:bg-dark-border' : ''}`}
           >
             Coaching
           </a>
           <a 
             href="/newsletter" 
-            class={`text-[14px] font-semibold text-black hover:bg-white px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'newsletter' ? 'bg-white' : ''}`}
+            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'newsletter' ? 'bg-white dark:bg-dark-border' : ''}`}
           >
             Newsletter
           </a>

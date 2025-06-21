@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -11,6 +12,14 @@ module.exports = {
         white: '#FFFFFF',
         green: '#00A35C',
         'light-green': '#D1E8BD',
+        // Dark mode colors
+        'dark-bg': '#0A0A0A',
+        'dark-surface': '#1A1A1A',
+        'dark-border': '#2A2A2A',
+        'dark-text': '#E5E5E5',
+        'dark-text-secondary': '#A0A0A0',
+        'dark-accent': '#00C853',
+        'dark-accent-light': '#4CAF50',
       },
       fontFamily: {
         sans: ['"Suisse Intl"', 'system-ui', 'sans-serif'],
@@ -65,6 +74,46 @@ module.exports = {
               lineHeight: '1.2',
               letterSpacing: '-0.01em',
               fontWeight: '500',
+            },
+          },
+        },
+        dark: {
+          css: {
+            color: '#E5E5E5',
+            a: {
+              color: '#E5E5E5',
+              textDecoration: 'underline',
+              '&:hover': {
+                color: '#00C853',
+              },
+            },
+            'h1, h2, h3, h4': {
+              color: '#E5E5E5',
+              fontWeight: '500',
+            },
+            blockquote: {
+              borderLeft: 'none',
+              fontStyle: 'normal',
+              padding: '0',
+              margin: '0',
+              color: '#00C853',
+              fontSize: '1.875rem',
+              lineHeight: '1.2',
+              letterSpacing: '-0.01em',
+              fontWeight: '500',
+            },
+            strong: {
+              color: '#E5E5E5',
+            },
+            code: {
+              color: '#E5E5E5',
+              backgroundColor: '#1A1A1A',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
             },
           },
         },

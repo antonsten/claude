@@ -2,8 +2,8 @@
 const { success } = Astro.props;
 ---
 
-<div class="bg-light-green p-8 rounded-[4px]">
-    <p class="text-black mb-8 text-[20px] leading-[26px] tracking-[-0.01em] font-regular">
+<div class="bg-light-green/80 dark:bg-dark-surface/80 border border-green/20 dark:border-dark-accent/20 p-8 rounded-[4px]">
+    <p class="text-black dark:text-dark-text mb-8 text-[20px] leading-[26px] tracking-[-0.01em] font-regular">
         Join 3,000+ designers, developers, and product people who get my best ideas about design each month.
     </p>
     <div id="form-container">
@@ -17,7 +17,7 @@ const { success } = Astro.props;
         >
             <input type="hidden" name="form-name" value="newsletter" />
             <input 
-                class="flex-1 w-full px-4 py-2 rounded-[4px] bg-white focus:outline-none text-[16px] leading-[24px] tracking-[-0.01em] font-regular placeholder-[#A1A1AA] border-0" 
+                class="flex-1 w-full px-4 py-2 rounded-[4px] bg-white dark:bg-dark-bg focus:outline-none text-[16px] leading-[24px] tracking-[-0.01em] font-regular placeholder-[#A1A1AA] dark:placeholder-[#666666] border-0 text-black dark:text-dark-text" 
                 name="email" 
                 aria-label="Email Address" 
                 placeholder="Enter your email" 
@@ -27,7 +27,7 @@ const { success } = Astro.props;
             >
             <button 
                 type="submit"
-                class="px-4 py-2 bg-green text-white rounded-[4px] hover:bg-green/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-[16px] leading-[24px] tracking-[-0.01em] font-medium whitespace-nowrap"
+                class="px-4 py-2 bg-green dark:bg-dark-accent text-white rounded-[4px] hover:bg-green/90 dark:hover:bg-dark-accent/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-[16px] leading-[24px] tracking-[-0.01em] font-medium whitespace-nowrap"
                 id="submit-button"
             >
                 <span class="button-text">Sign up</span>
@@ -81,7 +81,7 @@ const { success } = Astro.props;
                 buttonLoading.classList.add('hidden');
                 formMessage.textContent = 'Submission is taking longer than expected. Please try again.';
                 formMessage.classList.remove('hidden');
-                formMessage.classList.add('text-yellow-600');
+                formMessage.classList.add('text-yellow-600', 'dark:text-yellow-400');
             }, 10000); // 10 second timeout
 
             try {
@@ -99,7 +99,7 @@ const { success } = Astro.props;
                 if (response.ok) {
                     formMessage.textContent = 'Thanks for subscribing! You\'ll receive a confirmation email shortly.';
                     formMessage.classList.remove('hidden');
-                    formMessage.classList.add('text-green-600');
+                    formMessage.classList.add('text-green-600', 'dark:text-green-400');
                     emailInput.value = '';
                     
                     // Redirect to thank you page after successful submission
@@ -112,7 +112,7 @@ const { success } = Astro.props;
                 console.error('Form submission error:', error);
                 formMessage.textContent = 'Failed to subscribe to the newsletter. Please try again.';
                 formMessage.classList.remove('hidden');
-                formMessage.classList.add('text-red-600');
+                formMessage.classList.add('text-red-600', 'dark:text-red-400');
                 
                 // Re-enable form for retry
                 isSubmitting = false;

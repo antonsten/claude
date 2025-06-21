@@ -25,11 +25,11 @@ html {
   font-feature-settings: 'ss01' 1, 'ss02' 1, 'ss03' 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply text-base font-regular text-gray-900 overflow-x-hidden;
+  @apply text-base font-regular text-gray-900 dark:text-dark-text overflow-x-hidden;
 }
 
 body {
-  @apply bg-white text-black antialiased overflow-x-hidden;
+  @apply bg-white dark:bg-dark-bg text-black dark:text-dark-text antialiased overflow-x-hidden transition-colors duration-200;
 }
 
 /* Critical layout styles */
@@ -73,8 +73,16 @@ body {
   color: #131313;
 }
 
+.dark .text-black {
+  color: #E5E5E5;
+}
+
 .bg-white {
   background-color: #FFFFFF;
+}
+
+.dark .bg-white {
+  background-color: #0A0A0A;
 }
 
 /* Critical navigation styles */

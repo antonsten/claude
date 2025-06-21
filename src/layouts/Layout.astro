@@ -6,6 +6,7 @@ import ScrollAnimation from '../components/ScrollAnimation.astro';
 import Footer from '../components/Footer.astro';
 import CanonicalUrl from '../components/CanonicalUrl.astro';
 import PersonSchema from '../components/PersonSchema.astro';
+import ThemeScript from '../components/ThemeScript.astro';
 
 export interface Props {
         title: string;
@@ -31,13 +32,14 @@ const criticalCSS = await Astro.slots.render('critical-css');
 <!doctype html>
 <html lang="en">
 	<head>
+  <ThemeScript />
   <HtmlHead title={title} description={description} image={image} />
   <CanonicalUrl path={Astro.url.pathname} />
   <style is:inline>{criticalCSS}</style>
 		<link rel="stylesheet" href="/styles/global.css" media="print" onload="this.media='all'" />
 		<noscript><link rel="stylesheet" href="/styles/global.css" /></noscript>
 	</head>
-	<body class="bg-white text-black antialiased">
+	<body class="bg-white dark:bg-dark-bg text-black dark:text-dark-text antialiased transition-colors duration-200">
 		<ScrollAnimation path={path}>
 			<main class="min-h-screen">
 				<slot />
