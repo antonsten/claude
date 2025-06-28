@@ -58,6 +58,10 @@
     @apply text-[18px] leading-[28px] tracking-[-0.01em] font-regular;
   }
 
+  .body-md {
+    @apply text-[16px] leading-[22px] tracking-[-0.01em] font-regular;
+  }
+
   .body {
     @apply text-[16px] leading-[22px] tracking-[-0.01em] font-regular;
   }
