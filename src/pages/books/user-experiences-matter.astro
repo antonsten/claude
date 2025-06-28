@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import OptimizedImage from '../../components/OptimizedImage.astro';
+import Testimonial from '../../components/Testimonial.astro';
+
+// Book testimonials data
+const testimonials = [
+  {
+    quote: ["Anton has the rare ability to engage with user insights and business needs to produce a truly remarkable experience, which resulted in a product that outperformed our goals. Anton is open to exploring all kinds of solutions, and he taught us how to really serve our users. I'm grateful to have worked with him."],
+    text: "Anton has the rare ability to engage with user insights and business needs to produce a truly remarkable experience, which resulted in a product that outperformed our goals. Anton is open to exploring all kinds of solutions, and he taught us how to really serve our users. I'm grateful to have worked with him.",
+    author: "Rachael Perry",
+    role: "Editor-in-Chief, Toast"
+  }
+];
+
+// Book interviews data
+const interviews = [
+  "Emil Ovemar, TocaBoca",
+  "Marcus Woxneryd, ustwo",
+  "James Gill, GoSquared",
+  "Paul Jarvis",
+  "Mikael Cho, Unsplash",
+  "Kieran Rheaume, DesignerNews"
+];
+---
+
+<Layout 
+  title="User Experiences that Matter | Anton Sten – UX Lead & Product Designer"
+  description="Download my free e-book on creating great user experiences. Learn how to focus on the human using the product and build experiences that matter."
+  path="/books/user-experiences-matter"
+>
+  <div class="max-w-[700px] mx-auto px-8 sm:px-6 mt-[20vh]">
+    <h1 class="text-black font-medium text-[48px] leading-[1.2] tracking-[-0.02em] sm:text-display mb-20">User Experiences that Matter</h1>
+
+    <p class="body-xxl mb-12">Great user experiences create happy, loyal users. They love spending time and money with companies who have invested in their experience. But where do you start in creating a great user experience?</p>
+    
+    <p class="body-xxl mb-20">Let this book help you with that.</p>
+
+    <div class="bg-light-green/80 border border-green/20 p-8 rounded-[4px] mb-20">
+      <p class="text-black mb-8 text-[20px] leading-[26px] tracking-[-0.01em] font-regular">Get User Experiences that Matter and get all my insight into how to craft your customer's experiences and grow your business.</p>
+      <a href="/pdf/userexperiencesmatter.zip" class="inline-block text-center px-4 py-2 bg-green text-white rounded-[4px] hover:bg-green/90 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium">
+        Download e-book
+      </a>
+      <p class="text-sm text-black/70 dark:text-white/70 mt-4">
+        Download includes e-book (PDF, MOBI, EPUB) and an audio version.
+      </p>
+    </div>
+
+    <OptimizedImage 
+      src="/images/user-experiences-matter-cover.webp" 
+      alt="A woman in a lace dress and pearls looks down at her phone in the back of a car." 
+      className="w-full mb-20" 
+    />
+
+    <p class="text-[20px] leading-[32px] font-regular mb-8"><strong>In User Experiences that Matter, I give you an introduction to creating great user experiences by focusing on the human using the product.</strong></p>
+
+    <p class="text-[20px] leading-[32px] font-regular mb-8">With so many wildly successful businesses out there, we are left wondering what they did to get there and how they stay there. Is there a magic bullet? Did they make a deal with the devil? The answer is actually far more simple than you'd imagine. <em>It turns out that they just value their customers by creating great user experiences for them.</em> Whether it's their product, their website, or even their customer service – a business rises or falls on the experience their customers have.</p>
+
+    <!-- Testimonials Section -->
+    <section class="mb-20">
+      {testimonials.map((testimonial) => (
+        <Testimonial 
+          quote={testimonial.quote}
+          author={testimonial.author}
+          role={testimonial.role}
+        />
+      ))}
+    </section>
+
+    <p class="text-[20px] leading-[32px] font-regular mb-8">Let's start by understanding what User Experience really is, what it isn't, and why it matters. Our first chapters will clear these up as I think it's important that we are all on the same page.</p>
+
+    <p class="text-[20px] leading-[32px] font-regular mb-8">One of the virtues I hold dear as a UX Designer is my curiosity about how things work. I've had the opportunity to meet and work with so many talented people that I could likely do an entire book with just interviews.</p>
+
+    <p class="text-[20px] leading-[32px] font-regular mb-8">The book includes interviews with:</p>
+
+    <ul class="text-[20px] leading-[32px] font-regular mb-8 list-disc list-inside space-y-2">
+      {interviews.map((interview) => (
+        <li>{interview}</li>
+      ))}
+    </ul>
+
+    <p class="text-[20px] leading-[32px] font-regular mb-8">User Experiences are created out of love and a deep desire to make things better. These final chapters will cover just this – the importance of creating something for PEOPLE rather than "users".</p>
+
+    <div class="bg-light-green/80 border border-green/20 p-8 rounded-[4px] mb-20">
+      <p class="text-black mb-8 text-[20px] leading-[26px] tracking-[-0.01em] font-regular">Get User Experiences that Matter and get all my insight into how to craft your customer's experiences and grow your business.</p>
+      <a href="/pdf/userexperiencesmatter.zip" class="inline-block text-center px-4 py-2 bg-green text-white rounded-[4px] hover:bg-green/90 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium">
+        Download e-book
+      </a>
+      <p class="text-sm text-black/70 dark:text-white/70 mt-4">
+        Download includes e-book (PDF, MOBI, EPUB).
+      </p>
+    </div>
+  </div>
+</Layout> 
