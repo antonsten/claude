@@ -1,49 +1,93 @@
 ---
-interface Props {
+export interface Props {
   title: string;
-  description?: string;
+  description: string;
   image?: string;
+  canonicalURL?: string;
+  article?: boolean;
 }
 
-const {
-  title,
-  description = "Anton Sten - Product designer",
-  image = '/images/og-image.png'
-} = Astro.props;
-const currentUrl = Astro.url.toString();
-const ogImageUrl = new URL(image, currentUrl).href;
+const { title, description, image, canonicalURL, article } = Astro.props;
+const site = 'https://www.antonsten.com';
+const ogImage = image ? `${site}${image}` : `${site}/images/og/default.png`;
 ---
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content={description} />
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/webp" href="/favicon.webp" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="shortcut icon" href="/favicon.png" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
-  
-  <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
-  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/rss.xml" />
-  <title>{title}</title>
+<!-- Performance and Security Headers -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:url" content={currentUrl} />
-  <meta property="og:image" content={ogImageUrl} />
-  <meta property="fb:app_id" content="966242223397117" />
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImageUrl} />
+<!-- DNS Prefetch for external domains -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//cdn.usefathom.com" />
 
-  <!-- fathom - beautiful, simple website analytics -->
-  <script src="https://cdn.usefathom.com/script.js" data-site="kuencgtc" defer></script>
-  <!-- / fathom -->
-</head> 
+<!-- Preconnect to critical resources -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Preload critical fonts -->
+<link 
+  rel="preload" 
+  href="/fonts/SuisseIntl-Regular.woff2" 
+  as="font" 
+  type="font/woff2" 
+  crossorigin 
+/>
+<link 
+  rel="preload" 
+  href="/fonts/SuisseIntl-SemiBold.woff2" 
+  as="font" 
+  type="font/woff2" 
+  crossorigin 
+/>
+
+<!-- SEO Meta Tags -->
+<title>{title}</title>
+<meta name="description" content={description} />
+{canonicalURL && <link rel="canonical" href={canonicalURL} />}
+
+<!-- RSS Feeds -->
+<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/rss.xml" />
+
+<!-- Favicon and Icons -->
+<link rel="icon" type="image/webp" href="/favicon.webp" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+
+<!-- Open Graph -->
+<meta property="og:type" content={article ? 'article' : 'website'} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:url" content={canonicalURL || Astro.url} />
+<meta property="og:site_name" content="Anton Sten" />
+<meta property="fb:app_id" content="966242223397117" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:creator" content="@antonsten" />
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": article ? "Article" : "WebSite",
+  "name": title,
+  "description": description,
+  "url": canonicalURL || Astro.url,
+  "author": {
+    "@type": "Person",
+    "name": "Anton Sten",
+    "url": "https://www.antonsten.com"
+  }
+}
+</script>
+
+<!-- Analytics - Fathom (privacy-focused) -->
+<script src="https://cdn.usefathom.com/script.js" data-site="kuencgtc" defer></script> 

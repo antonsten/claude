@@ -4,12 +4,15 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "prebuild": "npm run generate-og-images",
+    "start": "astro dev",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "add-slugs": "tsx scripts/add-slugs.ts",
-    "generate-og-images": "tsx scripts/generate-og-images.ts"
+    "prebuild": "npm run generate-og-images",
+    "generate-og-images": "tsx scripts/generate-og-images.ts",
+    "optimize-images": "node scripts/optimize-images.js",
+    "analyze-bundle": "npm run build && npx vite-bundle-analyzer dist",
+    "add-slugs": "tsx scripts/add-slugs.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
@@ -35,10 +38,14 @@
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.15.31",
     "autoprefixer": "^10.4.17",
+    "imagemin": "^9.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-webp": "^8.0.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vite-bundle-analyzer": "^1.0.0"
   }
 }

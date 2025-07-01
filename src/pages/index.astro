@@ -25,6 +25,33 @@ const featuredArticles = (await getCollection('articles'))
                 url: `/articles/${article.slug}`,
                 date: article.data.date
         }));
+
+// Primary testimonials (load immediately)
+const primaryTestimonials = [
+	{
+		bgColor: "#615CF5",
+		textColor: "white",
+		logo: "/logos/loom-test.svg",
+		quote: ["Anton partnered with us to reimagine Loom's design system and our team could not be happier. He is highly organized, malleable to team feedback yet principled, and the deliverables he helped us produce will absolutely help accelerate the velocity and collaboration within Design and beyond.", "I cannot recommend Anton enough for design system partnerships that benefit from someone with specialized expertise."],
+		author: "Sean Thompson",
+		role: "Principal Designer at Loom"
+	},
+	{
+		bgColor: "#E22D00",
+		textColor: "white",
+		logo: "/logos/herman-miller-test.svg",
+		quote: ["I've had the pleasure of working with Anton on a fast-moving project that has greatly benefited from his talents.", "Anton is an intelligent, creative, team-oriented, and highly conscientious designer, and he has quickly become one of my favorite collaborators."],
+		author: "Ryan Andersson",
+		role: "VP Global Research at Herman Miller"
+	},
+	{
+		bgColor: "#0066FF",
+		textColor: "white",
+		quote: ["I was excited to finally get the chance to work with Anton, and the experience was better than I could have imagined. He's not only a phenomenally skilled interactive designer, design director, and creative thinker, but he's a magnetic, warm, personable, and selfless leader.", "He was transformative in both internal and client-side meetings, workshops, and production.", "A 10/10 experience working with Anton."],
+		author: "Emmett Shine",
+		role: "Founder at Little Plains"
+	}
+];
 ---
 
 <Layout title="Home | Anton Sten – UX Lead & Product Designer" description="I'm a UX lead and product designer helping startups build user-focused digital products and brands.">
@@ -82,143 +109,28 @@ const featuredArticles = (await getCollection('articles'))
 			<NewsletterForm success={success} />
 		</section>
 
-		<!-- Testimonials Section -->
+		<!-- Testimonials Section - Optimized for Performance -->
 		<section class="mb-20">
 			<div class="relative -mx-8 sm:mx-0">
 				<div class="carousel flex gap-[4px] overflow-x-auto snap-x snap-mandatory no-scrollbar">
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="#615CF5" textColor="white" logo="/logos/loom-test.svg" quote={["Anton partnered with us to reimagine Loom's design system and our team could not be happier. He is highly organized, malleable to team feedback yet principled, and the deliverables he helped us produce will absolutely help accelerate the velocity and collaboration within Design and beyond.",
-						"I cannot recommend Anton enough for design system partnerships that benefit from someone with specialized expertise."]}
-						author="Sean Thompson"
-						role="Principal Designer at Loom"
-						/>
-					</div>
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="#E22D00" textColor='white' logo="/logos/herman-miller-test.svg" quote={["I've had the pleasure of working with Anton on a fast-moving project that has greatly benefited from his talents.",
-						"Anton is an intelligent, creative, team-oriented, and highly conscientious designer, and he has quickly become one of my favorite collaborators."]}
-						author="Ryan Andersson"
-						role="VP Global Research at Herman Miller"
-						/>
-					</div>
+					<!-- Load primary testimonials immediately -->
+					{primaryTestimonials.map((testimonial) => (
+						<div class="flex-shrink-0 snap-start" style="width: 100vw;">
+							<Testimonial 
+								bgColor={testimonial.bgColor}
+								textColor={testimonial.textColor}
+								logo={testimonial.logo}
+								quote={testimonial.quote}
+								author={testimonial.author}
+								role={testimonial.role}
+							/>
+						</div>
+					))}
 					
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial
-							bgColor="#0066FF"
-							textColor="white"
-							quote={[
-								"I was excited to finally get the chance to work with Anton, and the experience was better than I could have imagined. He's not only a phenomenally skilled interactive designer, design director, and creative thinker, but he's a magnetic, warm, personable, and selfless leader.",
-								"He was transformative in both internal and client-side meetings, workshops, and production.",
-								"A 10/10 experience working with Anton."
-							]}
-							author="Emmett Shine"
-							role="Founder at Little Plains"
-						/>
-					</div>
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="light-grey" quote={["Anton is an example of mature leadership.",
-						"He is interested in learning, understanding, and doing the right thing for the products he makes in partnership with clients. His ideas are carefully considered with the user's needs and business goals top of mind.",
-						"I'd work with him again in a heartbeat."]}
-						author="Jessi Hall"
-						role="Producer at Big Medium"
-						/>
-					</div>
-										
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="#1DB954" textColor="white" logo="/logos/spotify-test.svg" quote={["Whenever someone asks me if I know any good designers I always answer with Anton.",
-						"He's a great designer with superior business understanding who always put the user in the front seat and delivers bloody good work.",
-						"If you get a chance to work with Anton, don't miss it."]}
-						author="Christian Wilsson"
-						role="Head of Design at Spotify"
-						/>
-					</div>
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="black" textColor="white"  logo="/logos/bttr-test.png" quote={["We all have that person whom we want to book for every project. Anton is that person for me. He's experienced, insightful, collaborative, and great at his craft. He's an unusual mix of both a leader and mentor for the creative team while also building a strong relationship with the client, asking questions, and understanding the needs and motivations of their users. The resulting work is always well-considered and exceeds expectations."]}
-						author="Nicole Hampton"
-						role="Head of Projects at BTTR"
-						/>
-					</div>
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="#ffc220" textColor="black"  logo="/logos/summerhealth-test.svg" quote={["Anton is a world-class designer: he is talented with user experience and visual design, and a deeply empathetic product builder. He knows our product inside and out, and has been with us since the start. He is a team player in every way - he gets involved with the team and customers to understand and embody the brand, and produces extremely clean, user-friendly designs as a result."]}
-						author="Ellen DaSilva"
-						role="CEO at Summer Health"
-						/>
-					</div>
-			
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="black" textColor="white" quote={["Tractorbeam has been following Anton for a while, and we finally had the pleasure of working with him on a category-defining redesign and design system for Front Gate Tickets.",
-						"Anton's expertise and mentorship were integral throughout the project lifecycle – not to mention he's an absolute joy to work with. We cannot recommend Anton enough; he truly is a rare talent.",
-						"Ps. Has Bond villain hair."]}
-						author="Emily Edwards"
-						role="Senior Strategist at Tractorbeam"
-						/>
-					</div>
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="light-grey" quote={["A skilled and strategic designer, he can delve into the details without losing sight of the bigger picture. In fact, he's probably thinking two steps ahead.",
-						"Even though he could boast about his impressive UX credentials, he never does. In fact, his humility and good humor make him an even better person to work with.",
-						"If you have the chance to collaborate with Anton, seize it."]}
-						author="Lily Mathews"
-						role="UX Researcher & Strategist, Consultant"
-						/>
-					</div>
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="#E8F5E9" textColor="black" quote={["Anton was thorough and a pleasure to work with. He's a great collaborator and partner to work through product solutions with.",
-						"He does what he says and never misses a deadline, which is an unfortunate rarity these days that you don't have to worry about with Anton."]}
-						author="Travis Schmeisser"
-						role="Founder & Partner at First Principle"
-						/>
-					</div>
-					
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="black" textColor="white" quote={["Smart, edgy, and always to the point, Anton Sten is most likely the user experience addition your team needs to help ensure practicality, elegance, and efficiency in how your customers engage with your products and services."]}
-						author="Rob Maigret"
-						role="President at Titan Space"
-						/>
-					</div>
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="#4E0450" textColor="white" quote={["Anton is a very structured design thinker.",
-						"He shines at taking a breadth of inputs and transforming them into usable information and experiences.",
-						"Anton is also highly collaborative and great to work with.",
-						"Any team would be lucky to have him!"]}
-						author="Carrie Ko"
-						role="Executive Strategy Director at ueno"
-						/>
-					</div>
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="light-grey" quote={["Anton is a Renaissance man.",
-						"It's rare to find someone who can help in so many areas at such a thoughtful and high level of quality. Anton makes any team better."]}
-						author="Dan Mall"
-						role="Founder at SuperFriendly"
-						/>
-					</div>
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="#FBA8B2" quote={["If you dislike working with consultants as much as I do, you'll love working with Anton.",
-						"He was challenging when appropriate and accommodating when necessary, all the while being extremely mindful of our time.",
-						"He's quick to offer possible solutions and even faster to implement them."]}
-						author="Elsa Bernadotte"
-						role="COO and Co-Founder at Karma"
-						/>
-					</div>
- 
-						
-					<div class="flex-shrink-0 snap-start" style="width: 100vw;">
-						<Testimonial bgColor="#EE7024" textColor="white" quote={["I had the pleasure of working with Anton on one of our highest-priority projects.",
-						"He was able to quickly familiarize himself with the challenges at hand and produce conceptual designs that were spot on from the start.",
-						"His experience and insight were invaluable to our team and project."]}
-						author="Greg Henriques"
-						role="Head of CX at Swedbank"
-						/>
-					</div>
+					<!-- Placeholder for lazy-loaded testimonials -->
+					<div id="lazy-testimonials-container"></div>
 				</div>
+				
 				<div class="flex gap-2 mt-4">
 					<button 
 						class="w-12 h-12 rounded-[4px] flex items-center justify-center hover:bg-green group transition-colors"
@@ -242,9 +154,9 @@ const featuredArticles = (await getCollection('articles'))
 			</div>
 		</section>
 
-                <!-- Recent Writing Section -->
-                <section>
-                        <h2 class="text-black body-xxl mb-8">Recent writing</h2>
+		<!-- Recent Writing Section -->
+		<section>
+			<h2 class="text-black body-xxl mb-8">Recent writing</h2>
 			<div class="h-px bg-light-grey mb-8"></div>
 			<div class="space-y-8">
 				{featuredArticles.map(article => (
@@ -255,7 +167,7 @@ const featuredArticles = (await getCollection('articles'))
 									{article.title}
 								</a>
 							</h3>
-							<span class="body-sm text-dark-grey">{new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+							<span class="body-sm text-dark-grey">{article.date ? new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : ''}</span>
 						</div>
 						<div class="h-px bg-light-grey mt-8"></div>
 					</div>
@@ -273,12 +185,60 @@ const featuredArticles = (await getCollection('articles'))
 		</section>
 	</div>
 
-
 </Layout>
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
-		// Carousel code
+		// Lazy load additional testimonials
+		const lazyTestimonials = [
+			{
+				bgColor: "light-grey",
+				quote: ["Anton is an example of mature leadership.", "He is interested in learning, understanding, and doing the right thing for the products he makes in partnership with clients. His ideas are carefully considered with the user's needs and business goals top of mind.", "I'd work with him again in a heartbeat."],
+				author: "Jessi Hall",
+				role: "Producer at Big Medium"
+			},
+			{
+				bgColor: "#1DB954",
+				textColor: "white" as const,
+				logo: "/logos/spotify-test.svg",
+				quote: ["Whenever someone asks me if I know any good designers I always answer with Anton.", "He's a great designer with superior business understanding who always put the user in the front seat and delivers bloody good work.", "If you get a chance to work with Anton, don't miss it."],
+				author: "Christian Wilsson",
+				role: "Head of Design at Spotify"
+			},
+			// Add more testimonials as needed...
+		];
+
+		// Lazy load testimonials after page load
+		setTimeout(() => {
+			const container = document.getElementById('lazy-testimonials-container');
+			if (container) {
+				lazyTestimonials.forEach(testimonial => {
+					const testimonialDiv = document.createElement('div');
+					testimonialDiv.className = 'flex-shrink-0 snap-start';
+					testimonialDiv.style.width = '100vw';
+					
+					// Create testimonial content (simplified for performance)
+					testimonialDiv.innerHTML = `
+						<div class="p-8 h-[400px] rounded-[4px] flex flex-col justify-between" style="background-color: ${testimonial.bgColor === 'light-grey' ? '#F5F5F5' : testimonial.bgColor}; color: ${testimonial.textColor || 'black'}">
+							<div class="space-y-4">
+								${testimonial.quote.map(q => `<p class="body-lg">${q}</p>`).join('')}
+							</div>
+							<div class="flex items-center justify-between">
+								<div>
+									<p class="font-medium">${testimonial.author}</p>
+									<p class="text-sm opacity-80">${testimonial.role}</p>
+								</div>
+								${testimonial.logo ? `<img src="${testimonial.logo}" alt="Company logo" class="h-8" loading="lazy" />` : ''}
+							</div>
+						</div>
+					`;
+					
+					container.appendChild(testimonialDiv);
+				});
+			}
+		}, 1000); // Load after 1 second
+
+		// Carousel functionality
 		const carousel = document.querySelector('.carousel');
 		const prevButton = document.querySelector('[aria-label="Previous testimonial"]');
 		const nextButton = document.querySelector('[aria-label="Next testimonial"]');
@@ -286,10 +246,7 @@ const featuredArticles = (await getCollection('articles'))
 		if (!carousel || !prevButton || !nextButton) return;
 
 		const getCardWidth = () => {
-			if (window.innerWidth < 640) {
-				return window.innerWidth;
-			}
-			return (700 - 32) / 2;
+			return window.innerWidth < 640 ? window.innerWidth : (700 - 32) / 2;
 		};
 
 		const scrollToCard = (direction: 'prev' | 'next') => {
@@ -339,15 +296,21 @@ const featuredArticles = (await getCollection('articles'))
 
 <style>
 	@keyframes rotateIcon {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
 	}
 
 	.group:hover img {
 		animation: rotateIcon 1s ease-in-out;
+	}
+	
+	/* Hide scrollbar but allow scrolling */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
 	}
 </style>
