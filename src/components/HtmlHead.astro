@@ -11,7 +11,7 @@ const {
   image = '/images/og-image.png'
 } = Astro.props;
 const currentUrl = Astro.url.toString();
-const ogImageUrl = new URL(image, currentUrl).href;
+const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site).href;
 ---
 
 <head>
