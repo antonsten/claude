@@ -11,72 +11,114 @@ import Layout from '../layouts/Layout.astro';
             
             <h1 class="text-black font-medium text-[48px] leading-[1.2] tracking-[-0.02em] sm:text-display mb-8">This page doesn't exist (or it moved).</h1>
             
-            <p class="body-xxl mb-24">
+            <p class="body-xxl mb-8">
                 Looks like you've taken a wrong turn. It happens.
-                <br /><br />
+            </p>
+
+            <!-- Broken Link Reporting Section -->
+            <div class="bg-light-green p-6 md:p-8 md:rounded-[4px] -mx-8 md:mx-0 mb-16">
+                <p class="text-black text-[20px] leading-[26px] tracking-[-0.01em] font-regular mb-4">
+                    I'd really appreciate it if you could let me know about this broken link. It helps me keep my site up to date!
+                </p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a 
+                                id="emailLink"
+                                href="mailto:anton@antonsten.com?subject=Broken link on antonsten.com&body=Hi Anton,%0D%0A%0D%0AI found a broken link on your website:%0D%0A%0D%0AURL: %0D%0A%0D%0AThanks!"
+                                class="inline-flex items-center justify-center px-4 py-2 bg-green text-white text-[14px] font-medium rounded-[4px] hover:bg-green/90 transition-colors"
+                            >
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                Send me an email
+                            </a>
+                            <button 
+                                id="copyUrlBtn"
+                                class="inline-flex items-center justify-center px-4 py-2 bg-white border border-green text-green text-[14px] font-medium rounded-[4px] hover:bg-green hover:text-white transition-colors"
+                            >
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                                <span id="copyUrlText">Copy URL</span>
+                            </button>
+                        </div>
+            </div>
+            
+            <p class="body-xxl mb-24">
                 Here are some popular articles you might want to check out instead:
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 mb-24">
-                <a href="/articles/the-product-design-process" class="group flex md:flex-col gap-4 md:gap-0">
-                    <div class="bg-light-grey group-hover:bg-grey rounded-[4px] w-12 h-12 md:w-auto md:h-[160px] flex-shrink-0 flex items-center justify-center p-3 md:p-8 md:mb-4">
-                        <img src="/svg/1.svg" alt="" class="w-6 h-6 md:w-12 md:h-12" loading="lazy" />
+            <div class="space-y-8 mb-24">
+                <div>
+                    <div class="flex justify-between items-start">
+                        <h3 class="body-lg font-medium">
+                            <a href="/articles/the-product-design-process" class="hover:text-green transition-colors">
+                                The Product Design Process
+                            </a>
+                        </h3>
+                        <span class="body-sm text-dark-grey">March 19, 2024</span>
                     </div>
-                    <div>
-                        <time class="text-dark-grey text-[14px] leading-[20px] block">March 19, 2024</time>
-                        <h3 class="text-black body font-medium group-hover:text-green leading-[1.3]">The Product Design Process</h3>
-                    </div>
-                </a>
+                    <div class="h-px bg-light-grey mt-8"></div>
+                </div>
 
-                <a href="/articles/the-solo-designer" class="group flex md:flex-col gap-4 md:gap-0">
-                    <div class="bg-light-grey group-hover:bg-grey rounded-[4px] w-12 h-12 md:w-auto md:h-[160px] flex-shrink-0 flex items-center justify-center p-3 md:p-8 md:mb-4">
-                        <img src="/svg/2.svg" alt="" class="w-6 h-6 md:w-12 md:h-12" loading="lazy" />
+                <div>
+                    <div class="flex justify-between items-start">
+                        <h3 class="body-lg font-medium">
+                            <a href="/articles/the-solo-designer" class="hover:text-green transition-colors">
+                                The Solo Designer: Lessons from a Startup Journey
+                            </a>
+                        </h3>
+                        <span class="body-sm text-dark-grey">January 27, 2024</span>
                     </div>
-                    <div>
-                        <time class="text-dark-grey text-[14px] leading-[20px] block">January 27, 2024</time>
-                        <h3 class="text-black body font-medium group-hover:text-green leading-[1.3]">The Solo Designer: Lessons from a Startup Journey</h3>
-                    </div>
-                </a>
+                    <div class="h-px bg-light-grey mt-8"></div>
+                </div>
 
-                <a href="/articles/uxstrategy" class="group flex md:flex-col gap-4 md:gap-0">
-                    <div class="bg-light-grey group-hover:bg-grey rounded-[4px] w-12 h-12 md:w-auto md:h-[160px] flex-shrink-0 flex items-center justify-center p-3 md:p-8 md:mb-4">
-                        <img src="/svg/3.svg" alt="" class="w-6 h-6 md:w-12 md:h-12" loading="lazy" />
+                <div>
+                    <div class="flex justify-between items-start">
+                        <h3 class="body-lg font-medium">
+                            <a href="/articles/uxstrategy" class="hover:text-green transition-colors">
+                                Creating a UX Strategy
+                            </a>
+                        </h3>
+                        <span class="body-sm text-dark-grey">April 23, 2024</span>
                     </div>
-                    <div>
-                        <time class="text-dark-grey text-[14px] leading-[20px] block">April 23, 2024</time>
-                        <h3 class="text-black body font-medium group-hover:text-green leading-[1.3]">Creating a UX Strategy</h3>
-                    </div>
-                </a>
+                    <div class="h-px bg-light-grey mt-8"></div>
+                </div>
 
-                <a href="/articles/stakeholder" class="group flex md:flex-col gap-4 md:gap-0">
-                    <div class="bg-light-grey group-hover:bg-grey rounded-[4px] w-12 h-12 md:w-auto md:h-[160px] flex-shrink-0 flex items-center justify-center p-3 md:p-8 md:mb-4">
-                        <img src="/svg/4.svg" alt="" class="w-6 h-6 md:w-12 md:h-12" loading="lazy" />
+                <div>
+                    <div class="flex justify-between items-start">
+                        <h3 class="body-lg font-medium">
+                            <a href="/articles/stakeholder" class="hover:text-green transition-colors">
+                                The Stakeholder Interview
+                            </a>
+                        </h3>
+                        <span class="body-sm text-dark-grey">March 25, 2024</span>
                     </div>
-                    <div>
-                        <time class="text-dark-grey text-[14px] leading-[20px] block">March 25, 2024</time>
-                        <h3 class="text-black body font-medium group-hover:text-green leading-[1.3]">The Stakeholder Interview</h3>
-                    </div>
-                </a>
+                    <div class="h-px bg-light-grey mt-8"></div>
+                </div>
 
-                <a href="/articles/designers-write" class="group flex md:flex-col gap-4 md:gap-0">
-                    <div class="bg-light-grey group-hover:bg-grey rounded-[4px] w-12 h-12 md:w-auto md:h-[160px] flex-shrink-0 flex items-center justify-center p-3 md:p-8 md:mb-4">
-                        <img src="/svg/5.svg" alt="" class="w-6 h-6 md:w-12 md:h-12" loading="lazy" />
+                <div>
+                    <div class="flex justify-between items-start">
+                        <h3 class="body-lg font-medium">
+                            <a href="/articles/designers-write" class="hover:text-green transition-colors">
+                                Why Designers Need to Write
+                            </a>
+                        </h3>
+                        <span class="body-sm text-dark-grey">May 25, 2017</span>
                     </div>
-                    <div>
-                        <time class="text-dark-grey text-[14px] leading-[20px] block">May 25, 2017</time>
-                        <h3 class="text-black body font-medium group-hover:text-green leading-[1.3]">Why Designers Need to Write</h3>
-                    </div>
-                </a>
+                    <div class="h-px bg-light-grey mt-8"></div>
+                </div>
 
-                <a href="/articles/uxlead" class="group flex md:flex-col gap-4 md:gap-0">
-                    <div class="bg-light-grey group-hover:bg-grey rounded-[4px] w-12 h-12 md:w-auto md:h-[160px] flex-shrink-0 flex items-center justify-center p-3 md:p-8 md:mb-4">
-                        <img src="/svg/6.svg" alt="" class="w-6 h-6 md:w-12 md:h-12" loading="lazy" />
+                <div>
+                    <div class="flex justify-between items-start">
+                        <h3 class="body-lg font-medium">
+                            <a href="/articles/uxlead" class="hover:text-green transition-colors">
+                                Working as a UX-Lead
+                            </a>
+                        </h3>
+                        <span class="body-sm text-dark-grey">April 1, 2024</span>
                     </div>
-                    <div>
-                        <time class="text-dark-grey text-[14px] leading-[20px] block">April 1, 2024</time>
-                        <h3 class="text-black body font-medium group-hover:text-green leading-[1.3]">Working as a UX-Lead</h3>
-                    </div>
-                </a>
+                    <div class="h-px bg-light-grey mt-8"></div>
+                </div>
             </div>
 
             <div class="bg-light-green p-8 md:rounded-[4px] -mx-8 md:mx-0">
@@ -86,4 +128,43 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
     </div>
+
+    <script>
+        // Set up email link with current URL
+        const emailLink = document.getElementById('emailLink') as HTMLAnchorElement;
+        if (emailLink) {
+            const currentUrl = window.location.href;
+            const emailBody = `Hi Anton,%0D%0A%0D%0AI found a broken link on your website:%0D%0A%0D%0AURL: ${encodeURIComponent(currentUrl)}%0D%0A%0D%0AThanks!`;
+            emailLink.href = `mailto:anton@antonsten.com?subject=Broken link on antonsten.com&body=${emailBody}`;
+        }
+
+        // Copy URL functionality
+        const copyUrlBtn = document.getElementById('copyUrlBtn');
+        const copyUrlText = document.getElementById('copyUrlText');
+        
+        if (copyUrlBtn && copyUrlText) {
+            copyUrlBtn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    copyUrlText.textContent = 'Copied!';
+                    copyUrlBtn.classList.add('bg-green', 'text-white');
+                    copyUrlBtn.classList.remove('bg-white', 'border-green', 'text-green');
+                    
+                    setTimeout(() => {
+                        if (copyUrlText) copyUrlText.textContent = 'Copy URL';
+                        if (copyUrlBtn) {
+                            copyUrlBtn.classList.remove('bg-green', 'text-white');
+                            copyUrlBtn.classList.add('bg-white', 'border-green', 'text-green');
+                        }
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy URL:', err);
+                    if (copyUrlText) copyUrlText.textContent = 'Failed to copy';
+                    setTimeout(() => {
+                        if (copyUrlText) copyUrlText.textContent = 'Copy URL';
+                    }, 2000);
+                }
+            });
+        }
+    </script>
 </Layout> 
