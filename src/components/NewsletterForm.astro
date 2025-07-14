@@ -46,80 +46,104 @@ const { success } = Astro.props;
 
 <script>
     // Only enhance the form with JavaScript if it's available
-    if (typeof window !== 'undefined') {
-        const form = document.getElementById('newsletter-form') as HTMLFormElement;
-        const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
-        const buttonText = submitButton.querySelector('.button-text') as HTMLElement;
-        const buttonLoading = submitButton.querySelector('.button-loading') as HTMLElement;
-        const formMessage = document.getElementById('form-message') as HTMLDivElement;
-        const emailInput = document.getElementById('email-input') as HTMLInputElement;
+if (typeof window !== 'undefined') {
+    const form = document.getElementById('newsletter-form') as HTMLFormElement;
+    const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
+    const buttonText = submitButton.querySelector('.button-text') as HTMLElement;
+    const buttonLoading = submitButton.querySelector('.button-loading') as HTMLElement;
+    const formMessage = document.getElementById('form-message') as HTMLDivElement;
+    const emailInput = document.getElementById('email-input') as HTMLInputElement;
+    
+    let isSubmitting = false;
+    let submissionTimeout: number;
+
+    form.addEventListener('submit', async (e) => {
+        // ALWAYS prevent default first
+        e.preventDefault();
         
-        let isSubmitting = false;
-        let submissionTimeout: number;
+        // Early return if already submitting
+        if (isSubmitting) {
+            return;
+        }
+        
+        // Set flag immediately to prevent race conditions
+        isSubmitting = true;
+        
+        // Show loading state immediately
+        submitButton.disabled = true;
+        buttonText.classList.add('hidden');
+        buttonLoading.classList.remove('hidden');
+        formMessage.classList.add('hidden');
 
-        form.addEventListener('submit', async (e) => {
-            // Only prevent default if we're handling it with JS
-            e.preventDefault();
-            
-            if (isSubmitting) {
-                return;
-            }
-            
-            isSubmitting = true;
-            
-            // Show loading state
-            submitButton.disabled = true;
-            buttonText.classList.add('hidden');
-            buttonLoading.classList.remove('hidden');
-            formMessage.classList.add('hidden');
+        // Set a timeout to re-enable the form if submission takes too long
+        submissionTimeout = window.setTimeout(() => {
+            resetForm();
+            showMessage('Submission is taking longer than expected. Please try again.', 'warning');
+        }, 10000); // 10 second timeout
 
-            // Set a timeout to re-enable the form if submission takes too long
-            submissionTimeout = window.setTimeout(() => {
-                isSubmitting = false;
-                submitButton.disabled = false;
-                buttonText.classList.remove('hidden');
-                buttonLoading.classList.add('hidden');
-                formMessage.textContent = 'Submission is taking longer than expected. Please try again.';
-                formMessage.classList.remove('hidden');
-                formMessage.classList.add('text-yellow-600', 'dark:text-yellow-400');
-            }, 10000); // 10 second timeout
+        try {
+            const formData = new FormData(form);
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(formData as any),
+            });
 
-            try {
-                const formData = new FormData(form);
-                const response = await fetch('/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: new URLSearchParams(formData as any),
-                });
+            clearTimeout(submissionTimeout);
 
-                clearTimeout(submissionTimeout);
-
-                if (response.ok) {
-                    formMessage.textContent = 'Thanks for subscribing! You\'ll receive a confirmation email shortly.';
-                    formMessage.classList.remove('hidden');
-                    formMessage.classList.add('text-green-600', 'dark:text-green-400');
-                    emailInput.value = '';
-                    
-                    // Redirect to thank you page after successful submission
-                    window.location.href = '/thankyou';
-                } else {
-                    throw new Error('Failed to subscribe');
-                }
-            } catch (error) {
-                clearTimeout(submissionTimeout);
-                console.error('Form submission error:', error);
-                formMessage.textContent = 'Failed to subscribe to the newsletter. Please try again.';
-                formMessage.classList.remove('hidden');
-                formMessage.classList.add('text-red-600', 'dark:text-red-400');
+            if (response.ok) {
+                showMessage('Thanks for subscribing! You\'ll receive a confirmation email shortly.', 'success');
+                emailInput.value = '';
                 
-                // Re-enable form for retry
-                isSubmitting = false;
-                submitButton.disabled = false;
-                buttonText.classList.remove('hidden');
-                buttonLoading.classList.add('hidden');
+                // Redirect to thank you page after successful submission
+                setTimeout(() => {
+                    window.location.href = '/thankyou';
+                }, 1000); // Small delay to show success message
+            } else {
+                throw new Error('Failed to subscribe');
             }
-        });
+        } catch (error) {
+            clearTimeout(submissionTimeout);
+            console.error('Form submission error:', error);
+            showMessage('Failed to subscribe to the newsletter. Please try again.', 'error');
+            resetForm();
+        }
+    });
+
+    // Helper function to reset form state
+    function resetForm() {
+        isSubmitting = false;
+        submitButton.disabled = false;
+        buttonText.classList.remove('hidden');
+        buttonLoading.classList.add('hidden');
     }
+
+    // Helper function to show messages
+    function showMessage(message: string, type: 'success' | 'error' | 'warning') {
+        formMessage.textContent = message;
+        formMessage.classList.remove('hidden');
+        
+        // Remove existing color classes
+        formMessage.classList.remove('text-green-600', 'dark:text-green-400', 'text-red-600', 'dark:text-red-400', 'text-yellow-600', 'dark:text-yellow-400');
+        
+        // Add appropriate color classes
+        if (type === 'success') {
+            formMessage.classList.add('text-green-600', 'dark:text-green-400');
+        } else if (type === 'error') {
+            formMessage.classList.add('text-red-600', 'dark:text-red-400');
+        } else if (type === 'warning') {
+            formMessage.classList.add('text-yellow-600', 'dark:text-yellow-400');
+        }
+    }
+
+    // Additional safeguard: Disable button on any click while submitting
+    submitButton.addEventListener('click', (e) => {
+        if (isSubmitting) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    });
+}
 </script> 
