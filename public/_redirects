@@ -133,8 +133,8 @@
 /content/* /articles/:splat 301
 
 # =============================================================================
-# CATCH-ALL - MUST BE LAST
+# CATCH-ALL - REMOVED TO PREVENT REDIRECT LOOPS
 # =============================================================================
 
-# Handle any remaining root-level URLs (catch remaining 404s)
-/:slug /articles/:slug/ 301
+# Catch-all removed to prevent conflicts
+# Individual redirects above handle specific cases
