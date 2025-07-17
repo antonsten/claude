@@ -128,7 +128,12 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
     </div>
-
+    <script>
+        window.addEventListener('load', () => {
+          const path = window.location.pathname;
+          fathom.trackEvent('404: ' + path);
+        });
+      </script>
     <script>
         // Set up email link with current URL
         const emailLink = document.getElementById('emailLink') as HTMLAnchorElement;
