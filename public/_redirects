@@ -10,9 +10,6 @@
 /home/ / 301
 /home / 301
 
-# Articles without trailing slash (fix 135+ URLs)
-/articles/:slug /articles/:slug/ 301
-
 # RSS feeds
 /feed.xml /rss/ 301
 /rss.xml /rss/ 301
@@ -126,7 +123,8 @@
 # PATTERN REDIRECTS - Handle remaining URLs
 # =============================================================================
 
-# Handle /writing/ to /articles/ (199+ URLs)
+# Handle /writing/ to /articles/ - but only if target exists
+# Note: This may need to be more specific to avoid loops
 /writing/* /articles/:splat 301
 
 # Content paths
