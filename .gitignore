@@ -36,3 +36,4 @@ temp-repo/
 
 # Local Netlify folder
 .netlify
+scripts/count-article-words.cjs
