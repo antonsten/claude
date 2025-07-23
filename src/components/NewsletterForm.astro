@@ -85,6 +85,7 @@ if (typeof window !== 'undefined') {
                 // But if no error is thrown, assume success
                 showMessage('Thanks for subscribing! You\'ll receive a confirmation email shortly.', 'success');
                 emailInput.value = '';
+                resetForm();
 
             } catch (error) {
                 clearTimeout(submissionTimeout);
