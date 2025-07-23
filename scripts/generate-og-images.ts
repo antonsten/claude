@@ -29,6 +29,19 @@ const files = fs.readdirSync(articlesDir).filter(f => f.endsWith('.mdx'));
 
 for (const file of files) {
   const filePath = path.join(articlesDir, file);
+  const outputPath = path.join(outputDir, `${file.replace(/\.mdx$/, '')}.png`);
+
+  // Check if output image exists and is up-to-date
+  if (fs.existsSync(outputPath)) {
+    const articleStat = fs.statSync(filePath);
+    const imageStat = fs.statSync(outputPath);
+    if (imageStat.mtime >= articleStat.mtime) {
+      // Image is newer or same as article, skip generation
+      console.log('Skipping (up-to-date):', outputPath);
+      continue;
+    }
+  }
+
   const content = fs.readFileSync(filePath, 'utf-8');
   const [, frontmatter] = content.split('---');
   if (!frontmatter) continue;
@@ -80,7 +93,6 @@ for (const file of files) {
   </svg>`;
 
   const svgBuffer = Buffer.from(svg);
-  const outputPath = path.join(outputDir, `${slugFromFile}.png`);
   await sharp(svgBuffer).png().toFile(outputPath);
   console.log('Generated', outputPath);
 }
