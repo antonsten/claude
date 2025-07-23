@@ -29,7 +29,25 @@ const files = fs.readdirSync(articlesDir).filter(f => f.endsWith('.mdx'));
 
 for (const file of files) {
   const filePath = path.join(articlesDir, file);
-  const outputPath = path.join(outputDir, `${file.replace(/\.mdx$/, '')}.png`);
+  const content = fs.readFileSync(filePath, 'utf-8');
+  const [, frontmatter] = content.split('---');
+  if (!frontmatter) continue;
+  let data: any = {};
+  try {
+    data = load(frontmatter.trim());
+  } catch (e) {
+    console.error('Failed to parse frontmatter of', file);
+    continue;
+  }
+  const title: string = data.title || 'Untitled';
+  // Use slug from frontmatter, or fallback to filename without date prefix and extension
+  let slug: string = data.slug;
+  if (!slug) {
+    // Remove date prefix (YYYY-MM-DD-) if present
+    slug = file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.mdx$/, '');
+  }
+
+  const outputPath = path.join(outputDir, `${slug}.png`);
 
   // Check if output image exists and is up-to-date
   if (fs.existsSync(outputPath)) {
@@ -42,21 +60,7 @@ for (const file of files) {
     }
   }
 
-  const content = fs.readFileSync(filePath, 'utf-8');
-  const [, frontmatter] = content.split('---');
-  if (!frontmatter) continue;
-  let data: any = {};
-  try {
-    data = load(frontmatter.trim());
-  } catch (e) {
-    console.error('Failed to parse frontmatter of', file);
-    continue;
-  }
-  const title: string = data.title || 'Untitled';
-  const slug = data.slug;
-  const slugFromFile = file.replace(/\.mdx$/, '');
-
-  const url = `https://www.antonsten.com/articles/${slugFromFile}/`;
+  const url = `https://www.antonsten.com/articles/${slug}/`;
 
   const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
     <defs>
