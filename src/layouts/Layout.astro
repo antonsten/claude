@@ -36,8 +36,6 @@ const criticalCSS = await Astro.slots.render('critical-css');
   <HtmlHead title={title} description={description} image={image} />
   <CanonicalUrl path={Astro.url.pathname} />
   <style is:inline>{criticalCSS}</style>
-		<link rel="stylesheet" href="/styles/global.css" media="print" onload="this.media='all'" />
-		<noscript><link rel="stylesheet" href="/styles/global.css" /></noscript>
 	</head>
 	<body class="bg-white dark:bg-dark-bg text-black dark:text-dark-text antialiased transition-colors duration-200">
 		<ScrollAnimation path={path}>

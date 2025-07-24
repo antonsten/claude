@@ -83,6 +83,12 @@ if (typeof window !== 'undefined') {
 
                 // Since we're using no-cors, we can't read the response
                 // But if no error is thrown, assume success
+                
+                // Track successful newsletter signup in Fathom
+                if (typeof (window as any).fathom !== 'undefined') {
+                    (window as any).fathom.trackEvent('Newsletter Signup');
+                }
+                
                 showMessage('Thanks for subscribing! You\'ll receive a confirmation email shortly.', 'success');
                 emailInput.value = '';
                 resetForm();

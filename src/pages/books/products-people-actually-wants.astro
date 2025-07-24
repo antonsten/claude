@@ -1,86 +1,108 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
+import Testimonial from '../../components/Testimonial.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
 ---
 
 <Layout 
   title="Products People Actually Want | Anton Sten – UX Lead & Product Designer"
-  description="A Designer's Guide to Building Better. Learn how to create products people love, with practical frameworks, real-world advice, and 25+ years of experience."
+  description="A Designer's Guide to Building Better. We're drowning in products nobody wants, built by people who never asked if they should."
   path="/books/products-people-actually-wants"
 >
+  <!-- Hero Section -->
   <div class="max-w-[700px] mx-auto px-8 sm:px-6 mt-[20vh]">
     <h1 class="text-black font-medium text-[48px] leading-[1.2] tracking-[-0.02em] sm:text-display mb-20">Products People Actually Want</h1>
-    <h2 class="body-xxl mb-12 font-semibold">A Designer's Guide to Building Better</h2>
-    <p class="body-xxl mb-12">The world is full of products nobody wants. Here's how to build the ones they do.</p>
+    
+    <h2 class="body-xxl font-semibold mb-12">A Designer's Guide to Building Better</h2>
+    
+    <p class="body-xxl mb-12">We're drowning in products nobody wants, built by people who never asked if they should.</p>
+
+    <p class="body-xxl mb-12">Every day, thousands of new apps, websites, and digital products launch. Most will be forgotten within six months—not because they don't work, but because nobody needed them in the first place.</p>
+
+    <p class="body-xxl mb-12">After 25+ years designing digital products and leading teams at companies like IKEA, Herman Miller, and Summer Health, I've learned that the difference between products people love and products they abandon isn't about features, aesthetics, or even usability.</p>
+
+    <p class="body-xxl mb-24"><strong>It's about understanding humans well enough to build things they actually want.</strong></p>
+
+    <!-- Book Cover -->
     <OptimizedImage 
-      src="/images/products-people-actually-wants-cover.webp" 
+      src="/images/anton.webp" 
       alt="Products People Actually Want book cover" 
-      className="w-full mb-20" 
+      className="w-full mb-24"
     />
-    <p class="body-xxl mb-12">Every day, thousands of new apps and websites launch. Most will disappear within months. The few that survive often frustrate users more than they help them.</p>
-    <p class="body-xxl mb-12">But some products feel different. They solve real problems, respect people's time, and create moments of genuine delight. Users don't just tolerate them—they advocate for them.</p>
-    <p class="body-xxl mb-20">What's the difference? <br><strong>The teams behind great products understand that design isn't just about interfaces—it's about humans.</strong></p>
-    <div class="flex flex-col sm:flex-row gap-4 mb-20">
-      <a href="#free-chapter" class="inline-block text-center px-4 py-2 bg-green text-white rounded-[4px] hover:bg-green/90 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium">Download free chapter</a>
-      <a href="#buy" class="inline-block text-center px-4 py-2 bg-black text-white rounded-[4px] hover:bg-black/90 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium">Get the full book</a>
-    </div>
 
-    <h2 class="text-2xl font-bold mb-12">What You'll Learn</h2>
-    <div class="space-y-8 mb-20">
-      <div>
-        <h3 class="font-bold mb-1">Part 1: Foundations</h3>
-        <p>Master the fundamentals of product design and understand why user experience affects every part of your business.</p>
-      </div>
-      <div>
-        <h3 class="font-bold mb-1">Part 2: Building Your Practice</h3>
-        <p>From solo designer to design leader—practical advice for growing your career and managing teams.</p>
-      </div>
-      <div>
-        <h3 class="font-bold mb-1">Part 3: The Craft</h3>
-        <p>Dive deep into design processes, principles, and systems that separate good designers from great ones.</p>
-      </div>
-      <div>
-        <h3 class="font-bold mb-1">Part 4: Communication & Influence</h3>
-        <p>Learn to sell your ideas, influence stakeholders, and bridge the gap between design and business.</p>
-      </div>
-      <div>
-        <h3 class="font-bold mb-1">Part 5: Designing for Humans</h3>
-        <p>Go beyond functional to create experiences that truly serve people's deeper needs and emotions.</p>
-      </div>
-    </div>
-
-    <h2 class="text-2xl font-bold mb-12">"This isn't just another design book"</h2>
-    <p class="mb-8">Unlike books that focus on theory or specific tools, <em>Products People Actually Want</em> gives you a complete framework for thinking about design—from understanding business constraints to creating emotionally resonant experiences.</p>
-    <ul class="list-disc list-inside space-y-2 text-lg text-black/90 mb-20">
-      <li><strong>Why some products succeed while others fail</strong> (it's not what you think)</li>
-      <li><strong>How to balance user needs with business goals</strong> without compromising either</li>
-      <li><strong>The communication skills that separate good designers from great ones</strong></li>
-      <li><strong>How to design for real humans in real situations</strong> (not perfect users in perfect conditions)</li>
-      <li><strong>Practical frameworks you can use immediately</strong> in your current work</li>
+    <!-- Book Description -->
+    <h2 class="text-2xl font-bold mb-12">This book cuts through the noise</h2>
+    
+    <p class="body-xxl mb-12">Most design books talk in circles about theory and best practices. This one addresses the work as it is: messy trade-offs, pressure to ship, the challenge of balancing business goals with real user needs.</p>
+    
+    <p class="body-xxl mb-8">You'll learn:</p>
+    <ul class="body-xxl list-disc list-outside space-y-2 ml-4 mb-12">
+      <li>Why "everyone is a designer" and how to leverage diverse perspectives in your team</li>
+      <li>The complete product design process that works in the real world, not just in case studies</li>
+      <li>How to communicate design decisions and influence stakeholders who "prefer the other option because it looks more modern"</li>
+      <li>Practical frameworks for user research that reveal what people actually need (not what they say they want)</li>
+      <li>How to design for anyone without falling into the "design for everyone" trap</li>
     </ul>
+    
+    <p class="body-xxl mb-24"><strong>This isn't another book about making things pretty. It's about making things work.</strong></p>
 
-    <h2 class="text-2xl font-bold mb-12">About the Author</h2>
-    <OptimizedImage 
-      src="/images/anton.jpg" 
-      alt="Anton Sten" 
-      className="w-32 h-32 rounded-full mx-auto mb-8" 
-    />
-    <h3 class="body-xl font-semibold mb-2 text-center">Anton Sten</h3>
-    <p class="body-lg text-black/70 mb-2 text-center">UX Lead & Product Designer</p>
-    <p class="body-lg text-black/80 mb-8 text-center">With over 25 years of experience, Anton has consulted for IKEA, Herman Miller, Loom, Google, Spotify, and is Head of Design at Summer Health. His writing is featured across the design community, and he's a regular speaker at conferences and design schools worldwide. Based in Sweden, Anton divides his time between designing products that matter, writing about the craft of design, and long walks with his dog Taylor.</p>
+    <h2 class="text-2xl font-bold mb-12">Start reading now</h2>
+  </div>
 
-    <h2 class="text-2xl font-bold mb-12 text-center">What readers are saying</h2>
-    <ul class="space-y-8 mb-20">
-      <li class="text-lg text-black/90 italic">"Finally, a book that connects design thinking to real business outcomes. Anton's insights about the human side of design are game-changing."</li>
-      <li class="text-lg text-black/90 italic">"This should be required reading for anyone building digital products. Practical, honest, and immediately actionable."</li>
-      <li class="text-lg text-black/90 italic">"Anton doesn't just tell you what to do—he shows you why it matters. The chapter on designing for humans alone is worth the price."</li>
-    </ul>
+  <!-- CTA Cards - Full Width Container -->
+  <div class="px-[20px] mb-24">
+    <div class="flex flex-col lg:flex-row lg:gap-[20px]">
+      <!-- Buy Book Card -->
+      <div class="bg-light-green/80 dark:bg-dark-surface/80 border border-green/20 dark:border-dark-accent/20 rounded-lg p-6 transition-shadow lg:w-1/2 mb-8 lg:mb-0 flex flex-col">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-semibold text-black dark:text-dark-text">Get the complete book</h3>
+          <p class="text-xl font-semibold text-green dark:text-dark-accent">$29</p>
+        </div>
+        <div class="flex-1">
+          <p class="body-md mb-4 text-black dark:text-dark-text">
+            <strong>Launch week price (reg. $39)</strong>
+          </p>
+          <p class="body-md mb-8 text-black dark:text-dark-text">
+            PDF + ePub formats<br>
+            Instant download. No DRM. Yours forever.
+          </p>
+        </div>
+                 <a href="#buy-now" class="px-4 py-2 bg-green dark:bg-dark-accent text-white rounded-[4px] hover:bg-green/90 dark:hover:bg-dark-accent/90 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium w-fit" onclick="fathom.trackEvent('Book Purchase', { _value: 2900 });">
+           Buy Now - $29
+         </a>
+      </div>
 
+      <!-- Free Sample Card -->
+      <div class="bg-light-green/80 dark:bg-dark-surface/80 border border-green/20 dark:border-dark-accent/20 rounded-lg p-6 transition-shadow lg:w-1/2 mb-8 lg:mb-0 flex flex-col">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-semibold text-black dark:text-dark-text">Download free sample</h3>
+          <p class="text-xl font-semibold text-green dark:text-dark-accent">Free</p>
+        </div>
+        <div class="flex-1">
+          <p class="body-md mb-4 text-black dark:text-dark-text">
+            <strong>Chapters 1 + 4</strong>
+          </p>
+          <p class="body-md mb-8 text-black dark:text-dark-text">
+            See what the book is about<br>
+            No catch. Just good content to help you build better products.
+          </p>
+        </div>
+                 <a href="#free-sample" class="px-4 py-2 bg-green dark:bg-dark-accent text-white rounded-[4px] hover:bg-green/90 dark:hover:bg-dark-accent/90 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium w-fit" onclick="fathom.trackEvent('Free Sample Download');">
+           Download Free Sample
+         </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="max-w-[700px] mx-auto px-8 sm:px-6 mb-24">
     <h2 class="text-2xl font-bold mb-12">Table of Contents</h2>
-    <div class="space-y-6 mb-20">
+    
+    <div class="space-y-8">
       <div>
-        <h3 class="font-bold mb-1">Part 1: Understanding Product Design</h3>
-        <ul class="list-disc list-inside ml-4">
+        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 1: Understanding Product Design</h3>
+        <ul class="body-lg space-y-2 ml-4 text-dark-grey dark:text-dark-text-secondary">
           <li>Chapter 1: Introduction</li>
           <li>Chapter 2: Product Design Explained</li>
           <li>Chapter 3: Everyone is a Designer</li>
@@ -88,9 +110,10 @@ import OptimizedImage from '../../components/OptimizedImage.astro';
           <li>Chapter 5: Product Design is Much More Than Software</li>
         </ul>
       </div>
+
       <div>
-        <h3 class="font-bold mb-1">Part 2: Building Your Practice</h3>
-        <ul class="list-disc list-inside ml-4">
+        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 2: Building Your Practice</h3>
+        <ul class="body-lg space-y-2 ml-4 text-dark-grey dark:text-dark-text-secondary">
           <li>Chapter 6: Working as a Product Designer</li>
           <li>Chapter 7: The Solo Designer</li>
           <li>Chapter 8: Great Design Managers</li>
@@ -98,17 +121,19 @@ import OptimizedImage from '../../components/OptimizedImage.astro';
           <li>Chapter 10: Creating a UX Strategy</li>
         </ul>
       </div>
+
       <div>
-        <h3 class="font-bold mb-1">Part 3: The Craft</h3>
-        <ul class="list-disc list-inside ml-4">
+        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 3: The Craft</h3>
+        <ul class="body-lg space-y-2 ml-4 text-dark-grey dark:text-dark-text-secondary">
           <li>Chapter 12: The Product Design Process</li>
           <li>Chapter 13: Design Principles</li>
           <li>Chapter 14: Creating Meaningful Design Systems</li>
         </ul>
       </div>
+
       <div>
-        <h3 class="font-bold mb-1">Part 4: Communication & Influence</h3>
-        <ul class="list-disc list-inside ml-4">
+        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 4: Communication & Influence</h3>
+        <ul class="body-lg space-y-2 ml-4 text-dark-grey dark:text-dark-text-secondary">
           <li>Chapter 15: Why Designers Need to Write</li>
           <li>Chapter 16: Writing as Part of the UX Process</li>
           <li>Chapter 17: How I Write for Design</li>
@@ -117,9 +142,10 @@ import OptimizedImage from '../../components/OptimizedImage.astro';
           <li>Chapter 20: Just Write</li>
         </ul>
       </div>
+
       <div>
-        <h3 class="font-bold mb-1">Part 5: Designing for Humans</h3>
-        <ul class="list-disc list-inside ml-4">
+        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 5: Designing for Humans</h3>
+        <ul class="body-lg space-y-2 ml-4 text-dark-grey dark:text-dark-text-secondary">
           <li>Chapter 21: Growing Relationships by Understanding Value</li>
           <li>Chapter 22: Designing with Emotions in Mind</li>
           <li>Chapter 23: Designing for Anyone</li>
@@ -127,10 +153,80 @@ import OptimizedImage from '../../components/OptimizedImage.astro';
         </ul>
       </div>
     </div>
+  </div>
 
-    <div class="bg-light-green/80 border border-green/20 p-8 rounded-[4px] mb-20 text-center">
-      <a href="#buy-form" class="inline-block text-center px-4 py-2 bg-green text-white rounded-[4px] hover:bg-green/90 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium mb-2">Get Products People Actually Want today</a>
-      <p class="text-base text-black/80 mt-4">Join thousands of designers, developers, and product managers who are building better experiences for real people.</p>
+  <!-- Testimonial Section -->
+  <div class="px-[20px] mb-24">
+    <div class="max-w-[700px] mx-auto">
+      <Testimonial 
+        quote={["Finally, a book that connects design thinking to real business outcomes. Anton's insights about the human side of design are game-changing."]}
+        author="Fedor Shkliarau"
+        role="Senior Product Designer"
+      />
     </div>
   </div>
-</Layout> 
+
+  <!-- Author Bio -->
+  <div class="max-w-[700px] mx-auto px-8 sm:px-6 mb-24">
+    <h2 class="text-2xl font-bold mb-12">About the Author</h2>
+    
+    <OptimizedImage 
+      src="/images/anton.webp" 
+      alt="Anton Sten" 
+      className="w-full mb-12"
+    />
+    
+    <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Anton Sten</h3>
+    <p class="body-lg text-dark-grey dark:text-dark-text-secondary mb-8">UX Lead & Product Designer</p>
+    
+    <p class="body-xxl mb-24">With over 25 years of experience, Anton has consulted for IKEA, Herman Miller, Loom, Google, Spotify, and is Head of Design at Summer Health. His writing is featured across the design community, and he's a regular speaker at conferences and design schools worldwide. Based in Sweden, Anton divides his time between designing products that matter, writing about the craft of design, and long walks with his dog Taylor.</p>
+
+    <!-- Final CTA -->
+    <h2 class="text-2xl font-bold mb-12">Ready to build products people actually want?</h2>
+    
+    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+             <a href="#buy-complete" class="px-4 py-2 bg-green text-white rounded-[4px] hover:bg-green/90 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium text-center" onclick="fathom.trackEvent('Book Purchase', { _value: 2900 });">
+         Get the complete book - $29
+       </a>
+       <a href="#download-sample" class="px-4 py-2 bg-black dark:bg-white text-white dark:text-black rounded-[4px] hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium text-center" onclick="fathom.trackEvent('Free Sample Download');">
+         Download free sample
+       </a>
+    </div>
+
+    <p class="body-lg text-dark-grey dark:text-dark-text-secondary">
+      Questions? Email <a href="mailto:anton@antonsten.com" class="text-black underline hover:text-green transition-colors">anton@antonsten.com</a>
+    </p>
+  </div>
+
+  <!-- Free Sample Form (Hidden by default) -->
+  <section id="free-sample" class="max-w-[700px] mx-auto px-8 sm:px-6 mb-24">
+    <div class="bg-light-green/80 border border-green/20 rounded-lg p-8">
+      <h3 class="text-2xl font-semibold text-black dark:text-dark-text mb-6 text-center">
+        Download Your Free Sample
+      </h3>
+      <NewsletterForm 
+        title=""
+        description="Get chapters 1 + 4 delivered to your inbox"
+        buttonText="Download Free Sample"
+        successMessage="Check your email for the download link!"
+      />
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e: Event) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      const target = href ? document.querySelector(href) : null;
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script> 
