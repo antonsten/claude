@@ -5,25 +5,31 @@ export const prerender = false;
 
 export const GET: APIRoute = async () => {
     try {
-        const CONVERTKIT_API_KEY = import.meta.env.CONVERTKIT_API_KEY;
-        const FORM_ID = import.meta.env.CONVERTKIT_FORM_ID;
+        const KIT_API_KEY = import.meta.env.KIT_API_KEY;
+        const KIT_FORM_ID = import.meta.env.KIT_FORM_ID || import.meta.env.CONVERTKIT_FORM_ID;
 
-        console.log('Testing ConvertKit credentials:', {
-            hasApiKey: !!CONVERTKIT_API_KEY,
-            hasFormId: !!FORM_ID,
-            formId: FORM_ID,
-            apiKeyLength: CONVERTKIT_API_KEY?.length
+        console.log('Testing Kit credentials:', {
+            hasApiKey: !!KIT_API_KEY,
+            hasFormId: !!KIT_FORM_ID,
+            formId: KIT_FORM_ID,
+            apiKeyLength: KIT_API_KEY?.length
         });
 
-        // First, try to get the form details
-        const formResponse = await fetch(`https://api.convertkit.com/v3/forms/${FORM_ID}?api_key=${CONVERTKIT_API_KEY}`);
-        const formData = await formResponse.text();
-        console.log('Form details response:', formData);
+        // Test Kit API v4 connection - check API access
+        const testResponse = await fetch('https://api.kit.com/v4/subscribers', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${KIT_API_KEY}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        const testData = await testResponse.text();
+        console.log('Kit v4 API test response:', testData);
 
         return new Response(
             JSON.stringify({
-                message: 'Test completed',
-                formResponse: formData
+                message: 'Kit v4 API test completed',
+                apiResponse: testData
             }), 
             { 
                 status: 200,
