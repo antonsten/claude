@@ -51,7 +51,7 @@
   }
 
   .body-xxl {
-    @apply text-[26px] leading-[34px] tracking-[-0.01em] font-regular !important;
+    @apply text-[24px] leading-[32px] tracking-[-0.01em] font-regular !important;
   }
 
   .body-lg {
