@@ -4,7 +4,7 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // Remove the leading slash
 ---
 
-<div class="sticky top-0 z-50 px-[20px] pt-[20px]">
+<div class="fixed top-0 left-0 right-0 z-50 px-[20px] pt-[20px] transform transition-transform duration-300 ease-in-out" id="navigation">
   <nav class="bg-light-grey/90 dark:bg-dark-surface/90 backdrop-blur-sm rounded-[4px]">
     <div class="px-[20px] py-[8px]">
       <div class="flex items-center justify-between">
@@ -118,5 +118,39 @@ const currentPath = pathname.slice(1); // Remove the leading slash
       menuIcon.style.transform = button.textContent === 'Close' ? 'rotate(180deg)' : 'rotate(0deg)';
       menuIcon.style.transition = 'transform 0.3s ease';
     }
+  });
+
+  // Navigation scroll behavior
+  let lastScrollY = window.scrollY;
+  let isScrollingUp = false;
+  const navigation = document.getElementById('navigation');
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    // Determine scroll direction
+    if (currentScrollY < lastScrollY) {
+      // Scrolling up
+      isScrollingUp = true;
+    } else if (currentScrollY > lastScrollY) {
+      // Scrolling down
+      isScrollingUp = false;
+    }
+
+    // Show/hide navigation based on scroll direction and position
+    if (navigation) {
+      if (currentScrollY <= 20) {
+        // Always show when at top of page
+        navigation.style.transform = 'translateY(0)';
+      } else if (isScrollingUp) {
+        // Show when scrolling up
+        navigation.style.transform = 'translateY(0)';
+      } else {
+        // Hide when scrolling down
+        navigation.style.transform = 'translateY(-100%)';
+      }
+    }
+
+    lastScrollY = currentScrollY;
   });
 </script> 
