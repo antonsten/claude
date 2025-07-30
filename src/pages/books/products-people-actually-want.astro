@@ -28,7 +28,7 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
        <div class="bg-light-green/80 dark:bg-dark-surface/80 border border-green/20 dark:border-dark-accent/20 rounded-lg p-6 transition-shadow flex flex-col">
         <div class="flex justify-between items-center mb-4">
           <h3 class="text-xl font-semibold text-black dark:text-dark-text">Get the complete book</h3>
-          <p class="text-xl font-semibold text-green dark:text-dark-accent">$29</p>
+          <p class="text-xl font-semibold text-green dark:text-dark-accent">$29 <del>($39)</del></p>
         </div>
         <div class="flex-1">
           <p class="body-md mb-4 text-black dark:text-dark-text">
@@ -51,11 +51,11 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
 
          <!-- Book Cover -->
      <OptimizedImage 
-       src="/images/products-people-actually-want-cover.webp" 
+       src="/images/book-cover.webp" 
        alt="Products People Actually Want book cover" 
-       width={994}
-       height={1464}
-       className="w-full mb-24"
+       width={350}
+       height={516}
+       className="mx-auto mb-24 w-full"
      />
 
     <!-- Book Description -->
@@ -219,12 +219,9 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
       <div class="bg-light-green/80 dark:bg-dark-surface/80 border border-green/20 dark:border-dark-accent/20 rounded-lg p-6 transition-shadow flex flex-col">
         <div class="flex justify-between items-center mb-4">
           <h3 class="text-xl font-semibold text-black dark:text-dark-text">Get the complete book</h3>
-          <p class="text-xl font-semibold text-green dark:text-dark-accent">$29</p>
+          <p class="text-xl font-semibold text-green dark:text-dark-accent">$29 <del>($39)</del></p>
         </div>
         <div class="flex-1">
-          <p class="body-md mb-4 text-black dark:text-dark-text">
-            <strong>Launch week price (reg. $39)</strong>
-          </p>
           <p class="body-md mb-8 text-black dark:text-dark-text">
             PDF + ePub formats<br>
             Instant download. No DRM. Yours forever.
