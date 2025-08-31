@@ -22,41 +22,6 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
 
     <p class="body-xxl mb-24">A practical guide to building digital products that solve real problems instead of adding to the noise. Based on 25+ years of experience consulting for companies like IKEA, Herman Miller, Loom, Google, and Spotify, this book covers everything from user research and stakeholder communication to design systems and team leadership.<br><br>Learn how to focus on what users actually need, communicate design decisions effectively, and build products people genuinely want to use.</p>
 
-    <!-- CTA Cards -->
-    <div class="flex flex-col gap-[20px] mb-24">
-             <!-- Buy Book Card -->
-       <div class="bg-light-green/80 dark:bg-dark-surface/80 border border-green/20 dark:border-dark-accent/20 rounded-lg p-6 transition-shadow flex flex-col">
-        <div class="flex justify-between items-center mb-4">
-          <h3 class="text-xl font-semibold text-black dark:text-dark-text">Get the complete book</h3>
-          <p class="text-xl font-semibold text-green dark:text-dark-accent">$29 <del>($39)</del></p>
-        </div>
-        <div class="flex-1">
-          <p class="body-md mb-4 text-black dark:text-dark-text">
-            <strong>Launch week price (reg. $39)</strong> PDF + ePub formats
-          </p>
-          <p class="body-md mb-8 text-black dark:text-dark-text">
-                      </p>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-3">
-          <a href="https://buy.stripe.com/5kQaEXdCR7uOaWodCz0VO06" class="px-4 py-2 bg-green dark:bg-dark-accent text-white rounded-[4px] hover:bg-green/90 dark:hover:bg-dark-accent/90 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium w-fit" onclick="fathom.trackEvent('Book Purchase', { _value: 2900 });">
-            Buy Now - $29
-          </a>
-          <a href="#free-sample" class="px-4 py-2 bg-white dark:bg-dark-surface text-green dark:text-dark-accent rounded-[4px] hover:bg-green hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium w-fit">
-            Get 2 chapters free
-          </a>
-        </div>
-      </div>
-
-     </div>
-
-         <!-- Book Cover -->
-     <OptimizedImage 
-       src="/images/book-cover.webp" 
-       alt="Products People Actually Want book cover" 
-       width={350}
-       height={516}
-       className="mx-auto mb-24 w-full"
-     />
 
     <!-- Book Description -->
     <h2 class="text-2xl font-bold mb-12">This book cuts through the noise</h2>
@@ -80,37 +45,35 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
     <h2 class="text-2xl font-bold mb-12">Everything in the book</h2>
     
     <div class="space-y-8">
-      <div>
-          <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Introduction</h3>
-      </div>
+
 
       <div>
         <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 1: Understanding product design</h3>
         <ul class="body-lg space-y-2 ml-4 text-dark-grey dark:text-dark-text-secondary">
-          <li>1. Product design explained</li>
-          <li>2. Everyone is a designer</li>
-          <li>3. Product design as a problem solver</li>
-          <li>4. Product design is much more than software</li>
+          <li>1 - What product design actually means</li>
+          <li>2 - Why everyone makes design decisions</li>
+          <li>3 - Product design as a problem solver</li>
+          <li>4 - Beyond the screen</li>
         </ul>
       </div>
 
       <div>
         <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 2: Building your practice</h3>
         <ul class="body-lg space-y-2 ml-4 text-dark-grey dark:text-dark-text-secondary">
-          <li>5. Working as a product designer</li>
-          <li>6. The solo designer</li>
-          <li>7. Great design managers</li>
-          <li>8. Creating a UX strategy</li>
-          <li>9. User research and stakeholder interviews</li>
+          <li>5 - The reality of product design work</li>
+          <li>6 - Being the only designer</li>
+          <li>7 - Leading without losing your craft</li>
+          <li>8 - User research and stakeholder interviews</li>
+          <li>9 - Creating a UX strategy</li>
         </ul>
       </div>
 
       <div>
         <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 3: The craft</h3>
         <ul class="body-lg space-y-2 ml-4 text-dark-grey dark:text-dark-text-secondary">
-          <li>10. The product design process</li>
-          <li>11. Design principles</li>
-          <li>12. Creating meaningful design systems</li>
+          <li>10 - The product design process</li>
+          <li>11 - Design principles</li>
+          <li>12 - Creating meaningful design systems</li>
         </ul>
       </div>
 
@@ -118,7 +81,7 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
         <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 4: Communication & influence</h3>
         <ul class="body-lg space-y-2 ml-4 text-dark-grey dark:text-dark-text-secondary">
           <li>13. Why designers need to write</li>
-          <li>14. How I write for design</li>
+          <li>14. Using writing to think through problems</li>
           <li>15. How to sell design</li>
           <li>16. Why designers need to speak business</li>
         </ul>
@@ -127,74 +90,62 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
       <div>
         <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 5: Designing for humans</h3>
         <ul class="body-lg space-y-2 ml-4 text-dark-grey dark:text-dark-text-secondary">
-          <li>17. Building emotional relationships with users</li>
-          <li>18. Designing for anyone</li>
-          <li>19. The extra effort for great UX</li>
+          <li>17 - Building emotional relationships with users</li>
+          <li>18 - Designing for anyone</li>
+          <li>19 - Going beyond good enough</li>
         </ul>
       </div>
 
-      <div>
-        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Products people actually want</h3>
 
-      </div>
            </div>
      </div>
   </div>
 
   <!-- Testimonial Section -->
   <div class="max-w-[700px] mx-auto px-8 sm:px-6 mb-24 mt-24">
-    <div class="relative -mx-8 sm:mx-0">
-      <div class="carousel flex gap-[4px] overflow-x-auto snap-x snap-mandatory no-scrollbar">
-        <div class="flex-shrink-0 snap-start" style="width: 100vw;">
-          <Testimonial 
-            bgColor="#0066FF"
-            textColor="white"
-            quote={['"Products People Actually Want" is the rare design book that cuts through the noise and gets to the heart of what matters: designing for real people.', 'Anton Sten is direct about the realities of product design: the messy trade-offs, the pressure to ship, the challenge of balancing business goals with actual user needs.', 'There\'s a practical honesty here, especially in the way the book calls out feature bloat and the tendency to confuse activity with progress. If you\'re tired of design books that talk in circles, this one actually addresses the work as it is.']}
-            author="Fedor Shkliarau"
-            role="Author of Product Design Portfolio Final Final"
-          />
-        </div>
-        
-        <div class="flex-shrink-0 snap-start" style="width: 100vw;">
-          <Testimonial 
-            bgColor="light-grey"
-            quote={['What I like about this book is that it\'s an easy read that talks about design in a holistic way.', 'It\'s a book I wish I read at the beginning of my career, because it really shows the many facets that make up design and underlines it with personal stories, concrete examples and practical tips.', 'Now reading this book further into my career it still is insightful - but also just very relatable and reassuring. Truly a design mentor in book-form.']}
-            author="Maureen Herben"
-            role="Senior designer, Typeform"
-          />
-        </div>
-        
-        <div class="flex-shrink-0 snap-start" style="width: 100vw;">
-          <Testimonial 
-            bgColor="black"
-            textColor="white"
-            quote={['"Products People Actually Want" is the rare design book that cuts through the noise and gets to the heart of what matters: designing for real people.', 'Anton Sten is direct about the realities of product design: the messy trade-offs, the pressure to ship, the challenge of balancing business goals with actual user needs.', 'There\'s a practical honesty here, especially in the way the book calls out feature bloat and the tendency to confuse activity with progress. If you\'re tired of design books that talk in circles, this one actually addresses the work as it is.']}
-            author="Fedor Shkliarau"
-            role="Author of Product Design Portfolio Final Final"
-          />
-        </div>
-      </div>
+    <div class="space-y-6">
+      <Testimonial 
+        bgColor="#0066FF"
+        textColor="white"
+        quote={['"Products People Actually Want" is the rare design book that cuts through the noise and gets to the heart of what matters: designing for real people.', 'Anton Sten is direct about the realities of product design: the messy trade-offs, the pressure to ship, the challenge of balancing business goals with actual user needs.', 'There\'s a practical honesty here, especially in the way the book calls out feature bloat and the tendency to confuse activity with progress. If you\'re tired of design books that talk in circles, this one actually addresses the work as it is.']}
+        author="Fedor Shkliarau"
+        role="Author of Product Design Portfolio Final Final"
+      />
       
-      <div class="flex gap-2 mt-4">
-        <button 
-          class="w-12 h-12 rounded-[4px] flex items-center justify-center hover:bg-green group transition-colors"
-          aria-label="Previous testimonial"
-          data-testimonial-prev
-        >
-          <svg class="w-6 h-6 group-hover:text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button 
-          class="w-12 h-12 rounded-[4px] flex items-center justify-center hover:bg-green group transition-colors"
-          aria-label="Next testimonial"
-          data-testimonial-next
-        >
-          <svg class="w-6 h-6 group-hover:text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
+      <Testimonial 
+        bgColor="light-grey"
+        quote={['What I like about this book is that it\'s an easy read that talks about design in a holistic way.', 'It\'s a book I wish I read at the beginning of my career, because it really shows the many facets that make up design and underlines it with personal stories, concrete examples and practical tips.', 'Now reading this book further into my career it still is insightful - but also just very relatable and reassuring. Truly a design mentor in book-form.']}
+        author="Maureen Herben"
+        role="Senior designer, Typeform"
+      />
+      
+      <Testimonial 
+        bgColor="black"
+        textColor="white"
+        quote={['It\'s everything they should be teaching in UX schools, but don\'t. It\'s also far more realistic to the industry we\'re in, with limited headcound and impact/influence and immediate ROI being the expectation (especially compared to 5+ years ago).', 'You\'ve written the handbook we need — amazing work!']}
+        author="Buzz Usborne"
+        role="Principal Designer & Coach"
+      />
+      
+      <Testimonial 
+        bgColor="#0066FF"
+        textColor="white"
+        quote={['Most design books are written from the sidelines. This one is written from the arena. Anton\'s Products People Actually Want is built on hard-won lessons from real projects where the stakes were high and the consequences of getting it wrong were huge.', 'What makes this book stand out is its honesty. It doesn\'t dress design up in theory or shiny frameworks. It lays bare the real, messy, human work of building products people care about. I\'ve worked with Anton on high-stakes projects for major brands, and I\'ve seen firsthand how he moves seamlessly from detail to strategy without ever losing sight of the human at the center.', 'This book is sharp, grounded, and unflinching - a reminder that success isn\'t about features, it\'s about outcomes that matter. Every designer, PM, and founder who reads it will come away changed.']}
+        author="Sharif Matar"
+        role="Design Leader"
+      />
+    </div>
+  </div>
+
+  <!-- Stripe Pricing Table -->
+  <div class="max-w-[700px] mx-auto px-8 sm:px-6 mb-24">
+    <h2 class="text-2xl font-bold mb-12">Ready to build products people actually want?</h2>
+    
+    <div class="mb-24">
+      <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+      <stripe-pricing-table pricing-table-id="prctbl_1RuumOHkDwAI0a0CyxHNqs5g"
+      publishable-key="pk_live_ySOjGzWMlJJ1IcFO0PVVQgGf">
+      </stripe-pricing-table>
     </div>
   </div>
 
@@ -202,45 +153,22 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
   <div class="max-w-[700px] mx-auto px-8 sm:px-6 mb-24">
     <h2 class="text-2xl font-bold mb-12">About Anton Sten</h2>
     
-    <OptimizedImage 
-      src="/images/anton.webp" 
+    <p class="body-xxl mb-12">With over 25 years of experience, Anton has consulted for IKEA, Herman Miller, Loom, Google, Spotify, and is Head of Design at Summer Health.<br><br>His writing is featured across the design community, and he's a regular speaker at conferences and design schools worldwide.<br><br>Based in Sweden, Anton divides his time between designing products that matter, writing about the craft of design, and long walks with his dog Taylor.</p>
+    
+    <img 
+      src="/images/anton-taylor-cph.webp" 
       alt="Anton Sten" 
-      className="w-full mb-12"
+      class="w-full mb-24"
     />
-    
-    <p class="body-xxl mb-24">With over 25 years of experience, Anton has consulted for IKEA, Herman Miller, Loom, Google, Spotify, and is Head of Design at Summer Health.<br><br>His writing is featured across the design community, and he's a regular speaker at conferences and design schools worldwide.<br><br>Based in Sweden, Anton divides his time between designing products that matter, writing about the craft of design, and long walks with his dog Taylor.</p>
 
-    <!-- Final CTA -->
-    <h2 class="text-2xl font-bold mb-12">Ready to build products people actually want?</h2>
-    
-    <!-- CTA Cards -->
-    <div class="flex flex-col gap-[20px] mb-24">
-      <!-- Buy Book Card -->
-      <div class="bg-light-green/80 dark:bg-dark-surface/80 border border-green/20 dark:border-dark-accent/20 rounded-lg p-6 transition-shadow flex flex-col">
-        <div class="flex justify-between items-center mb-4">
-          <h3 class="text-xl font-semibold text-black dark:text-dark-text">Get the complete book</h3>
-          <p class="text-xl font-semibold text-green dark:text-dark-accent">$29 <del>($39)</del></p>
-        </div>
-        <div class="flex-1">
-          <p class="body-md mb-8 text-black dark:text-dark-text">
-            PDF + ePub formats<br>
-            Instant download. No DRM. Yours forever.
-          </p>
-        </div>
-        <a href="https://buy.stripe.com/5kQaEXdCR7uOaWodCz0VO06" class="px-4 py-2 bg-green dark:bg-dark-accent text-white rounded-[4px] hover:bg-green/90 dark:hover:bg-dark-accent/90 transition-colors text-[16px] leading-[24px] tracking-[-0.01em] font-medium w-fit" onclick="fathom.trackEvent('Book Purchase', { _value: 2900 });">
-          Buy Now - $29
-        </a>
-      </div>
-
-      <!-- Free Sample Form -->
-      <div id="free-sample">
-        <BookSampleForm 
-          title="See what the book is about"
-          description=""
-          buttonText="Get free chapters"
-          successMessage="Check your email for the download link!"
-        />
-      </div>
+    <!-- Free Sample Form -->
+    <div id="free-sample" class="mb-24">
+      <BookSampleForm 
+        title="See what the book is about"
+        description=""
+        buttonText="Get free chapters"
+        successMessage="Check your email for the download link!"
+      />
     </div>
   </div>
 </Layout>
