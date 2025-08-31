@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "prebuild": "npm run generate-og-images",
+    "build:full": "npm run generate-og-images && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "add-slugs": "tsx scripts/add-slugs.ts",
