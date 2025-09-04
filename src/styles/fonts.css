@@ -20,4 +20,22 @@
   font-weight: 600;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: 'Blanco';
+  src: url('/fonts/Blanco-Regular.woff2') format('woff2'),
+       url('/fonts/Blanco-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Blanco';
+  src: url('/fonts/Blanco-Italic.woff2') format('woff2'),
+       url('/fonts/Blanco-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
 } 

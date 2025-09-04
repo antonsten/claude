@@ -23,6 +23,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['"Suisse Intl"', 'system-ui', 'sans-serif'],
+        serif: ['"Blanco"', 'Georgia', 'serif'],
       },
       fontWeight: {
         regular: '400',
@@ -42,8 +43,8 @@ module.exports = {
         'h5': ['1.25rem', { lineHeight: '1.25' }],
         
         // Body sizes
-        'xxl': ['1.625rem', { lineHeight: '2.125rem', letterSpacing: '-0.01em' }],
-        'xl': ['1.25rem', { lineHeight: '1.75', letterSpacing: '-0.01em' }],
+        'xxl': ['1.625rem', { lineHeight: '1.6', letterSpacing: '-0.01em' }],
+        'xl': ['1.25rem', { lineHeight: '1.6', letterSpacing: '-0.01em' }],
         'lg': ['1.125rem', { lineHeight: '1.75' }],
         'base': ['1rem', { lineHeight: '1.75' }],
         'sm': ['0.875rem', { lineHeight: '1.75' }],

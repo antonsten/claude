@@ -47,11 +47,11 @@
   }
 
   .body-xl {
-    @apply text-[20px] leading-[26px] tracking-[-0.01em] font-regular;
+    @apply text-[20px] leading-[32px] tracking-[-0.01em] font-regular;
   }
 
   .body-xxl {
-    @apply text-[24px] leading-[32px] tracking-[-0.01em] font-regular !important;
+    @apply text-[26px] leading-[42px] tracking-[-0.01em] font-regular !important;
   }
 
   .body-lg {
