@@ -18,7 +18,7 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
     
     <p class="text-2xl font-bold mb-4">Introducing...</p>
     
-    <h1 class="text-black font-medium text-[48px] leading-[1.2] tracking-[-0.02em] sm:text-display mb-8">Products People Actually Want</h1>
+    <h1 class="text-green dark:text-dark-accent font-medium text-[48px] leading-[1.2] tracking-[-0.02em] sm:text-display mb-8">Products People Actually Want</h1>
 
     <p class="body-xxl font-serif mb-40">A practical guide to building digital products that solve real problems instead of adding to the noise. Based on 25+ years of experience consulting for companies like IKEA, Herman Miller, Loom, Google, and Spotify, this book covers everything from user research and stakeholder communication to design systems and team leadership.<br><br>Learn how to focus on what users actually need, communicate design decisions effectively, and build products people genuinely want to use.</p>
 
@@ -29,15 +29,17 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
     <p class="body-xxl font-serif mb-20">Most design books talk in circles about theory and best practices. This one addresses the work as it is: messy trade-offs, pressure to ship, the challenge of balancing business goals with real user needs.</p>
     
          <p class="text-2xl font-bold mb-4"><strong>You'll learn:</strong></p>
-    <ul class="body-xl font-serif list-disc list-outside space-y-2 ml-4 mb-20">
-      <li>Why "everyone is a designer" and how to leverage diverse perspectives in your team</li>
-      <li>The complete product design process that works in the real world, not just in case studies</li>
-      <li>How to communicate design decisions and influence stakeholders who "prefer the other option because it looks more modern"</li>
-      <li>Practical frameworks for user research that reveal what people actually need (not what they say they want)</li>
-      <li>How to design for anyone without falling into the "design for everyone" trap</li>
+    <ul class="body-xxl font-serif space-y-2 mb-20">
+      <li class="flex items-start"><span class="text-green dark:text-dark-accent mr-3 mt-1">✓</span><span>Why "everyone is a designer" and how to leverage diverse perspectives in your team</span></li>
+      <li class="flex items-start"><span class="text-green dark:text-dark-accent mr-3 mt-1">✓</span><span>The complete product design process that works in the real world, not just in case studies</span></li>
+      <li class="flex items-start"><span class="text-green dark:text-dark-accent mr-3 mt-1">✓</span><span>How to communicate design decisions and influence stakeholders who "prefer the other option because it looks more modern"</span></li>
+      <li class="flex items-start"><span class="text-green dark:text-dark-accent mr-3 mt-1">✓</span><span>Practical frameworks for user research that reveal what people actually need (not what they say they want)</span></li>
+      <li class="flex items-start"><span class="text-green dark:text-dark-accent mr-3 mt-1">✓</span><span>How to design for anyone without falling into the "design for everyone" trap</span></li>
     </ul>
     
-         <p class="text-2xl font-bold mb-24"><strong>This isn't another book about making things pretty. It's about understanding humans well enough to build things they actually want.</strong></p>
+         <div class="bg-[#BDD7E8] dark:bg-dark-surface p-8 rounded-[4px] mb-24">
+          <p class="text-2xl font-bold dark:text-dark-text">This isn't another book about making things pretty.<br /><br />It's about understanding humans well enough to build products people actually want.</p>
+        </div>
 
 
 
@@ -100,44 +102,62 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
   <!-- Testimonial Section -->
   <div class="max-w-[760px] mx-auto px-8 sm:px-6 mb-24 mt-24">
     <h2 class="text-2xl font-bold mb-12">What readers say about the book</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="border border-light-green rounded-xl">
-        <Testimonial 
-          bgColor="#0066FF"
-          textColor="white"
-          quote={['Products People Actually Want is the rare design book that cuts through the noise and gets to the heart of what matters: designing for real people.', 'Anton Sten is direct about the realities of product design: the messy trade-offs, the pressure to ship, the challenge of balancing business goals with actual user needs.', 'There\'s a practical honesty here, especially in the way the book calls out feature bloat and the tendency to confuse activity with progress. If you\'re tired of design books that talk in circles, this one actually addresses the work as it is.']}
-          author="Fedor Shkliarau"
-          role="Author of Product Design Portfolio Final Final"
-        />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+      <!-- Column 1: Fedor and Buzz -->
+      <div class="space-y-6">
+        <div class="border border-light-green rounded-xl p-8">
+          <h3 class="text-xl font-bold mb-4">"If you're tired of design books that talk in circles, this one actually addresses the work as it is."</h3>
+          <div class="text-sm space-y-4">
+            <p>Products People Actually Want is the rare design book that cuts through the noise and gets to the heart of what matters: designing for real people.</p>
+            <p>Anton Sten is direct about the realities of product design: the messy trade-offs, the pressure to ship, the challenge of balancing business goals with actual user needs.</p>
+            <p>There's a practical honesty here, especially in the way the book calls out feature bloat and the tendency to confuse activity with progress. If you're tired of design books that talk in circles, this one actually addresses the work as it is.</p>
+          </div>
+          <footer class="mt-6">
+            <p class="text-sm font-medium">Fedor Shkliarau</p>
+            <p class="text-sm opacity-80">Author of Product Design Portfolio Final Final</p>
+          </footer>
+        </div>
+        
+        <div class="border border-light-green rounded-xl p-8">
+          <h3 class="text-xl font-bold mb-4">"The handbook we need"</h3>
+          <div class="text-sm space-y-4">
+            <p>It's everything they should be teaching in UX schools, but don't. It's also far more realistic to the industry we're in, with limited headcound and impact/influence and immediate ROI being the expectation (especially compared to 5+ years ago).</p>
+            <p>You've written the handbook we need — amazing work!</p>
+          </div>
+          <footer class="mt-6">
+            <p class="text-sm font-medium">Buzz Usborne</p>
+            <p class="text-sm opacity-80">Principal Designer & Coach</p>
+          </footer>
+        </div>
       </div>
       
-      <div class="border border-light-green rounded-xl">
-        <Testimonial 
-          bgColor="light-grey"
-          quote={['What I like about this book is that it\'s an easy read that talks about design in a holistic way.', 'It\'s a book I wish I read at the beginning of my career, because it really shows the many facets that make up design and underlines it with personal stories, concrete examples and practical tips.', 'Now reading this book further into my career it still is insightful - but also just very relatable and reassuring. Truly a design mentor in book-form.']}
-          author="Maureen Herben"
-          role="Senior designer, Typeform"
-        />
-      </div>
-      
-      <div class="border border-light-green rounded-xl">
-        <Testimonial 
-          bgColor="black"
-          textColor="white"
-          quote={['It\'s everything they should be teaching in UX schools, but don\'t. It\'s also far more realistic to the industry we\'re in, with limited headcound and impact/influence and immediate ROI being the expectation (especially compared to 5+ years ago).', 'You\'ve written the handbook we need — amazing work!']}
-          author="Buzz Usborne"
-          role="Principal Designer & Coach"
-        />
-      </div>
-      
-      <div class="border border-light-green rounded-xl">
-        <Testimonial 
-          bgColor="#0066FF"
-          textColor="white"
-          quote={['Most design books are written from the sidelines. This one is written from the arena. Anton\'s Products People Actually Want is built on hard-won lessons from real projects where the stakes were high and the consequences of getting it wrong were huge.', 'What makes this book stand out is its honesty. It doesn\'t dress design up in theory or shiny frameworks. It lays bare the real, messy, human work of building products people care about. I\'ve worked with Anton on high-stakes projects for major brands, and I\'ve seen firsthand how he moves seamlessly from detail to strategy without ever losing sight of the human at the center.', 'This book is sharp, grounded, and unflinching - a reminder that success isn\'t about features, it\'s about outcomes that matter. Every designer, PM, and founder who reads it will come away changed.']}
-          author="Sharif Matar"
-          role="Design Leader"
-        />
+      <!-- Column 2: Maureen and Sharif -->
+      <div class="space-y-6">
+        <div class="border border-light-green rounded-xl p-8">
+          <h3 class="text-xl font-bold mb-4">"A design mentor in book-form"</h3>
+          <div class="text-sm space-y-4">
+            <p>What I like about this book is that it's an easy read that talks about design in a holistic way.</p>
+            <p>It's a book I wish I read at the beginning of my career, because it really shows the many facets that make up design and underlines it with personal stories, concrete examples and practical tips.</p>
+            <p>Now reading this book further into my career it still is insightful - but also just very relatable and reassuring. Truly a design mentor in book-form.</p>
+          </div>
+          <footer class="mt-6">
+            <p class="text-sm font-medium">Maureen Herben</p>
+            <p class="text-sm opacity-80">Senior designer, Typeform</p>
+          </footer>
+        </div>
+        
+        <div class="border border-light-green rounded-xl p-8">
+          <h3 class="text-xl font-bold mb-4">"This book is sharp, grounded, and unflinching - a reminder that success isn't about features, it's about outcomes that matter."</h3>
+          <div class="text-sm space-y-4">
+            <p>Most design books are written from the sidelines. This one is written from the arena. Anton's Products People Actually Want is built on hard-won lessons from real projects where the stakes were high and the consequences of getting it wrong were huge.</p>
+            <p>What makes this book stand out is its honesty. It doesn't dress design up in theory or shiny frameworks. It lays bare the real, messy, human work of building products people care about. I've worked with Anton on high-stakes projects for major brands, and I've seen firsthand how he moves seamlessly from detail to strategy without ever losing sight of the human at the center.</p>
+            <p>This book is sharp, grounded, and unflinching - a reminder that success isn't about features, it's about outcomes that matter. Every designer, PM, and founder who reads it will come away changed.</p>
+          </div>
+          <footer class="mt-6">
+            <p class="text-sm font-medium">Sharif Matar</p>
+            <p class="text-sm opacity-80">Design Leader</p>
+          </footer>
+        </div>
       </div>
     </div>
   </div>
