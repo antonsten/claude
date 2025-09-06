@@ -47,54 +47,60 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
         <!-- Table of Contents -->
     <h2 class="text-2xl font-bold mb-12">Everything in the book</h2>
     
-    <div class="space-y-8">
-      <div>
-        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 1: Understanding product design</h3>
-        <ul class="body-xl font-serif list-disc list-outside space-y-2 ml-4">
-          <li>What product design actually means</li>
-          <li>Why everyone makes design decisions</li>
-          <li>Product design as a problem solver</li>
-          <li>Beyond the screen</li>
-        </ul>
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+      <!-- Column 1: Parts 1-3 -->
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-lg font-semibold text-black dark:text-dark-text mb-2">Part 1: Understanding product design</h3>
+          <ul class="text-sm leading-tight list-disc list-outside space-y-2 ml-4">
+            <li>What product design actually means</li>
+            <li>Why everyone makes design decisions</li>
+            <li>Product design as a problem solver</li>
+            <li>Beyond the screen</li>
+          </ul>
+        </div>
 
-      <div>
-        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 2: Building your practice</h3>
-        <ul class="body-xl font-serif list-disc list-outside space-y-2 ml-4">
-          <li>The reality of product design work</li>
-          <li>Being the only designer</li>
-          <li>Leading without losing your craft</li>
-          <li>User research and stakeholder interviews</li>
-          <li>Creating a UX strategy</li>
-        </ul>
-      </div>
+        <div>
+          <h3 class="text-lg font-semibold text-black dark:text-dark-text mb-2">Part 2: Building your practice</h3>
+          <ul class="text-sm leading-tight list-disc list-outside space-y-2 ml-4">
+            <li>The reality of product design work</li>
+            <li>Being the only designer</li>
+            <li>Leading without losing your craft</li>
+            <li>User research and stakeholder interviews</li>
+            <li>Creating a UX strategy</li>
+          </ul>
+        </div>
 
-      <div>
-        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 3: The craft</h3>
-        <ul class="body-xl font-serif list-disc list-outside space-y-2 ml-4">
-          <li>The product design process</li>
-          <li>Design principles</li>
-          <li>Creating meaningful design systems</li>
-        </ul>
+        <div>
+          <h3 class="text-lg font-semibold text-black dark:text-dark-text mb-2">Part 3: The craft</h3>
+          <ul class="text-sm leading-tight list-disc list-outside space-y-2 ml-4">
+            <li>The product design process</li>
+            <li>Design principles</li>
+            <li>Creating meaningful design systems</li>
+          </ul>
+        </div>
       </div>
+      
+      <!-- Column 2: Parts 4-5 -->
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-lg font-semibold text-black dark:text-dark-text mb-2">Part 4: Communication & influence</h3>
+          <ul class="text-sm leading-tight list-disc list-outside space-y-2 ml-4">
+            <li>Why designers need to write</li>
+            <li>Using writing to think through problems</li>
+            <li>How to sell design</li>
+            <li>Why designers need to speak business</li>
+          </ul>
+        </div>
 
-      <div>
-        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 4: Communication & influence</h3>
-        <ul class="body-xl font-serif list-disc list-outside space-y-2 ml-4">
-          <li>Why designers need to write</li>
-          <li>Using writing to think through problems</li>
-          <li>How to sell design</li>
-          <li>Why designers need to speak business</li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-semibold text-black dark:text-dark-text mb-4">Part 5: Designing for humans</h3>
-        <ul class="body-xl font-serif list-disc list-outside space-y-2 ml-4">
-          <li>Building emotional relationships with users</li>
-          <li>Designing for anyone</li>
-          <li>Going beyond good enough</li>
-        </ul>
+        <div>
+          <h3 class="text-lg font-semibold text-black dark:text-dark-text mb-2">Part 5: Designing for humans</h3>
+          <ul class="text-sm leading-tight list-disc list-outside space-y-2 ml-4">
+            <li>Building emotional relationships with users</li>
+            <li>Designing for anyone</li>
+            <li>Going beyond good enough</li>
+          </ul>
+        </div>
       </div>
     </div>
      </div>
@@ -119,12 +125,12 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
           </footer>
         </div>
         
-        <div class="border border-light-green rounded-xl p-8">
-          <h3 class="text-xl font-bold mb-4">"The handbook we need"</h3>
-          <div class="text-sm space-y-4">
-            <p>It's everything they should be teaching in UX schools, but don't. It's also far more realistic to the industry we're in, with limited headcound and impact/influence and immediate ROI being the expectation (especially compared to 5+ years ago).</p>
-            <p>You've written the handbook we need — amazing work!</p>
-          </div>
+               <div class="border border-light-green rounded-xl p-8">
+                 <h3 class="text-xl font-bold mb-4">"Anton's nailed it — this is the guide every Product Designer wishes they had."</h3>
+                 <div class="text-sm space-y-4">
+                   <p>Anton’s nailed it — this is the guide every Product Designer wishes they had. ￼It’s practical, super relevant for 2025 and honestly the stuff UX schools should have been teaching us all along!
+                  </p>
+                 </div>
           <footer class="mt-6">
             <p class="text-sm font-medium">Buzz Usborne</p>
             <p class="text-sm opacity-80">Principal Designer & Coach</p>
@@ -167,14 +173,37 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
   <div class="max-w-[760px] mx-auto px-8 sm:px-6 mb-24">
     <h2 class="text-2xl font-bold mb-12">Ready to build products people actually want?</h2>
     
-    <p class="body-xxl font-serif mb-12">Choose from two options: get the complete book "Products People Actually Want" in PDF and ePub formats for $29, or upgrade to include access to an exclusive AMA session with Anton for $59. The AMA sessions are limited to just 10 people each for intimate discussion about applying these principles to your specific challenges. Sessions have limited availability and will fill up quickly.</p>
+    <p class="body-xxl font-serif mb-12">I'm not here to oversell you or make you second-guess with a dozen different options and add-ons. There are just two choices: the book ($29), or the book plus access to an AMA session ($99). The sessions are limited to 10 people each. Take your pick.</p>
     
-    <div class="mb-24">
-      <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-      <stripe-pricing-table pricing-table-id="prctbl_1S3FsRHkDwAI0a0CkMUzBqX4"
-      publishable-key="pk_live_ySOjGzWMlJJ1IcFO0PVVQgGf">
-      </stripe-pricing-table>
-    </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+        <!-- Book Only Card -->
+        <div class="border border-gray-200 rounded-xl p-8 bg-white dark:bg-dark-surface dark:border-gray-700 flex flex-col">
+          <h3 class="text-xl font-bold mb-4">Book only</h3>
+          <div class="text-3xl font-bold mb-6">$29</div>
+          <div class="space-y-3 mb-8 flex-grow">
+            <p class="text-sm">✓ Book in PDF and ePubformat</p>
+            <p class="text-sm">✓ Access to Slack community</p>
+          </div>
+            <a href="https://antonsten.lemonsqueezy.com/buy/3fd0b9b0-239d-479d-a0bc-db13b45f143d?media=0&logo=0" class="w-full bg-green text-white font-semibold py-3 px-6 rounded-lg hover:bg-green/90 transition-colors inline-block text-center">
+              Get book only
+            </a>
+        </div>
+
+        <!-- Book + AMA Card -->
+        <div class="border border-light-green rounded-xl p-8 bg-white dark:bg-dark-surface flex flex-col">
+          <h3 class="text-xl font-bold mb-4">Book + AMA Session</h3>
+          <div class="text-3xl font-bold mb-6">$99</div>
+          <div class="space-y-3 mb-8 flex-grow">
+            <p class="text-sm">✓ Book in PDF and ePub format</p>
+            <p class="text-sm">✓ Access to Slack community</p>
+            <p class="text-sm">✓ Exclusive AMA session with Anton</p>
+            <p class="text-sm">✓ Limited to 10 people per session</p>
+          </div>
+            <a href="https://antonsten.lemonsqueezy.com/buy/31513a33-22fc-4148-b830-26fea8c3c6b6?media=0&logo=0" class="w-full bg-green text-white font-semibold py-3 px-6 rounded-lg hover:bg-green/90 transition-colors inline-block text-center">
+              Get book + AMA
+            </a>
+        </div>
+      </div>
   </div>
 
   <!-- Author Bio -->
