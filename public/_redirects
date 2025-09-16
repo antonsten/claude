@@ -26,14 +26,8 @@
 /work-with-me /articles/working-with-anton/ 301
 
 # Books
-/book /articles/ 301
-# Specific book redirects MUST come before wildcard
-/books/user-experiences-matter /user-experiences-matter/ 301
-/books/masteringfreelance /articles/ 301
-# TEMPORARILY DISABLED: Redirect products-people-actually-want
-/books/products-people-actually-want /articles/ 301
-# Wildcard redirect for other book URLs (TEMPORARILY DISABLED)
-# /books/* /articles/ 301
+/book /books/products-people-actually-want/ 301
+/books/* /books/products-people-actually-want/ 301
 
 # Special pages
 /testimonials / 301
