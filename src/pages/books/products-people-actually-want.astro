@@ -248,13 +248,8 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
   function trackBookPurchase(productName: string, price: number) {
     // Track in Fathom Analytics with value
     if (typeof (window as any).fathom !== 'undefined') {
-      (window as any).fathom.trackEvent(`Book Purchase Intent: ${productName}`, {
+      (window as any).fathom.trackEvent('Book Purchase Intent', {
         _value: price * 100 // Fathom expects value in cents
-      });
-      
-      // Also track a general book purchase goal for conversion tracking
-      (window as any).fathom.trackEvent('Book Purchase Goal', {
-        _value: price * 100
       });
     }
     
