@@ -1,3 +1,5 @@
+// DEPRECATED: This webhook is for legacy Stripe payments
+// New book purchases now use Lemon Squeezy - see lemonsqueezy-webhook.js
 import Stripe from 'stripe';
 
 // Disable prerendering for this API endpoint

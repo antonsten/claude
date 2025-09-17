@@ -196,7 +196,7 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
             <p class="text-sm">✓ Book in PDF and ePubformat</p>
             <p class="text-sm">✓ Access to Slack community</p>
           </div>
-            <a href="https://antonsten.lemonsqueezy.com/buy/3fd0b9b0-239d-479d-a0bc-db13b45f143d?media=0&logo=0" class="w-full bg-green text-white font-semibold py-3 px-6 rounded-lg hover:bg-green/90 transition-colors inline-block text-center">
+            <a href="https://antonsten.lemonsqueezy.com/buy/3fd0b9b0-239d-479d-a0bc-db13b45f143d?media=0&logo=0" class="w-full bg-green text-white font-semibold py-3 px-6 rounded-lg hover:bg-green/90 transition-colors inline-block text-center" onclick="trackBookPurchase('Book Only', 29)">
               Get book only
             </a>
         </div>
@@ -212,7 +212,7 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
             <p class="text-sm">✓ Exclusive AMA session with Anton</p>
             <p class="text-sm">✓ Limited to 10 people per session</p>
           </div>
-            <a href="https://antonsten.lemonsqueezy.com/buy/31513a33-22fc-4148-b830-26fea8c3c6b6?media=0&logo=0" class="w-full bg-green text-white font-semibold py-3 px-6 rounded-lg hover:bg-green/90 transition-colors inline-block text-center">
+            <a href="https://antonsten.lemonsqueezy.com/buy/31513a33-22fc-4148-b830-26fea8c3c6b6?media=0&logo=0" class="w-full bg-green text-white font-semibold py-3 px-6 rounded-lg hover:bg-green/90 transition-colors inline-block text-center" onclick="trackBookPurchase('Book + AMA', 99)">
               Get book + AMA
             </a>
         </div>
@@ -244,6 +244,27 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
 </Layout>
 
 <script>
+  // Track book purchase events
+  function trackBookPurchase(productName: string, price: number) {
+    // Track in Fathom Analytics with value
+    if (typeof (window as any).fathom !== 'undefined') {
+      (window as any).fathom.trackEvent(`Book Purchase Intent: ${productName}`, {
+        _value: price * 100 // Fathom expects value in cents
+      });
+      
+      // Also track a general book purchase goal for conversion tracking
+      (window as any).fathom.trackEvent('Book Purchase Goal', {
+        _value: price * 100
+      });
+    }
+    
+    // Console log for debugging
+    console.log(`Book purchase tracking: ${productName} - $${price}`);
+  }
+
+  // Make function available globally
+  (window as any).trackBookPurchase = trackBookPurchase;
+
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e: Event) {

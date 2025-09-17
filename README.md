@@ -5,10 +5,11 @@ This repository contains the source for [antonsten.com](https://www.antonsten.co
 ## Digital Sales System
 
 The website includes a complete digital product sales system for e-book sales featuring:
-- **Stripe Payment Links** for secure checkout processing
+- **Lemon Squeezy** for secure checkout processing and payment handling
 - **Automated ConvertKit integration** for customer email management  
 - **Webhook processing** for real-time order fulfillment
 - **Comprehensive error handling** for high-volume launches
+- **Fathom Analytics event tracking** for purchase conversion tracking
 
 For detailed setup instructions, see [`docs/DIGITAL_SALES_SETUP.md`](docs/DIGITAL_SALES_SETUP.md).
 
