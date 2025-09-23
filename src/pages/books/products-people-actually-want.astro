@@ -185,7 +185,7 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
   <div class="max-w-[760px] mx-auto px-8 sm:px-6 mb-24">
     <h2 class="text-2xl font-bold mb-12">Ready to build products people actually want?</h2>
     
-    <p class="body-xxl font-serif mb-12">I'm not here to oversell you or make you second-guess with a dozen different options and add-ons. There are just two choices: the book ($29), or the book plus access to an AMA session ($99). The sessions are limited to 10 people each.</p>
+    <p class="body-xxl font-serif mb-12">I'm not here to oversell you or make you second-guess with a dozen different options and add-ons. There's just one choice: the book ($29).</p>
     
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
         <!-- Book Only Card -->
@@ -202,19 +202,19 @@ import BookSampleForm from '../../components/BookSampleForm.astro';
         </div>
 
         <!-- Book + AMA Card -->
-        <div class="bg-gray-50 dark:bg-gray-800/30 border border-light-green rounded-xl p-8 flex flex-col">
+        <div class="bg-gray-50 dark:bg-gray-800/30 rounded-xl p-8 flex flex-col">
           
-          <h3 class="text-xl font-bold mb-4">Book + AMA Session</h3>
-          <div class="text-3xl font-bold mb-6">$99</div>
+          <h3 class="text-xl font-bold mb-4 line-through text-gray-400">Book + AMA Session</h3>
+          <div class="text-3xl font-bold mb-6 line-through text-gray-400">$99</div>
           <div class="space-y-3 mb-8 flex-grow">
-            <p class="text-sm">✓ Book in PDF and ePub format</p>
-            <p class="text-sm">✓ Access to Slack community</p>
-            <p class="text-sm">✓ Exclusive AMA session with Anton</p>
-            <p class="text-sm">✓ Limited to 10 people per session</p>
+            <p class="text-sm line-through text-gray-400">✓ Book in PDF and ePub format</p>
+            <p class="text-sm line-through text-gray-400">✓ Access to Slack community</p>
+            <p class="text-sm line-through text-gray-400">✓ Exclusive AMA session with Anton</p>
+            <p class="text-sm line-through text-gray-400">✓ Limited to 10 people per session</p>
           </div>
-            <a href="https://antonsten.lemonsqueezy.com/buy/31513a33-22fc-4148-b830-26fea8c3c6b6?media=0&logo=0" class="w-full bg-green text-white font-semibold py-3 px-6 rounded-lg hover:bg-green/90 transition-colors inline-block text-center" onclick="trackBookPurchase('Book + AMA', 99)">
+            <button class="w-full bg-gray-200 text-gray-400 font-semibold py-3 px-6 rounded-lg cursor-not-allowed inline-block text-center line-through" disabled>
               Get book + AMA
-            </a>
+            </button>
         </div>
       </div>
   </div>
