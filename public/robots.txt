@@ -1,0 +1,10 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.antonsten.com/sitemap.xml
+
+# Crawl-delay (optional, can help with server load)
+# Uncomment if needed:
+# Crawl-delay: 1
