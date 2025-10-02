@@ -49,12 +49,12 @@ const isBookPage = currentPath.startsWith('books/products-people-actually-want')
         </div>
 
         <!-- Mobile menu button -->
-        <button 
+        <button
           class="md:hidden text-[14px] font-semibold text-black dark:text-dark-text flex items-center gap-2"
           aria-label="Toggle menu"
           id="menuButton"
         >
-          Menu
+          <span id="menuText">Menu</span>
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -107,16 +107,21 @@ const isBookPage = currentPath.startsWith('books/products-people-actually-want')
   // Mobile menu toggle
   const menuButton = document.getElementById('menuButton');
   const mobileMenu = document.getElementById('mobileMenu');
+  const menuText = document.getElementById('menuText');
   const menuIcon = menuButton?.querySelector('svg');
 
   menuButton?.addEventListener('click', () => {
     mobileMenu?.classList.toggle('hidden');
-    const button = menuButton as HTMLButtonElement;
-    button.textContent = button.textContent === 'Menu' ? 'Close' : 'Menu';
-    
+    const isOpen = !mobileMenu?.classList.contains('hidden');
+
+    // Update text
+    if (menuText) {
+      menuText.textContent = isOpen ? 'Close' : 'Menu';
+    }
+
     // Rotate the menu icon
     if (menuIcon) {
-      menuIcon.style.transform = button.textContent === 'Close' ? 'rotate(180deg)' : 'rotate(0deg)';
+      menuIcon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
       menuIcon.style.transition = 'transform 0.3s ease';
     }
   });
