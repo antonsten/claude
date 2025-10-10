@@ -150,15 +150,20 @@ const url = Astro.url.toString();
     }
 
     .prose ul {
-        @apply list-disc mb-8;
+        @apply list-disc mb-8 pl-4;
     }
 
     .prose ol {
-        @apply list-decimal mb-8;
+        @apply list-decimal mb-8 pl-4;
     }
 
     .prose li {
-        @apply mb-2 pl-0;
+        @apply mb-1 pl-1;
+    }
+
+    .prose ul li::marker,
+    .prose ol li::marker {
+        @apply text-dark-grey dark:text-dark-text-secondary;
     }
 
     .prose a {
