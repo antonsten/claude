@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OG Image Template Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .preview-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        .og-preview {
+            position: relative;
+            width: 1200px;
+            height: 630px;
+            background: #00A35C;
+            border: 1px solid #ccc;
+        }
+        .logo-test {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 150px;
+            height: 150px;
+        }
+        .title-line {
+            position: absolute;
+            left: 100px;
+            right: 100px;
+            font-family: Arial, sans-serif;
+            font-size: 72px;
+            font-weight: 600;
+            color: white;
+        }
+        .line1 { top: 270px; }
+        .line2 { top: 350px; }
+        .line3 { top: 430px; }
+        .domain {
+            position: absolute;
+            left: 100px;
+            bottom: 60px;
+            font-family: Arial, sans-serif;
+            font-size: 36px;
+            font-weight: 400;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>OG Image Template Preview</h1>
+    <p>This is what your new OG image will look like:</p>
+
+    <div class="preview-container">
+        <div class="og-preview">
+            <img src="/images/logo-icon-og.png" class="logo-test" alt="Logo">
+            <div class="title-line line1">AI will happily design the wrong</div>
+            <div class="title-line line2">thing for you</div>
+            <div class="domain">www.antonsten.com</div>
+        </div>
+    </div>
+
+    <h2>Logo Test:</h2>
+    <p>Logo file path: <code>/images/logo-icon-og.png</code></p>
+    <p>Direct image test: <img src="/images/logo-icon-og.png" style="width: 150px; height: 150px; border: 1px solid #ccc;"></p>
+
+    <h2>Layout Details:</h2>
+    <ul>
+        <li>Background: Green (#00A35C)</li>
+        <li>Logo: 150x150px at position (100, 100)</li>
+        <li>Title: 72px, bold, white</li>
+        <li>Left padding: 100px</li>
+        <li><strong>Right padding: 100px (NEW!)</strong></li>
+        <li>Title starting at Y=320 with 80px line height</li>
+        <li>Domain: 36px, regular, white at bottom (60px from bottom)</li>
+        <li>Max 3 lines for title, wrapping with right margin</li>
+    </ul>
+</body>
+</html>

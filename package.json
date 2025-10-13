@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "build:full": "npm run generate-og-images && astro build",
+    "build:full": "npm run generate-og-images && npm run generate-pages-og-images && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "add-slugs": "tsx scripts/add-slugs.ts",
-    "generate-og-images": "tsx scripts/generate-og-images.ts"
+    "generate-og-images": "tsx scripts/generate-og-images.ts",
+    "generate-pages-og-images": "tsx scripts/generate-pages-og-images.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.1",
