@@ -29,6 +29,10 @@ export const pageConfigs = [
     title: 'Get in Touch',
   },
   {
+    slug: 'now',
+    title: 'What I\'m Doing Now',
+  },
+  {
     slug: 'colophon',
     title: 'Colophon',
   },
