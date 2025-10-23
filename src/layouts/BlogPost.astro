@@ -81,25 +81,6 @@ const url = Astro.url.toString();
             <slot />
         </div>
 
-        <!-- Social Sharing -->
-        <div class="bg-light-grey/90 dark:bg-dark-surface/90 backdrop-blur-sm rounded-[4px] px-[20px] py-[20px] mb-16">
-            <h2 class="body-xl text-black dark:text-dark-text mb-6">Did you enjoy this article?</h2>
-            <div class="flex flex-wrap items-center gap-2">
-                <a href={`https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(title + ' ' + Astro.url.toString())}`} target="_blank" rel="noopener noreferrer" class="text-[14px] text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors flex items-center gap-2">
-                    <i class="fa-brands fa-linkedin"></i>
-                    Share on LinkedIn
-                </a>
-                <a href={`https://bsky.app/intent/compose?text=${encodeURIComponent(title + ' ' + Astro.url.toString())}`} target="_blank" rel="noopener noreferrer" class="text-[14px] text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors flex items-center gap-2">
-                    <i class="fa-brands fa-bluesky"></i>
-                    Share on Bluesky
-                </a>
-                <button id="copyUrl" class="text-[14px] text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors flex items-center gap-2">
-                    <i class="fa-regular fa-copy"></i>
-                    Copy link
-                </button>
-            </div>
-        </div>
-
         <!-- Newsletter Section -->
         <section class="mb-16">
             <NewsletterForm success={success} />
@@ -107,29 +88,6 @@ const url = Astro.url.toString();
     </article>
 </Layout>
 
-<!-- Add Font Awesome -->
-<script src="https://kit.fontawesome.com/746b7e8cf2.js" crossorigin="anonymous"></script>
-
-<script>
-    // Add copy URL functionality
-    document.getElementById('copyUrl')?.addEventListener('click', () => {
-        const url = new URL(window.location.href);
-        url.searchParams.set('utm_source', 'antonsten');
-        url.searchParams.set('utm_medium', 'website');
-        url.searchParams.set('utm_campaign', 'article_share');
-        
-        navigator.clipboard.writeText(url.toString());
-        
-        const button = document.getElementById('copyUrl');
-        if (button) {
-            const originalText = button.textContent;
-            button.textContent = 'Copied!';
-            setTimeout(() => {
-                button.textContent = originalText;
-            }, 2000);
-        }
-    });
-</script>
 
 <style is:global>
     /* Add any blog-specific global styles here */
