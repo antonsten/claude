@@ -1,6 +1,6 @@
-# Netlify Redirects for antonsten.com - CLEANED VERSION
-# Removed 228 broken redirects, kept 73 working ones
-# This should significantly reduce 404 errors
+# Netlify Redirects for antonsten.com
+# Format: from to [status]
+# More specific redirects should come first
 
 # =============================================================================
 # PRIORITY REDIRECTS - Handle most common 404s first
@@ -16,33 +16,140 @@
 /writing.xml /rss/ 301
 /rss/* /rss/ 301
 
-# Newsletter paths - redirect all to main newsletter page
+# Newsletter paths
 /newsletter/* /newsletter/ 301
 
-# Work pages  
+# Book pages - common 404s
+/book /books/products-people-actually-want/ 301
+/book/ /books/products-people-actually-want/ 301
+/books/products-people-actually-wants /books/products-people-actually-want/ 301
+/books/products-people-actually-wants/ /books/products-people-actually-want/ 301
+/books/* /books/products-people-actually-want/ 301
+
+# Course/Training pages - redirect to coaching
+/course /coaching/ 301
+/course/ /coaching/ 301
+/ux-course /coaching/ 301
+/ux-course/ /coaching/ 301
+/uxcheck /coaching/ 301
+
+# Work pages
 /falkenberg /work/ 301
 /designsystem /work/ 301
+/case/frank /case/frank/ 301
+/case/eon /case/eon/ 301
 /case/* /work/ 301
-/work-with-me /articles/working-with-anton/ 301
 
-# Books
-/book /books/products-people-actually-want/ 301
-/books/* /books/products-people-actually-want/ 301
+# Working with me variations
+/work-with-me /articles/working-with-anton/ 301
+/work-with-me/ /articles/working-with-anton/ 301
 
 # Special pages
 /testimonials / 301
 /ux-lead /uxlead/ 301
 /blog /articles/ 301
+/blog/ /articles/ 301
 /writing /articles/ 301
 
 # Year pages
 /2024 /articles/2024/ 301
 
 # =============================================================================
-# WORKING ARTICLE REDIRECTS (KEEP THESE - 73 URLs)
+# SPECIFIC ARTICLE REDIRECTS - /writing/* to /articles/*
 # =============================================================================
 
-# Root-level blog posts that actually exist
+# Top 404 article redirects - with and without trailing slash
+/writing/design-problem-solver /articles/design-problem-solver/ 301
+/writing/design-problem-solver/ /articles/design-problem-solver/ 301
+/writing/slack-ruined-work /articles/slack-ruined-work/ 301
+/writing/slack-ruined-work/ /articles/slack-ruined-work/ 301
+/writing/netflixux /articles/netflixux/ 301
+/writing/netflixux/ /articles/netflixux/ 301
+/writing/consultants /articles/consultants/ 301
+/writing/consultants/ /articles/consultants/ 301
+/writing/personal-data-requests /articles/personal-data-requests/ 301
+/writing/personal-data-requests/ /articles/personal-data-requests/ 301
+/writing/writing-ux-practical-tips /articles/writing-ux-practical-tips/ 301
+/writing/writing-ux-practical-tips/ /articles/writing-ux-practical-tips/ 301
+/writing/pricingphilosophy /articles/pricingphilosophy/ 301
+/writing/pricingphilosophy/ /articles/pricingphilosophy/ 301
+/writing/tesla /articles/tesla/ 301
+/writing/tesla/ /articles/tesla/ 301
+/writing/accenture /articles/accenture/ 301
+/writing/accenture/ /articles/accenture/ 301
+/writing/uxrules /articles/uxrules/ 301
+/writing/uxrules/ /articles/uxrules/ 301
+/writing/writing-better-design /articles/writing-better-design/ 301
+/writing/writing-better-design/ /articles/writing-better-design/ 301
+/writing/professional-path /articles/professional-path/ 301
+/writing/professional-path/ /articles/professional-path/ 301
+/writing/designingmobile /articles/designingmobile/ 301
+/writing/designingmobile/ /articles/designingmobile/ 301
+/writing/the-web /articles/the-web/ 301
+/writing/the-web/ /articles/the-web/ 301
+/writing/big-mood /articles/big-mood/ 301
+/writing/big-mood/ /articles/big-mood/ 301
+/writing/pattern-names /articles/pattern-names/ 301
+/writing/pattern-names/ /articles/pattern-names/ 301
+/writing/newdesign /articles/newdesign/ 301
+/writing/newdesign/ /articles/newdesign/ 301
+/writing/intuitive /articles/intuitive/ 301
+/writing/intuitive/ /articles/intuitive/ 301
+/writing/ux-for-efficiency /articles/ux-for-efficiency/ 301
+/writing/ux-for-efficiency/ /articles/ux-for-efficiency/ 301
+/writing/neurodiversity /articles/neurodiversity/ 301
+/writing/neurodiversity/ /articles/neurodiversity/ 301
+/writing/newtools /articles/newtools/ 301
+/writing/newtools/ /articles/newtools/ 301
+/writing/everythingeasy /articles/everythingeasy/ 301
+/writing/everythingeasy/ /articles/everythingeasy/ 301
+/writing/managing-distributed-team /articles/managing-distributed-team/ 301
+/writing/managing-distributed-team/ /articles/managing-distributed-team/ 301
+/writing/prescribed-tech /articles/prescribed-tech/ 301
+/writing/prescribed-tech/ /articles/prescribed-tech/ 301
+/writing/newsletter-friend /articles/newsletter-friend/ 301
+/writing/newsletter-friend/ /articles/newsletter-friend/ 301
+/writing/automated-personalized-content /articles/automated-personalized-content/ 301
+/writing/automated-personalized-content/ /articles/automated-personalized-content/ 301
+/writing/organized-browsing /articles/organized-browsing/ 301
+/writing/organized-browsing/ /articles/organized-browsing/ 301
+/writing/connecting-dots /articles/connecting-dots/ 301
+/writing/connecting-dots/ /articles/connecting-dots/ 301
+/writing/as-if /articles/as-if/ 301
+/writing/as-if/ /articles/as-if/ 301
+/writing/brand /articles/brand/ 301
+/writing/brand/ /articles/brand/ 301
+/writing/resolutions /articles/resolutions/ 301
+/writing/resolutions/ /articles/resolutions/ 301
+/writing/emotion-design /articles/emotion-design/ 301
+/writing/emotion-design/ /articles/emotion-design/ 301
+/writing/carpediem /articles/carpediem/ 301
+/writing/carpediem/ /articles/carpediem/ 301
+/writing/soccer /articles/soccer/ 301
+/writing/soccer/ /articles/soccer/ 301
+/writing/secret-feature /articles/secret-feature/ 301
+/writing/secret-feature/ /articles/secret-feature/ 301
+/writing/iphone-franchise /articles/iphone-franchise/ 301
+/writing/iphone-franchise/ /articles/iphone-franchise/ 301
+/writing/scaledown /articles/scaledown/ 301
+/writing/scaledown/ /articles/scaledown/ 301
+/writing/what-we-want-happy /articles/what-we-want-happy/ 301
+/writing/what-we-want-happy/ /articles/what-we-want-happy/ 301
+/writing/break /articles/break/ 301
+/writing/break/ /articles/break/ 301
+/writing/gumroadday /articles/gumroadday/ 301
+/writing/gumroadday/ /articles/gumroadday/ 301
+/writing/design-principles /articles/design-principles/ 301
+/writing/design-principles/ /articles/design-principles/ 301
+/writing/imposter /articles/imposter/ 301
+/writing/imposter/ /articles/imposter/ 301
+/writing/stay-humble /articles/stay-humble/ 301
+/writing/stay-humble/ /articles/stay-humble/ 301
+
+# =============================================================================
+# ROOT-LEVEL ARTICLE REDIRECTS (from old URL structure)
+# =============================================================================
+
 /working-with-anton /articles/working-with-anton/ 301
 /write-when-you-have-something-to-say /articles/write-when-you-have-something-to-say/ 301
 /cost-pricing-and-perceived-value /articles/cost-pricing-and-perceived-value/ 301
@@ -118,19 +225,23 @@
 /core-values /articles/core-values/ 301
 
 # =============================================================================
-# PATTERN REDIRECTS - Handle remaining URLs
+# TRAILING SLASH ENFORCEMENT FOR MAIN SECTIONS
 # =============================================================================
 
-# Handle /writing/ to /articles/ - but only if target exists
-# Note: This may need to be more specific to avoid loops
+/about /about/ 301
+/work /work/ 301
+/articles /articles/ 301
+/coaching /coaching/ 301
+/contact /contact/ 301
+/colophon /colophon/ 301
+/newsletter /newsletter/ 301
+
+# =============================================================================
+# PATTERN REDIRECTS - MUST BE LAST (most general)
+# =============================================================================
+
+# Handle any remaining /writing/* to /articles/* (catches anything not specifically listed above)
 /writing/* /articles/:splat 301
 
 # Content paths
 /content/* /articles/:splat 301
-
-# =============================================================================
-# CATCH-ALL - REMOVED TO PREVENT REDIRECT LOOPS
-# =============================================================================
-
-# Catch-all removed to prevent conflicts
-# Individual redirects above handle specific cases
