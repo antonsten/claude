@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch all testimonials sorted by order
+const testimonials = (await getCollection('testimonials'))
+	.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+---
+
+<Layout
+	title="Testimonials | Anton Sten – UX Lead & Product Designer"
+	description="Read what clients and collaborators say about working with Anton Sten on design systems, product design, and UX strategy."
+	image="/images/og/testimonials.png"
+>
+	<div class="px-8 sm:px-6 mt-20 mb-20">
+		<!-- Header -->
+		<div class="mb-12">
+			<h1 class="text-black font-medium text-[48px] sm:text-[56px] leading-[1.1] tracking-[-0.02em] mb-4">
+				Testimonials
+			</h1>
+			<p class="text-[20px] leading-[28px] text-dark-grey max-w-[600px]">
+				Over 25+ years, I've had the privilege of working with incredible teams and founders. Here's what they have to say about our collaboration.
+			</p>
+		</div>
+
+		<!-- Testimonials Grid -->
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+			{testimonials.map((testimonial) => (
+				<TestimonialCard
+					quote={testimonial.data.quote}
+					author={testimonial.data.author}
+					role={testimonial.data.role}
+					bgColor={testimonial.data.bgColor}
+					textColor={testimonial.data.textColor}
+					logo={testimonial.data.logo}
+					class="h-full"
+				/>
+			))}
+		</div>
+
+		<!-- CTA Section -->
+		<div class="mt-16 text-center">
+			<h2 class="text-[32px] font-medium mb-4">Ready to work together?</h2>
+			<p class="text-[18px] text-dark-grey mb-6">Let's discuss how I can help bring your product vision to life.</p>
+			<a
+				href="mailto:anton@antonsten.com"
+				class="inline-block px-8 py-4 bg-black text-white rounded-lg hover:bg-green transition-colors font-medium"
+			>
+				Get in touch
+			</a>
+		</div>
+	</div>
+</Layout>

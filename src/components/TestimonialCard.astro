@@ -1,0 +1,44 @@
+---
+interface Props {
+    quote: string[];
+    author: string;
+    role: string;
+    bgColor?: string;
+    textColor?: 'black' | 'white';
+    logo?: string;
+    class?: string;
+}
+
+const { quote, author, role, bgColor = '#F3F3F1', textColor = 'black', logo, class: className = '' } = Astro.props;
+
+// Map named colors to actual colors
+const getBackgroundColor = (color: string) => {
+    if (color === 'light-grey') return '#F3F3F1';
+    if (color === 'black') return '#131313';
+    return color;
+};
+
+const actualBgColor = getBackgroundColor(bgColor);
+---
+
+<div
+    class={`p-8 rounded-xl flex flex-col h-full ${className}`}
+    style={`background-color: ${actualBgColor}; color: ${textColor};`}
+>
+    <div class="relative flex-1">
+        <div class="relative">
+            {quote.map((paragraph) => (
+                <p class="text-[18px] leading-[26px] mb-4 last:mb-0 font-regular">
+                    {paragraph}
+                </p>
+            ))}
+        </div>
+    </div>
+    <footer class="mt-8 flex flex-col items-start text-left">
+        {logo && (
+            <img src={logo} alt={`${author}'s company logo`} class="w-12 h-12 object-contain mb-4" loading="lazy" />
+        )}
+        <p class="text-[16px] leading-[24px] tracking-[-0.01em] font-medium">{author}</p>
+        {role && <p class="text-[16px] leading-[20px] tracking-[-0.01em] font-regular opacity-80 -mt-0.5">{role}</p>}
+    </footer>
+</div>

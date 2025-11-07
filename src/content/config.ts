@@ -13,13 +13,17 @@ const articles = defineCollection({
     })
 });
 
-const testimonialSchema = z.object({
-    bgColor: z.string(),
-    textColor: z.string().optional(),
-    logo: z.string().optional(),
-    quote: z.array(z.string()),
-    author: z.string(),
-    role: z.string()
+const testimonials = defineCollection({
+    type: 'content',
+    schema: z.object({
+        bgColor: z.string(),
+        textColor: z.string().optional(),
+        logo: z.string().optional(),
+        quote: z.array(z.string()),
+        author: z.string(),
+        role: z.string(),
+        order: z.number().optional()
+    })
 });
 
 const featuredWritingSchema = z.object({
@@ -71,4 +75,5 @@ const sourceCodeSchema = z.object({
 
 export const collections = {
     'articles': articles,
+    'testimonials': testimonials,
 }; 
