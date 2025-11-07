@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option 3: Modern Card Stack</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #F3F3F1;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #131313;
+        }
+        .section {
+            margin-bottom: 80px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+        }
+        .homepage-section h3 {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        /* Homepage: Stacked cards with perspective */
+        .stack-container {
+            position: relative;
+            height: 400px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            perspective: 1000px;
+        }
+
+        .stacked-card {
+            position: absolute;
+            width: 100%;
+            padding: 40px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 320px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stacked-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Stack effect - cards layered behind */
+        .stacked-card:nth-child(1) {
+            z-index: 3;
+            transform: translateY(0) scale(1);
+            background: #615CF5;
+            color: white;
+        }
+
+        .stacked-card:nth-child(2) {
+            z-index: 2;
+            transform: translateY(20px) scale(0.96);
+            background: #00A35C;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .stacked-card:nth-child(3) {
+            z-index: 1;
+            transform: translateY(40px) scale(0.92);
+            background: #131313;
+            color: white;
+            opacity: 0.6;
+        }
+
+        .logo {
+            height: 28px;
+            margin-bottom: 24px;
+            background: white;
+            border-radius: 6px;
+            padding: 6px 16px;
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #131313;
+            letter-spacing: 0.5px;
+        }
+
+        .quote {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .author {
+            margin-top: auto;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .author-role {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .cta {
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #131313;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .cta-button:hover {
+            background: #00A35C;
+        }
+
+        /* Testimonials Page: Grid with hover effects */
+        .hover-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .hover-card {
+            padding: 40px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 300px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hover-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hover-card:hover::before {
+            opacity: 1;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .logo-large {
+            height: 32px;
+            margin-bottom: 24px;
+            background: white;
+            border-radius: 6px;
+            padding: 8px 20px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #131313;
+            letter-spacing: 0.5px;
+        }
+
+        /* Color variations */
+        .hover-card.color-1 { background: #615CF5; color: white; }
+        .hover-card.color-2 { background: #00A35C; color: white; }
+        .hover-card.color-3 { background: #131313; color: white; }
+        .hover-card.color-4 { background: #FF6B6B; color: white; }
+        .hover-card.color-5 { background: #4ECDC4; color: white; }
+        .hover-card.color-6 { background: #FFE66D; color: #131313; }
+        .hover-card.color-7 { background: #A8DADC; color: #131313; }
+        .hover-card.color-8 { background: #F1FAEE; color: #131313; }
+        .hover-card.color-9 { background: #E63946; color: white; }
+        .hover-card.color-10 { background: #457B9D; color: white; }
+
+        @media (max-width: 768px) {
+            .stack-container {
+                height: 380px;
+            }
+            .stacked-card {
+                padding: 30px;
+                min-height: 280px;
+            }
+            .hover-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Option 3: Modern Card Stack</h1>
+
+        <!-- Homepage Section -->
+        <div class="section homepage-section">
+            <h2>Homepage Preview</h2>
+            <h3>What clients say</h3>
+
+            <div class="stack-container">
+                <div class="stacked-card">
+                    <div>
+                        <div class="logo">LOOM</div>
+                        <p class="quote">"Anton's ability to understand complex user needs and translate them into intuitive designs is exceptional. He elevated our entire product experience."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Sean Thompson</div>
+                        <div class="author-role">Principal Designer at Loom</div>
+                    </div>
+                </div>
+
+                <div class="stacked-card">
+                    <div>
+                        <div class="logo">SPOTIFY</div>
+                        <p class="quote">"Working with Anton was transformative. His strategic thinking combined with design expertise helped us reimagine our user journey."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Sarah Chen</div>
+                        <div class="author-role">Product Lead at Spotify</div>
+                    </div>
+                </div>
+
+                <div class="stacked-card">
+                    <div>
+                        <div class="logo">HERMAN MILLER</div>
+                        <p class="quote">"Anton brings a rare combination of design vision and practical execution. His work consistently exceeds expectations."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Michael Grant</div>
+                        <div class="author-role">Creative Director at Herman Miller</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta">
+                <a href="#" class="cta-button">See all testimonials →</a>
+            </div>
+        </div>
+
+        <!-- Full Testimonials Page -->
+        <div class="section">
+            <h2>Testimonials Page Preview</h2>
+            <h3 style="font-size: 20px; margin-bottom: 30px; color: #666;">All testimonials with prominent logos and hover effects</h3>
+
+            <div class="hover-grid">
+                <div class="hover-card color-1">
+                    <div>
+                        <div class="logo-large">LOOM</div>
+                        <p class="quote">"Anton's ability to understand complex user needs and translate them into intuitive designs is exceptional. He elevated our entire product experience."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Sean Thompson</div>
+                        <div class="author-role">Principal Designer at Loom</div>
+                    </div>
+                </div>
+
+                <div class="hover-card color-2">
+                    <div>
+                        <div class="logo-large">SPOTIFY</div>
+                        <p class="quote">"Working with Anton was transformative. His strategic thinking combined with design expertise helped us reimagine our user journey."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Sarah Chen</div>
+                        <div class="author-role">Product Lead at Spotify</div>
+                    </div>
+                </div>
+
+                <div class="hover-card color-3">
+                    <div>
+                        <div class="logo-large">HERMAN MILLER</div>
+                        <p class="quote">"Anton brings a rare combination of design vision and practical execution. His work consistently exceeds expectations."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Michael Grant</div>
+                        <div class="author-role">Creative Director at Herman Miller</div>
+                    </div>
+                </div>
+
+                <div class="hover-card color-4">
+                    <div>
+                        <div class="logo-large">BTTR</div>
+                        <p class="quote">"We engaged Anton to help us define our product strategy and design system. His approach was methodical yet creative."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Emma Rodriguez</div>
+                        <div class="author-role">CEO at BTTR</div>
+                    </div>
+                </div>
+
+                <div class="hover-card color-5">
+                    <div>
+                        <div class="logo-large">SUMMER HEALTH</div>
+                        <p class="quote">"Anton helped us navigate complex healthcare UX challenges with clarity and empathy. Outstanding work."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Dr. Lisa Park</div>
+                        <div class="author-role">Co-founder at Summer Health</div>
+                    </div>
+                </div>
+
+                <div class="hover-card color-6">
+                    <div>
+                        <div class="logo-large">UENO</div>
+                        <p class="quote">"Always delivers beyond expectations. His attention to detail and user-centric approach make every project a success."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">James Kim</div>
+                        <div class="author-role">Partner at ueno</div>
+                    </div>
+                </div>
+
+                <div class="hover-card color-7">
+                    <div>
+                        <div class="logo-large">KARMA</div>
+                        <p class="quote">"Transformed our product vision into reality. Working with Anton was one of the best decisions we made."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Alex Johnson</div>
+                        <div class="author-role">Head of Product at Karma</div>
+                    </div>
+                </div>
+
+                <div class="hover-card color-8">
+                    <div>
+                        <div class="logo-large">SWEDBANK</div>
+                        <p class="quote">"His deep understanding of user behavior in financial services is unmatched. The mobile banking redesign exceeded all our goals."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Sofia Andersson</div>
+                        <div class="author-role">Digital Product Manager</div>
+                    </div>
+                </div>
+
+                <div class="hover-card color-9">
+                    <div>
+                        <div class="logo-large">BIG MEDIUM</div>
+                        <p class="quote">"Anton's strategic approach to design thinking helped us solve problems we didn't even know we had."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Rachel Moore</div>
+                        <div class="author-role">Co-founder</div>
+                    </div>
+                </div>
+
+                <div class="hover-card color-10">
+                    <div>
+                        <div class="logo-large">TRACTORBEAM</div>
+                        <p class="quote">"Professional, insightful, and incredibly talented. Anton elevated our entire design process."</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-name">Tom Peters</div>
+                        <div class="author-role">Creative Director</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
