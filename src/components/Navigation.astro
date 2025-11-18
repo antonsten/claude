@@ -1,162 +1,289 @@
 ---
-// Define the current path to handle active states
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // Remove the leading slash
-const isBookPage = currentPath.startsWith('books/products-people-actually-want');
+interface Props {
+	currentPath?: string;
+}
+
+const { currentPath } = Astro.props as Props;
+
+const resolvedPath = (() => {
+	const pathname = currentPath ?? new URL(Astro.request.url).pathname;
+	return pathname.endsWith('/') ? pathname : `${pathname}/`;
+})();
+
+const navLinks = [
+	{ href: '/about/', label: 'About' },
+	{ href: '/articles/', label: 'Articles' },
+	{ href: '/work/', label: 'Work' },
+	{ href: '/testimonials/', label: 'Testimonials' },
+	{ href: '/newsletter/', label: 'Newsletter' },
+	{ href: '/contact/', label: 'Contact' }
+];
+
+const isActive = (href: string) => resolvedPath.startsWith(href);
 ---
 
-<div class="fixed top-0 left-0 right-0 z-50 px-[20px] pt-[20px] transform transition-transform duration-300 ease-in-out" id="navigation">
-  <nav class="bg-light-grey/90 dark:bg-dark-surface/90 backdrop-blur-sm rounded-[4px]">
-    <div class="px-[20px] py-[8px]">
-      <div class="flex items-center justify-between">
-        <!-- Logo/Home link -->
-        <a href="/" class="text-black dark:text-dark-text">
-          <span class="text-[14px] font-semibold">Anton Sten</span>
-        </a>
+<header id="site-navigation" class="navigation-shell">
+	<div class="navigation-container">
+		<a href="/" class="brand-link">Anton Sten</a>
 
-        <!-- Main navigation -->
-        <div class="hidden md:flex items-center gap-2">
-          <a 
-            href="/books/products-people-actually-want/" 
-            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${isBookPage ? 'bg-white dark:bg-dark-border' : ''}`}
-          >
-            New: Book
-          </a>
-          <a 
-            href="/about/" 
-            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'about' ? 'bg-white dark:bg-dark-border' : ''}`}
-          >
-            About
-          </a>
-          <a 
-            href="/articles/" 
-            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'articles' ? 'bg-white dark:bg-dark-border' : ''}`}
-          >
-            Articles
-          </a>
-          <a 
-            href="/work/" 
-            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'work' ? 'bg-white dark:bg-dark-border' : ''}`}
-          >
-            Work
-          </a>
-          <a 
-            href="/newsletter/" 
-            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'newsletter' ? 'bg-white dark:bg-dark-border' : ''}`}
-          >
-            Newsletter
-          </a>
-        </div>
+		<nav class="primary-nav" aria-label="Primary">
+			<div class="nav-links">
+				{navLinks.map((link) => (
+					<a
+						href={link.href}
+						class={`nav-link ${isActive(link.href) ? 'is-active' : ''}`}
+						aria-current={isActive(link.href) ? 'page' : undefined}
+					>
+						{link.label}
+					</a>
+				))}
+			</div>
+			<div class="nav-secondary">
+				<a
+					href="/books/products-people-actually-want/"
+					class={`nav-link nav-link-book ${isActive('/books/products-people-actually-want/') ? 'is-active' : ''}`}
+				>
+					Buy my book
+				</a>
+			</div>
+		</nav>
 
-        <!-- Mobile menu button -->
-        <button
-          class="md:hidden text-[14px] font-semibold text-black dark:text-dark-text flex items-center gap-2"
-          aria-label="Toggle menu"
-          id="menuButton"
-        >
-          <span id="menuText">Menu</span>
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
+		<div class="cta-group">
+			<button class="menu-toggle" id="site-navigation-toggle" aria-expanded="false" aria-controls="site-navigation-mobile">
+				<span class="menu-label">Menu</span>
+				<svg class="menu-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+				</svg>
+			</button>
+		</div>
+	</div>
 
-      <!-- Mobile menu -->
-      <div 
-        class="hidden md:hidden pt-4 pb-6 border-t border-gray-200 dark:border-dark-border mt-4"
-        id="mobileMenu"
-      >
-        <div class="flex flex-col space-y-4">
-          <a 
-            href="/books/products-people-actually-want/" 
-            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${isBookPage ? 'bg-white dark:bg-dark-border' : ''}`}
-          >
-            New: Book
-          </a>
-          <a 
-            href="/about/" 
-            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'about' ? 'bg-white dark:bg-dark-border' : ''}`}
-          >
-            About
-          </a>
-          <a 
-            href="/articles/" 
-            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'articles' ? 'bg-white dark:bg-dark-border' : ''}`}
-          >
-            Articles
-          </a>
-          <a 
-            href="/work/" 
-            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'work' ? 'bg-white dark:bg-dark-border' : ''}`}
-          >
-            Work
-          </a>
-          <a 
-            href="/newsletter/" 
-            class={`text-[14px] font-semibold text-black dark:text-dark-text hover:bg-white dark:hover:bg-dark-border px-3 py-1 rounded-[4px] transition-colors ${currentPath === 'newsletter' ? 'bg-white dark:bg-dark-border' : ''}`}
-          >
-            Newsletter
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
-</div>
+	<div id="site-navigation-mobile" class="mobile-nav" hidden>
+		<nav aria-label="Mobile primary">
+			<ul>
+				{navLinks.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							class={`mobile-link ${isActive(link.href) ? 'is-active' : ''}`}
+							aria-current={isActive(link.href) ? 'page' : undefined}
+						>
+							{link.label}
+						</a>
+					</li>
+				))}
+				<li>
+					<a href="/books/products-people-actually-want/" class={`mobile-link ${isActive('/books/products-people-actually-want/') ? 'is-active' : ''}`}>
+						Buy my book
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>
 
 <script>
-  // Mobile menu toggle
-  const menuButton = document.getElementById('menuButton');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const menuText = document.getElementById('menuText');
-  const menuIcon = menuButton?.querySelector('svg');
+	const navigationRoot = document.getElementById('site-navigation');
+	const toggleButton = document.getElementById('site-navigation-toggle');
+	const mobileMenu = document.getElementById('site-navigation-mobile');
+	const menuLabel = toggleButton?.querySelector('.menu-label');
 
-  menuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-    const isOpen = !mobileMenu?.classList.contains('hidden');
+	if (toggleButton && mobileMenu) {
+		toggleButton.addEventListener('click', () => {
+			const isHidden = mobileMenu.hasAttribute('hidden');
 
-    // Update text
-    if (menuText) {
-      menuText.textContent = isOpen ? 'Close' : 'Menu';
-    }
+			if (isHidden) {
+				mobileMenu.removeAttribute('hidden');
+			} else {
+				mobileMenu.setAttribute('hidden', 'true');
+			}
 
-    // Rotate the menu icon
-    if (menuIcon) {
-      menuIcon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-      menuIcon.style.transition = 'transform 0.3s ease';
-    }
-  });
+			toggleButton.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
 
-  // Navigation scroll behavior
-  let lastScrollY = window.scrollY;
-  let isScrollingUp = false;
-  const navigation = document.getElementById('navigation');
+			if (menuLabel) {
+				menuLabel.textContent = isHidden ? 'Close' : 'Menu';
+			}
+		});
+	}
 
-  window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
-    
-    // Determine scroll direction
-    if (currentScrollY < lastScrollY) {
-      // Scrolling up
-      isScrollingUp = true;
-    } else if (currentScrollY > lastScrollY) {
-      // Scrolling down
-      isScrollingUp = false;
-    }
+	let lastScrollY = window.scrollY;
 
-    // Show/hide navigation based on scroll direction and position
-    if (navigation) {
-      if (currentScrollY <= 20) {
-        // Always show when at top of page
-        navigation.style.transform = 'translateY(0)';
-      } else if (isScrollingUp) {
-        // Show when scrolling up
-        navigation.style.transform = 'translateY(0)';
-      } else {
-        // Hide when scrolling down
-        navigation.style.transform = 'translateY(-100%)';
-      }
-    }
+	const handleScroll = () => {
+		if (!navigationRoot) return;
 
-    lastScrollY = currentScrollY;
-  });
-</script> 
+		const currentY = window.scrollY;
+		const isScrollingUp = currentY < lastScrollY;
+		const shouldShow = currentY < 24 || isScrollingUp;
+
+		navigationRoot.classList.toggle('is-hidden', !shouldShow);
+		lastScrollY = currentY;
+	};
+
+	window.addEventListener('scroll', handleScroll, { passive: true });
+</script>
+
+<style>
+	.navigation-shell {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 50;
+		padding: 0 20px;
+		transition: transform 200ms ease, opacity 200ms ease;
+	}
+
+	.navigation-shell.is-hidden {
+		transform: translateY(-140%);
+		opacity: 0;
+	}
+
+	.navigation-container {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: 8px;
+		margin: 0 auto;
+		max-width: 960px;
+		padding: 12px 48px;
+		border-radius: 999px;
+		background-color: rgba(var(--color-surface-elevated), 0.92);
+		backdrop-filter: blur(16px);
+		box-shadow: none;
+	}
+
+	.brand-link {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		color: rgb(var(--color-text));
+		white-space: nowrap;
+		padding: 8px 16px;
+		margin-left: -16px;
+	}
+
+	.primary-nav {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+	}
+
+	.nav-links {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+	}
+
+	.nav-secondary {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin-right: -16px;
+	}
+
+	.nav-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 8px 16px;
+		border-radius: 999px;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: rgb(var(--color-text));
+		transition: color 150ms ease, background-color 150ms ease;
+	}
+
+	.nav-link:hover {
+		color: rgb(var(--color-text));
+		opacity: 0.8;
+	}
+
+	.nav-link.is-active {
+		background-color: rgba(var(--color-text), 0.06);
+		color: rgb(var(--color-text));
+	}
+
+	.cta-group {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.menu-toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 12px;
+		border-radius: 999px;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: rgb(var(--color-text));
+		background-color: transparent;
+		border: 1px solid rgba(var(--color-border-strong), 0.2);
+	}
+
+	.menu-icon {
+		width: 16px;
+		height: 16px;
+	}
+
+	.mobile-nav {
+		margin-top: 12px;
+		margin-inline: auto;
+		max-width: 1200px;
+		padding: 16px 20px;
+		border-radius: 16px;
+		background-color: rgba(var(--color-surface-elevated), 0.96);
+	}
+
+	.mobile-nav ul {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.mobile-link {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 12px 16px;
+		border-radius: 12px;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: rgb(var(--color-text));
+		transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+	}
+
+	.mobile-link:hover {
+		color: rgb(var(--color-text));
+		background-color: rgba(var(--color-text), 0.04);
+	}
+
+	.mobile-link.is-active {
+		color: rgb(var(--color-text));
+	}
+
+	@media (min-width: 768px) {
+		.navigation-shell {
+			padding: 0 40px;
+		}
+
+		.primary-nav {
+			display: flex;
+		}
+
+		.menu-toggle {
+			display: none;
+		}
+
+		.mobile-nav {
+			display: none;
+		}
+	}
+</style>

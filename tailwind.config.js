@@ -1,127 +1,67 @@
 /** @type {import('tailwindcss').Config} */
+const withOpacityValue = (variable) => {
+	return ({ opacityValue }) => {
+		if (opacityValue !== undefined) {
+			return `rgba(var(${variable}), ${opacityValue})`;
+		}
+
+		return `rgb(var(${variable}))`;
+	};
+};
+
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        black: '#131313',
-        'dark-grey': '#74726B',
-        'light-grey': '#F3F3F1',
-        grey: '#E5E5E5',
-        white: '#FFFFFF',
-        green: '#00A35C',
-        'light-green': '#D1E8BD',
-        // Dark mode colors
-        'dark-bg': '#0A0A0A',
-        'dark-surface': '#1A1A1A',
-        'dark-border': '#2A2A2A',
-        'dark-text': '#E5E5E5',
-        'dark-text-secondary': '#A0A0A0',
-        'dark-accent': '#00C853',
-        'dark-accent-light': '#4CAF50',
-      },
-      fontFamily: {
-        sans: ['"Suisse Intl"', 'system-ui', 'sans-serif'],
-        serif: ['"Blanco"', 'Georgia', 'serif'],
-      },
-      fontWeight: {
-        regular: '400',
-        medium: '500',
-        semibold: '600',
-      },
-      fontSize: {
-        // Display sizes
-        'display-lg': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'display': ['3.75rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        
-        // Heading sizes
-        'h1': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
-        'h2': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
-        'h3': ['1.875rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
-        'h4': ['1.5rem', { lineHeight: '1.25' }],
-        'h5': ['1.25rem', { lineHeight: '1.25' }],
-        
-        // Body sizes
-        'xxl': ['1.625rem', { lineHeight: '1.6', letterSpacing: '-0.01em' }],
-        'xl': ['1.25rem', { lineHeight: '1.6', letterSpacing: '-0.01em' }],
-        'lg': ['1.125rem', { lineHeight: '1.75' }],
-        'base': ['1rem', { lineHeight: '1.75' }],
-        'sm': ['0.875rem', { lineHeight: '1.75' }],
-        'xs': ['0.75rem', { lineHeight: '1.75' }],
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            color: '#131313',
-            a: {
-              color: '#131313',
-              textDecoration: 'underline',
-              '&:hover': {
-                color: '#00A35C',
-              },
-            },
-            'h1, h2, h3, h4': {
-              color: '#131313',
-              fontWeight: '500',
-            },
-            blockquote: {
-              borderLeft: 'none',
-              fontStyle: 'normal',
-              padding: '0',
-              margin: '0',
-              color: '#00A35C',
-              fontSize: '1.875rem',
-              lineHeight: '1.2',
-              letterSpacing: '-0.01em',
-              fontWeight: '500',
-            },
-          },
-        },
-        dark: {
-          css: {
-            color: '#E5E5E5',
-            a: {
-              color: '#E5E5E5',
-              textDecoration: 'underline',
-              '&:hover': {
-                color: '#00C853',
-              },
-            },
-            'h1, h2, h3, h4': {
-              color: '#E5E5E5',
-              fontWeight: '500',
-            },
-            blockquote: {
-              borderLeft: 'none',
-              fontStyle: 'normal',
-              padding: '0',
-              margin: '0',
-              color: '#00C853',
-              fontSize: '1.875rem',
-              lineHeight: '1.2',
-              letterSpacing: '-0.01em',
-              fontWeight: '500',
-            },
-            strong: {
-              color: '#E5E5E5',
-            },
-            code: {
-              color: '#E5E5E5',
-              backgroundColor: '#1A1A1A',
-            },
-            'code::before': {
-              content: '""',
-            },
-            'code::after': {
-              content: '""',
-            },
-          },
-        },
-      },
-    },
-  },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-} 
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	darkMode: 'class',
+	theme: {
+		extend: {
+			colors: {
+				background: withOpacityValue('--color-background'),
+				surface: withOpacityValue('--color-surface'),
+				'surface-elevated': withOpacityValue('--color-surface-elevated'),
+				border: withOpacityValue('--color-border'),
+				'border-strong': withOpacityValue('--color-border-strong'),
+				text: withOpacityValue('--color-text'),
+				'text-muted': withOpacityValue('--color-text-muted'),
+				'text-soft': withOpacityValue('--color-text-soft'),
+				accent: withOpacityValue('--color-accent'),
+				'accent-soft': withOpacityValue('--color-accent-soft'),
+				white: '#FFFFFF',
+				black: '#131313',
+				green: '#00A35C',
+				'light-green': '#D1E8BD',
+				'light-grey': '#F4F3EF',
+				grey: '#F3F3F1',
+				'dark-grey': '#5B5B5B'
+			},
+			fontFamily: {
+				sans: ['"Suisse Intl"', 'system-ui', 'sans-serif']
+			},
+			fontWeight: {
+				regular: '400',
+				medium: '500'
+			},
+			fontSize: {
+				h1: ['3.75rem', { lineHeight: '4rem', letterSpacing: '-0.03em' }],
+				h2: ['1.625rem', { lineHeight: '2rem', letterSpacing: '-0.01em' }],
+				h3: ['1.375rem', { lineHeight: '2rem', letterSpacing: '-0.01em' }],
+				h4: ['1.25rem', { lineHeight: '1.625rem', letterSpacing: '-0.01em' }],
+				body: ['1rem', { lineHeight: '1.5rem', letterSpacing: '-0.01em' }],
+				'body-lg': ['1.125rem', { lineHeight: '1.625rem', letterSpacing: '-0.01em' }],
+				'body-xl': ['1.125rem', { lineHeight: '1.625rem', letterSpacing: '-0.01em' }],
+				'body-sm': ['0.75rem', { lineHeight: '1.125rem', letterSpacing: '-0.01em' }],
+				caption: ['0.75rem', { lineHeight: '1.1', letterSpacing: '0.08em' }]
+			},
+			spacing: {
+				18: '4.5rem',
+				22: '5.5rem',
+				26: '6.5rem',
+				30: '7.5rem'
+			},
+			borderRadius: {
+				pill: '999px'
+			}
+		}
+	},
+	plugins: [require('@tailwindcss/typography')]
+};
+
