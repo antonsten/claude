@@ -153,10 +153,8 @@ export const testimonials: Testimonial[] = [
   {
     title: 'I sigh in relief when Anton is assigned to a project',
     body: [
-      "I sigh in relief when Anton is assigned to a project I'm managing. He has many qualities. The most impressive ones being technical knowledge, collaborative mindset, attention to detail, and the ability to turn cryptic requests into beautiful final products.",
-      "Anton is very easy to work with--he's a team player who knows how to give and receive feedback and help the entire team head in the right direction. He presents his work with authority and security, always adding comprehensive reasoning for his design choices.",
-      "As a plus, he has that Finnish politeness that adds a special touch to any team."
-    ],
+      "I breathe easier when Anton joins a project. He brings sharp technical understanding, a collaborative mindset, and an ability to turn vague ideas into polished work. He’s a great teammate, gives thoughtful feedback, and presents his work with clear, confident reasoning.",
+      "And yes—his Finnish politeness makes everything smoother."    ],
     author: 'Caroline Gregory',
     role: 'Program Director',
     avatar: '/images/author/avatar_caroline_gregory.png'
