@@ -1,56 +1,40 @@
 ---
-import '../styles/critical.css';
 import '../styles/global.css';
 import HtmlHead from '../components/HtmlHead.astro';
-import ScrollAnimation from '../components/ScrollAnimation.astro';
+import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import CanonicalUrl from '../components/CanonicalUrl.astro';
 import PersonSchema from '../components/PersonSchema.astro';
 import ThemeScript from '../components/ThemeScript.astro';
 
 export interface Props {
-        title: string;
-        description?: string;
-        path?: string;
-        image?: string;
+	title: string;
+	description?: string;
+	path?: string;
+	image?: string;
 }
 
 const {
-        title,
-        description = "Anton Sten is a UX lead and product designer helping teams build better digital products through thoughtful design, collaboration, and strategy.",
-        path = '',
-        image = '/images/og-image.png'
+	title,
+	description = 'Anton Sten is a UX lead and product designer helping teams build better digital products through thoughtful design, collaboration, and strategy.',
+	path = '',
+	image = '/images/og-image.png'
 } = Astro.props;
-
-// Get the success state from the URL
-const success = Astro.url.searchParams.get('success') === 'true';
-
-// Inline critical CSS
-const criticalCSS = await Astro.slots.render('critical-css');
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-  <ThemeScript />
-  <HtmlHead title={title} description={description} image={image} />
-  <CanonicalUrl path={Astro.url.pathname} />
-  <style is:inline>{criticalCSS}</style>
+		<ThemeScript />
+		<HtmlHead title={title} description={description} image={image} />
+		<CanonicalUrl path={Astro.url.pathname} />
 	</head>
-	<body class="bg-white dark:bg-dark-bg text-black dark:text-dark-text antialiased transition-colors duration-200">
-		<ScrollAnimation path={path}>
-			<main class="min-h-screen">
-				<slot />
-			</main>
-			<Footer />
-		</ScrollAnimation>
+	<body class="bg-background text-primary antialiased transition-colors duration-200">
+		<Navigation currentPath={path || Astro.url.pathname} />
+		<main class="relative min-h-screen pt-32 md:pt-36">
+			<slot />
+		</main>
+		<Footer />
 		<PersonSchema />
 	</body>
 </html>
-
-<style is:global>
-	/* Add any global styles here */
-	html {
-		font-family: 'Suisse Intl', system-ui, sans-serif;
-	}
-</style>
