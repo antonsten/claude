@@ -72,7 +72,7 @@ export const testimonials: Testimonial[] = [
   {
     title: 'Delivers bloody good work',
     body: [
-      "Whenever someone asks me if I know any good UX designers I always answer with Anton. He's a great designer with superior business understanding who always puts the user in the front seat and delivers bloody good work.",
+      "Whenever someone asks me if I know any good product designers I always answer with Anton. He's a great designer with superior business understanding who always puts the user in the front seat and delivers bloody good work.",
       "If you get a chance to work with Anton, don't miss it."
     ],
     author: 'Christian Wilsson',
@@ -104,7 +104,7 @@ export const testimonials: Testimonial[] = [
     title: 'Two steps ahead',
     body: [
       "A skilled and strategic designer, he can delve into the details without losing sight of the bigger picture. In fact, he's probably thinking two steps ahead.",
-      "Even though he could boast about his impressive UX credentials, he never does. In fact, his humility and good humor make him an even better person to work with."
+      "Even though he could boast about his impressive design credentials, he never does. In fact, his humility and good humor make him an even better person to work with."
     ],
     author: 'Lily Mathews',
     role: 'Senior Strategist',
@@ -132,7 +132,7 @@ export const testimonials: Testimonial[] = [
     avatar: '/images/author/avatar_greg_henriques.png'
   },
   {
-    title: 'Exactly the UX partner you need',
+    title: 'Exactly the design partner you need',
     body: [
       'Smart, edgy, and always to the point, Anton is most likely the user experience addition your team needs to help ensure practicality, elegance, and efficiency in how your customers engage with your products and services.'
     ],
