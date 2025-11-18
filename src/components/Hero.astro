@@ -1,0 +1,83 @@
+---
+interface Props {
+  title: string;
+  titleTag?: 'h1' | 'h2';
+  align?: 'left' | 'center';
+  maxWidth?: 'narrow' | 'default' | 'wide';
+  className?: string;
+  titleClassName?: string;
+}
+
+const {
+  title,
+  titleTag = 'h1',
+  align = 'center',
+  maxWidth = 'default',
+  className = '',
+  titleClassName = ''
+} = Astro.props as Props;
+
+const TitleTag = titleTag;
+
+const maxWidthClasses = {
+  narrow: 'max-w-[600px]',
+  default: 'max-w-[720px]',
+  wide: 'max-w-[960px]'
+};
+
+const alignClasses = {
+  left: 'text-left',
+  center: 'text-center'
+};
+---
+
+<section class={`hero-section ${className}`}>
+  <div class={`hero-content ${maxWidthClasses[maxWidth]} ${alignClasses[align]}`}>
+    <TitleTag class={`h1 ${titleClassName}`}>{title}</TitleTag>
+    {Astro.slots.has('default') && (
+      <div class={`hero-copy ${align === 'center' ? 'max-w-[600px] mx-auto' : ''}`}>
+        <slot />
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    padding-top: 140px;
+    padding-bottom: 96px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding-top: 120px;
+      padding-bottom: 72px;
+    }
+  }
+
+  .hero-content {
+    display: grid;
+    gap: 48px;
+    margin: 0 auto;
+  }
+
+  .hero-content h1 {
+    max-width: 18ch;
+    margin: 0 auto;
+  }
+
+  .text-center .hero-content h1 {
+    margin: 0 auto;
+  }
+
+  .text-left .hero-content h1 {
+    margin: 0;
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 20px;
+    color: rgb(var(--color-text));
+    text-align: left;
+  }
+</style>

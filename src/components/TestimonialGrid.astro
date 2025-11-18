@@ -1,0 +1,64 @@
+---
+import TestimonialCard from './ui/TestimonialCard.astro';
+
+interface Testimonial {
+  title: string;
+  body: string[];
+  author: string;
+  role: string;
+  avatar?: string;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+  columns?: 2 | 3;
+  maxWidth?: 'default' | 'wide';
+  className?: string;
+}
+
+const {
+  testimonials,
+  columns = 3,
+  maxWidth = 'default',
+  className = ''
+} = Astro.props as Props;
+
+const maxWidthClasses = {
+  default: 'max-w-[960px]',
+  wide: 'max-w-[1080px]'
+};
+---
+
+<section class={`testimonials-section ${className}`}>
+  <div class={`testimonials-grid ${maxWidthClasses[maxWidth]}`}>
+    {testimonials.map((testimonial) => (
+      <TestimonialCard
+        title={testimonial.title}
+        body={testimonial.body}
+        author={testimonial.author}
+        role={testimonial.role}
+        avatar={testimonial.avatar}
+      />
+    ))}
+  </div>
+</section>
+
+<style define:vars={{ columns }}>
+  .testimonials-grid {
+    display: grid;
+    gap: 24px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1120px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+    }
+  }
+</style>

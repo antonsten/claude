@@ -1,0 +1,116 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  price: string;
+  features: string[];
+  ctaText: string;
+  ctaHref: string;
+  ctaId?: string;
+  ctaOnClick?: string;
+  ctaTarget?: string;
+  ctaRel?: string;
+  variant?: 'default' | 'white';
+  className?: string;
+}
+
+const {
+  title,
+  price,
+  features,
+  ctaText,
+  ctaHref,
+  ctaId,
+  ctaOnClick,
+  ctaTarget,
+  ctaRel,
+  variant = 'default',
+  className = ''
+} = Astro.props as Props;
+
+const cardVariantClasses = {
+  default: 'pricing-card--default',
+  white: 'pricing-card--white'
+};
+---
+
+<article class={`pricing-card ${cardVariantClasses[variant]} ${className}`}>
+  <div class="pricing-header">
+    <h3 class="h4">{title}</h3>
+    <p class="pricing-price">{price}</p>
+  </div>
+  <ul class="pricing-features body-lg">
+    {features.map((feature) => (
+      <li>{feature}</li>
+    ))}
+  </ul>
+  <Button
+    href={ctaHref}
+    id={ctaId}
+    onclick={ctaOnClick}
+    target={ctaTarget}
+    rel={ctaRel}
+    variant="primary"
+    className="pricing-cta"
+  >
+    {ctaText}
+  </Button>
+</article>
+
+<style>
+  .pricing-card {
+    border-radius: 4px;
+    padding: 32px;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .pricing-card--default {
+    background: rgb(var(--color-surface));
+    border: 1px solid rgb(var(--color-border));
+  }
+
+  .pricing-card--white {
+    background: #ffffff;
+    border: none;
+    color: #131313;
+  }
+
+  .pricing-header {
+    display: grid;
+    gap: 4px;
+  }
+
+  .pricing-price {
+    font-size: 2.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+    color: inherit;
+  }
+
+  .pricing-cta {
+    width: 100%;
+  }
+
+  .pricing-card--white .pricing-cta {
+    background-color: #00A35C;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 12px 24px;
+  }
+
+  .pricing-card--white .pricing-cta:hover {
+    opacity: 0.9;
+  }
+</style>

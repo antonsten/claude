@@ -1,0 +1,80 @@
+---
+interface Props {
+  title: string;
+  body: string[];
+  author: string;
+  role: string;
+  avatar?: string;
+  className?: string;
+}
+
+const {
+  title,
+  body,
+  author,
+  role,
+  avatar,
+  className = ''
+} = Astro.props as Props;
+---
+
+<article class={`testimonial-card ${className}`}>
+  <div class="testimonial-body">
+    <h3 class="h4">{title}</h3>
+    <div class="testimonial-copy">
+      {body.map((paragraph) => (
+        <p class="body-lg" set:html={paragraph} />
+      ))}
+    </div>
+  </div>
+  <footer class="testimonial-meta">
+    {avatar && (
+      <img src={avatar} alt={author} width="40" height="40" loading="lazy" />
+    )}
+    <div>
+      <p class="text-[14px] leading-[1.4] text-primary">{author}</p>
+      <p class="text-[14px] leading-[1.4] text-muted">{role}</p>
+    </div>
+  </footer>
+</article>
+
+<style>
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 28px;
+    border-radius: 4px;
+    background: rgb(var(--color-surface));
+  }
+
+  .testimonial-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1 1 auto;
+  }
+
+  .testimonial-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1 1 auto;
+    color: rgb(var(--color-text));
+  }
+
+  .testimonial-meta {
+    display: grid;
+    grid-template-columns: 40px auto;
+    gap: 12px;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .testimonial-meta img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+</style>

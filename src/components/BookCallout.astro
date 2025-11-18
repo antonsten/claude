@@ -1,0 +1,66 @@
+---
+import CalloutSection from './CalloutSection.astro';
+import Button from './ui/Button.astro';
+
+export interface Props {
+	heading: string;
+	copy: string;
+	ctaHref?: string;
+}
+
+const {
+	heading,
+	copy,
+	ctaHref = '/books/products-people-actually-want/'
+} = Astro.props;
+---
+
+<CalloutSection
+	title={heading}
+	background={`rgb(var(--color-accent-soft))`}
+	className="book-callout"
+>
+	<div class="book-content">
+		<p class="body-lg text-text book-copy">{copy}</p>
+		<div class="book-actions">
+			<Button href={ctaHref} variant="ghost" className="book-callout__button">
+				Find out more
+			</Button>
+		</div>
+	</div>
+</CalloutSection>
+
+<style>
+	.book-content {
+		display: grid;
+		gap: 20px;
+	}
+
+	.book-copy {
+		margin: 0;
+	}
+
+	.book-actions {
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.book-actions :global(.book-callout__button) {
+		background-color: rgb(var(--color-accent));
+		color: #ffffff;
+		padding-left: 24px;
+		padding-right: 24px;
+	}
+
+	.book-actions :global(.book-callout__button:hover) {
+		opacity: 0.9;
+	}
+
+	@media (max-width: 900px) {
+		.book-actions {
+			width: 100%;
+		}
+	}
+</style>
+
