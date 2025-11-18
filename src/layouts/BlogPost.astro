@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import NewsletterForm from '../components/NewsletterForm.astro';
+import BookCallout from '../components/BookCallout.astro';
 import MDXImage from '../components/MDXImage.astro';
 import YouTube from '../components/YouTube.astro';
 import ArticleSchema from '../components/ArticleSchema.astro';
@@ -67,25 +68,29 @@ const url = Astro.url.toString();
     
     <article class="max-w-[700px] mx-auto px-8 sm:px-6">
         <!-- Article Header -->
-        <header class="mb-16 mt-[20vh]">
-            <h1 class="text-[32px] md:text-[50px] leading-[40px] md:leading-[56px] tracking-[-0.02em] font-medium text-black dark:text-dark-text mb-4">{title}</h1>
-            <div class="flex items-center gap-2 text-dark-grey dark:text-dark-text-secondary text-[16px] leading-[24px] tracking-[-0.01em]">
-                <time datetime={date}>{formattedDate}</time>
-                <span>•</span>
-                <span>{minutesToRead} minute reading time</span>
-            </div>
+        <header class="blog-header">
+            <h1 class="h1 text-primary">{title}</h1>
         </header>
 
         <!-- Article Content -->
-        <div class="prose prose-lg dark:prose-dark max-w-none mb-16">
+        <div class="prose prose-lg max-w-none mb-16">
             <slot />
         </div>
 
-        <!-- Newsletter Section -->
-        <section class="mb-16">
-            <NewsletterForm success={success} />
-        </section>
     </article>
+
+    <!-- Newsletter Section -->
+    <section class="callout-section">
+        <NewsletterForm success={success} />
+    </section>
+
+    <section class="callout-section">
+        <BookCallout
+            heading="Products People Actually Want"
+            copy="My book is finally out — a practical guide to building products people actually want."
+            ctaHref="/books/products-people-actually-want/"
+        />
+    </section>
 </Layout>
 
 
@@ -121,49 +126,46 @@ const url = Astro.url.toString();
 
     .prose ul li::marker,
     .prose ol li::marker {
-        @apply text-dark-grey dark:text-dark-text-secondary;
+        color: rgb(var(--color-text-muted));
     }
 
     .prose a {
-        @apply text-black dark:text-dark-text underline hover:text-green dark:hover:text-dark-accent transition-colors font-regular;
+        @apply underline transition-colors font-regular;
+        color: rgb(var(--color-text));
+    }
+
+    .prose a:hover {
+        color: rgb(var(--color-accent));
     }
 
     .prose blockquote {
-        @apply relative bg-[#BDD7E8] dark:bg-dark-surface text-black dark:text-dark-text p-8 rounded-[4px] mb-12 !important;
+        @apply p-8 rounded-[4px] mb-12 !important;
+        background-color: rgb(var(--color-accent-soft));
+        color: rgb(var(--color-text));
+        border: none;
     }
 
-    .prose blockquote::before,
-    .prose blockquote::after,
-    .prose blockquote > div::before,
-    .prose blockquote > div::after,
     .prose blockquote p::before,
     .prose blockquote p::after {
         content: none !important;
         display: none !important;
     }
 
-    .prose blockquote > div {
-        @apply relative flex-1;
-    }
-
-    .prose blockquote > div > div {
-        @apply relative;
-    }
-
     .prose blockquote p {
-        @apply text-[20px] leading-[32px] mb-4 last:mb-0 text-black dark:text-dark-text relative font-regular mt-0 !important;
-    }
-
-    .prose blockquote > div > div > p:first-child {
-        @apply mt-0 !important;
+        @apply text-[20px] leading-[32px] mb-4 last:mb-0 font-regular mt-0 !important;
+        color: rgb(var(--color-text));
+        font-style: normal;
     }
 
     .prose blockquote p em {
-        @apply text-[16px] leading-[32px] text-dark-grey dark:text-dark-text-secondary mt-12 block not-italic font-regular;
+        @apply text-[16px] leading-[32px] mt-12 block font-regular;
+        color: rgb(var(--color-text-muted));
+        font-style: normal;
     }
 
     .prose blockquote a {
-        @apply text-[16px] leading-[24px] tracking-[-0.01em] font-regular text-dark-grey no-underline mt-4 block hover:text-black transition-colors;
+        @apply text-[16px] leading-[24px] tracking-[-0.01em] font-regular no-underline mt-4 block hover:text-black transition-colors;
+        color: rgb(var(--color-text-muted));
     }
 
     .prose code {
@@ -187,10 +189,32 @@ const url = Astro.url.toString();
     }
 
     .prose figcaption {
-        @apply text-[16px] leading-[24px] text-dark-grey text-center mt-4;
+        @apply text-[16px] leading-[24px] text-center mt-4;
+        color: rgb(var(--color-text-muted));
     }
 
     .prose iframe {
         @apply w-full aspect-video rounded-[4px] mb-8;
     }
-</style> 
+
+    .blog-header {
+        margin: 20vh auto 4rem;
+        text-align: center;
+        max-width: 640px;
+        display: grid;
+        gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+        .blog-header {
+            margin-top: 16vh;
+            margin-bottom: 3rem;
+            padding: 0 20px;
+        }
+    }
+
+    .callout-section {
+        margin: 20px auto 0;
+        padding: 0 20px 40px;
+    }
+</style>
