@@ -1,0 +1,243 @@
+---
+// Define the current path to handle active states
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // Remove the leading slash
+const isBookPage = currentPath.startsWith('books/products-people-actually-want');
+const isTestimonialsPage = currentPath === 'testimonials';
+---
+
+<!-- Desktop Left Sidebar Navigation -->
+<aside class="hidden lg:block fixed left-0 top-0 bottom-0 w-64 z-50 pl-[20px] pt-[20px] pb-[20px] transform transition-transform duration-300 ease-in-out" id="leftNavigation">
+  <nav class="bg-surface/95 backdrop-blur-lg border border-border rounded-[12px] h-full flex flex-col shadow-lg">
+    <div class="px-6 py-8 flex-grow flex flex-col">
+      <!-- Logo/Home link -->
+      <a href="/" class="text-cloud-50 mb-12">
+        <span class="text-[15px] font-semibold tracking-[0.08em] uppercase">Anton Sten</span>
+      </a>
+
+      <!-- Main navigation -->
+      <div class="flex flex-col flex-grow">
+        <a
+          href="/about/"
+          class={`text-[15px] font-medium text-cloud-50/75 hover:text-cloud-50 py-2 rounded-[6px] transition-colors ${currentPath === 'about' ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+        >
+          About
+        </a>
+        <a
+          href="/articles/"
+          class={`text-[15px] font-medium text-cloud-50/75 hover:text-cloud-50 py-2 rounded-[6px] transition-colors ${currentPath === 'articles' || currentPath.startsWith('articles/') ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+        >
+          Articles
+        </a>
+        <a
+          href="/work/"
+          class={`text-[15px] font-medium text-cloud-50/75 hover:text-cloud-50 py-2 rounded-[6px] transition-colors ${currentPath === 'work' ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+        >
+          Work
+        </a>
+        <a
+          href="/testimonials/"
+          class={`text-[15px] font-medium text-cloud-50/75 hover:text-cloud-50 py-2 rounded-[6px] transition-colors ${isTestimonialsPage ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+        >
+          Testimonials
+        </a>
+        <a
+          href="/books/products-people-actually-want/"
+          class={`text-[15px] font-medium text-cloud-50/75 hover:text-cloud-50 py-2 rounded-[6px] transition-colors ${isBookPage ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+        >
+          Book
+        </a>
+        <a
+          href="/newsletter/"
+          class={`text-[15px] font-medium text-cloud-50/75 hover:text-cloud-50 py-2 rounded-[6px] transition-colors ${currentPath === 'newsletter' ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+        >
+          Newsletter
+        </a>
+        <a
+          href="/contact/"
+          class={`text-[15px] font-medium text-cloud-50/75 hover:text-cloud-50 py-2 rounded-[6px] transition-colors ${currentPath === 'contact' ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+        >
+          Contact
+        </a>
+      </div>
+
+      <!-- Social links at bottom -->
+      <div class="mt-auto pt-8 border-t border-border">
+        <div class="flex flex-col gap-2">
+          <a
+            href="https://bsky.app/profile/antonsten.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[14px] text-cloud-50/60 hover:text-cloud-50 transition-colors"
+          >
+            Bluesky
+          </a>
+          <a
+            href="https://www.linkedin.com/in/antonsten/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[14px] text-cloud-50/60 hover:text-cloud-50 transition-colors"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="/feed.xml"
+            class="text-[14px] text-cloud-50/60 hover:text-cloud-50 transition-colors"
+          >
+            RSS
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+<!-- Mobile Top Navigation -->
+<div class="lg:hidden fixed top-0 left-0 right-0 z-50 px-[20px] pt-[20px] transform transition-transform duration-300 ease-in-out" id="mobileNavigation">
+  <nav class="bg-surface/95 backdrop-blur-lg border border-border rounded-[8px]">
+    <div class="px-[20px] py-[10px]">
+      <div class="flex items-center justify-between">
+        <!-- Logo/Home link -->
+        <a href="/" class="text-cloud-50">
+          <span class="text-[14px] font-semibold tracking-[0.08em] uppercase">Anton Sten</span>
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          class="text-[14px] font-semibold text-cloud-50 flex items-center gap-2"
+          aria-label="Toggle menu"
+          id="menuButton"
+        >
+          <span id="menuText">Menu</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        class="hidden pt-4 pb-6 border-t border-border mt-4"
+        id="mobileMenu"
+      >
+        <div class="flex flex-col space-y-4">
+          <a
+            href="/about/"
+            class={`text-[14px] font-semibold text-cloud-50/80 hover:text-cloud-50 px-3 py-2 rounded-[6px] transition-colors ${currentPath === 'about' ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+          >
+            About
+          </a>
+          <a
+            href="/articles/"
+            class={`text-[14px] font-semibold text-cloud-50/80 hover:text-cloud-50 px-3 py-2 rounded-[6px] transition-colors ${currentPath === 'articles' ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+          >
+            Articles
+          </a>
+          <a
+            href="/work/"
+            class={`text-[14px] font-semibold text-cloud-50/80 hover:text-cloud-50 px-3 py-2 rounded-[6px] transition-colors ${currentPath === 'work' ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+          >
+            Work
+          </a>
+          <a
+            href="/testimonials/"
+            class={`text-[14px] font-semibold text-cloud-50/80 hover:text-cloud-50 px-3 py-2 rounded-[6px] transition-colors ${isTestimonialsPage ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+          >
+            Testimonials
+          </a>
+          <a
+            href="/books/products-people-actually-want/"
+            class={`text-[14px] font-semibold text-cloud-50/80 hover:text-cloud-50 px-3 py-2 rounded-[6px] transition-colors ${isBookPage ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+          >
+            Book
+          </a>
+          <a
+            href="/newsletter/"
+            class={`text-[14px] font-semibold text-cloud-50/80 hover:text-cloud-50 px-3 py-2 rounded-[6px] transition-colors ${currentPath === 'newsletter' ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+          >
+            Newsletter
+          </a>
+          <a
+            href="/contact/"
+            class={`text-[14px] font-semibold text-cloud-50/80 hover:text-cloud-50 px-3 py-2 rounded-[6px] transition-colors ${currentPath === 'contact' ? 'bg-surface-muted/80 text-cloud-50' : ''}`}
+          >
+            Contact
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<script>
+  // Mobile menu toggle
+  const menuButton = document.getElementById('menuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuText = document.getElementById('menuText');
+  const menuIcon = menuButton?.querySelector('svg');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    const isOpen = !mobileMenu?.classList.contains('hidden');
+
+    // Update text
+    if (menuText) {
+      menuText.textContent = isOpen ? 'Close' : 'Menu';
+    }
+
+    // Rotate the menu icon
+    if (menuIcon) {
+      menuIcon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+      menuIcon.style.transition = 'transform 0.3s ease';
+    }
+  });
+
+  // Left sidebar scroll behavior (desktop only)
+  let lastScrollY = window.scrollY;
+  let isScrollingUp = false;
+  const leftNavigation = document.getElementById('leftNavigation');
+  const mobileNavigation = document.getElementById('mobileNavigation');
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    // Determine scroll direction
+    if (currentScrollY < lastScrollY) {
+      // Scrolling up
+      isScrollingUp = true;
+    } else if (currentScrollY > lastScrollY) {
+      // Scrolling down
+      isScrollingUp = false;
+    }
+
+    // Show/hide left navigation based on scroll direction and position
+    if (leftNavigation) {
+      if (currentScrollY <= 20) {
+        // Always show when at top of page
+        leftNavigation.style.transform = 'translateX(0)';
+      } else if (isScrollingUp) {
+        // Show when scrolling up
+        leftNavigation.style.transform = 'translateX(0)';
+      } else {
+        // Hide when scrolling down (slide to the left)
+        leftNavigation.style.transform = 'translateX(-100%)';
+      }
+    }
+
+    // Show/hide mobile navigation
+    if (mobileNavigation) {
+      if (currentScrollY <= 20) {
+        // Always show when at top of page
+        mobileNavigation.style.transform = 'translateY(0)';
+      } else if (isScrollingUp) {
+        // Show when scrolling up
+        mobileNavigation.style.transform = 'translateY(0)';
+      } else {
+        // Hide when scrolling down
+        mobileNavigation.style.transform = 'translateY(-100%)';
+      }
+    }
+
+    lastScrollY = currentScrollY;
+  });
+</script>

@@ -1,63 +1,71 @@
 ---
 interface Props {
-    title?: string;
-    description?: string;
-    buttonText?: string;
-    successMessage?: string;
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  successMessage?: string;
+  variant?: 'default' | 'callout';
 }
 
-const { 
-    title = "",
-    description = "Get free chapters",
-    buttonText = "Get free chapters",
-    successMessage = "Check your email for the download link!"
+const {
+  title = '',
+  description = 'Get free chapters',
+  buttonText = 'Get free chapters',
+  successMessage = 'Check your email for the download link!',
+  variant = 'default'
 } = Astro.props;
+
+const wrapperClasses = ['book-sample'];
+if (variant === 'default') {
+  wrapperClasses.push('book-sample--panel');
+} else {
+  wrapperClasses.push('book-sample--callout');
+}
 ---
 
-<div class="bg-light-green/80 dark:bg-dark-surface/80 border border-green/20 dark:border-dark-accent/20 p-8 rounded-[4px]">
-    {title && (
-        <h3 class="text-black dark:text-dark-text mb-4 text-[20px] leading-[26px] tracking-[-0.01em] font-semibold">
-            {title}
-        </h3>
-    )}
-    <p class="text-black dark:text-dark-text mb-4 text-[20px] leading-[26px] tracking-[-0.01em] font-regular">
-        {description}
+<div class:list={wrapperClasses}>
+  {title && (
+    <h3 class="h3 book-sample__title">
+      {title}
+    </h3>
+  )}
+  {description && (
+    <p class="body-lg book-sample__description">
+      {description}
     </p>
-    <p class="text-black dark:text-dark-text mb-8 text-[16px] leading-[22px] tracking-[-0.01em] font-regular">
-        No catch. Just good content (chapters 1 and 2) to help you build better products.
-    </p>
-    <div id="book-form-container">
-        <form 
-            class="flex flex-col gap-4 sm:flex-row sm:gap-2"
-            id="book-sample-form"
-            autocomplete="off"
-        >
-            <input 
-                class="flex-1 w-full px-4 py-2 rounded-[4px] bg-white dark:bg-dark-bg focus:outline-none text-[16px] leading-[24px] tracking-[-0.01em] font-regular placeholder-[#A1A1AA] dark:placeholder-[#666666] border-0 text-black dark:text-dark-text" 
-                name="email_address" 
-                aria-label="Email Address" 
-                placeholder="Enter your email" 
-                required 
-                type="email"
-                id="book-email-input"
-            >
-            <button 
-                type="submit"
-                class="px-4 py-2 bg-green dark:bg-dark-accent text-white rounded-[4px] hover:bg-green/90 dark:hover:bg-dark-accent/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-[16px] leading-[24px] tracking-[-0.01em] font-medium whitespace-nowrap"
-                id="book-submit-button"
-            >
-                <span class="button-text">{buttonText}</span>
-                <span class="button-loading hidden">
-                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Subscribing...
-                </span>
-            </button>
-        </form>
-        <div id="book-form-message" class="mt-4 text-sm hidden"></div>
-    </div>
+  )}
+  <div id="book-form-container">
+    <form
+      class="book-sample__form"
+      id="book-sample-form"
+      autocomplete="off"
+    >
+      <input
+        class="book-sample__input"
+        name="email_address"
+        aria-label="Email Address"
+        placeholder="Enter your email"
+        required
+        type="email"
+        id="book-email-input"
+      >
+      <button
+        type="submit"
+        class="book-sample__button"
+        id="book-submit-button"
+      >
+        <span class="button-text">{buttonText}</span>
+        <span class="button-loading" aria-hidden="true">
+          <svg class="book-sample__spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Subscribing...
+        </span>
+      </button>
+    </form>
+    <div id="book-form-message" class="book-sample__message" role="status" aria-live="polite"></div>
+  </div>
 </div>
 
 <script>
@@ -80,9 +88,9 @@ if (typeof window !== 'undefined') {
             
             // Show loading state
             submitButton!.disabled = true;
-            buttonText!.classList.add('hidden');
-            buttonLoading!.classList.remove('hidden');
-            formMessage.classList.add('hidden');
+            buttonText!.classList.add('is-hidden');
+            buttonLoading!.classList.add('is-visible');
+            formMessage.classList.remove('is-visible');
 
             // Set a timeout for user feedback
             submissionTimeout = window.setTimeout(() => {
@@ -124,8 +132,8 @@ if (typeof window !== 'undefined') {
         function resetForm() {
             isSubmitting = false;
             submitButton!.disabled = false;
-            buttonText!.classList.remove('hidden');
-            buttonLoading!.classList.add('hidden');
+            buttonText!.classList.remove('is-hidden');
+            buttonLoading!.classList.remove('is-visible');
         }
 
         /**
@@ -136,15 +144,8 @@ if (typeof window !== 'undefined') {
         function showMessage(message: string, type: 'success' | 'error' | 'warning') {
             if (!formMessage) return;
             formMessage.textContent = message;
-            formMessage.classList.remove('hidden');
-            formMessage.classList.remove('text-green-600', 'dark:text-green-400', 'text-red-600', 'dark:text-red-400', 'text-yellow-600', 'dark:text-yellow-400');
-            if (type === 'success') {
-                formMessage.classList.add('text-green-600', 'dark:text-green-400');
-            } else if (type === 'error') {
-                formMessage.classList.add('text-red-600', 'dark:text-red-400');
-            } else if (type === 'warning') {
-                formMessage.classList.add('text-yellow-600', 'dark:text-yellow-400');
-            }
+            formMessage.dataset.state = type;
+            formMessage.classList.add('is-visible');
         }
 
         submitButton.addEventListener('click', (e) => {
@@ -156,3 +157,147 @@ if (typeof window !== 'undefined') {
     }
 }
 </script> 
+
+<style>
+  .book-sample {
+    display: grid;
+    gap: 16px;
+    border-radius: 10px;
+  }
+
+  .book-sample--panel {
+    background: rgb(var(--color-surface));
+    border: 1px solid rgb(var(--color-border));
+    padding: 32px;
+  }
+
+  .book-sample--callout {
+    padding: 0;
+  }
+
+  .book-sample__title {
+    margin: 0;
+  }
+
+  .book-sample__description,
+  .book-sample__note {
+    margin: 0;
+    color: rgb(var(--color-text));
+  }
+
+  .book-sample__note {
+    color: rgb(var(--color-text-muted));
+  }
+
+  .book-sample__form {
+    display: grid;
+    gap: 12px;
+  }
+
+  @media (min-width: 640px) {
+    .book-sample__form {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+
+  .book-sample__input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border: 1px solid rgb(var(--color-border));
+    background: rgb(var(--color-surface));
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: rgb(var(--color-text));
+  }
+
+  .book-sample__input::placeholder {
+    color: rgb(var(--color-text-soft));
+  }
+
+  .book-sample__input:focus {
+    outline: 2px solid rgba(var(--color-accent), 0.4);
+    outline-offset: 2px;
+  }
+
+  .book-sample__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: none;
+    background: rgb(var(--color-accent));
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    cursor: pointer;
+    transition: opacity 150ms ease;
+    white-space: nowrap;
+  }
+
+  .book-sample__button:hover {
+    opacity: 0.9;
+  }
+
+  .book-sample__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .button-loading {
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .button-loading.is-visible {
+    display: inline-flex;
+  }
+
+  .button-text.is-hidden {
+    display: none;
+  }
+
+  .book-sample__spinner {
+    height: 20px;
+    width: 20px;
+    animation: book-sample-spin 1s linear infinite;
+  }
+
+  .book-sample__message {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    margin-top: 8px;
+    display: none;
+  }
+
+  .book-sample__message.is-visible {
+    display: block;
+  }
+
+  .book-sample__message[data-state='success'] {
+    color: rgb(var(--color-accent));
+  }
+
+  .book-sample__message[data-state='error'] {
+    color: #d64545;
+  }
+
+  .book-sample__message[data-state='warning'] {
+    color: #f59e0b;
+  }
+
+  @keyframes book-sample-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>

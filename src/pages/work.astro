@@ -1,130 +1,220 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Testimonial from '../components/Testimonial.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
+import CalloutSection from '../components/CalloutSection.astro';
 ---
 
-<Layout 
+<Layout
   title="Work | Anton Sten – UX Lead & Product Designer"
   description="Explore my portfolio of work with leading companies like Google, Loom, Spotify, IKEA, and Herman Miller. I have 25+ years of experience in creating user-centered digital products that drive business success."
+  image="/images/og/work.png"
+>
+  <div class="page-shell">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="h1">Work</h1>
+        <div class="hero-copy">
+          <p class="h3">My goal has always been the same: to connect companies with their customers in ways that matter.</p>
+          <p class="h3">I've helped build user experiences that made customers happier—and businesses more profitable.</p>
+          <p class="h3">My background in design and business means I'm not just here to make your product look good. I'm here to make it work. Happy users are what drive good businesses.</p>
+        </div>
+      </div>
+    </section>
 
-  image="/images/og/work.png">
-    <div class="max-w-[700px] mx-auto px-8 sm:px-6 mt-[20vh]">
-        <h1 class="text-black font-medium text-[48px] leading-[1.2] tracking-[-0.02em] sm:text-display mb-20">Work</h1>
+    <CalloutSection className="clients-callout">
+      <div class="clients-grid">
+        <div class="client-logo">
+          <img src="/logos/absolut-vodka.svg" alt="Absolut Vodka" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/assa-abloy.svg" alt="Assa Abloy" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/bark.svg" alt="Bark" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/eon.svg" alt="E.On" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/elle.svg" alt="ELLE" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/izettle.svg" alt="iZettle" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/google.svg" alt="Google" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/herman-miller.svg" alt="Herman Miller" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/hyperisland.svg" alt="Hyper Island" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/ica.svg" alt="ICA" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/ikea.svg" alt="IKEA" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/liftoff.svg" alt="Liftoff" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/loom.svg" alt="Loom" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/lysa.svg" alt="Lysa" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/nudie.svg" alt="Nudie Jeans" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/pandora.svg" alt="Pandora" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/Summer Health logo.svg" alt="Summer Health" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/suzuki.svg" alt="Suzuki" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/telia.svg" alt="Telia" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/swedbank.svg" alt="Swedbank" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/tiger-of-sweden.svg" alt="Tiger of Sweden" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/toast.svg" alt="Toast" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/ueno.svg" alt="ueno" />
+        </div>
+        <div class="client-logo">
+          <img src="/logos/volvo.svg" alt="Volvo" />
+        </div>
+      </div>
+    </CalloutSection>
 
-        <p class="body-xxl mb-12">My goal has always been the same: to connect companies with their customers in ways that matter.</p>
-
-        <p class="body-xxl mb-12">I've helped build user experiences that made customers happier—and businesses more profitable.</p>
-
-        <p class="body-xxl mb-12">My background in design and business means I'm not just here to make your product look good. I'm here to make it work. Happy users are what drive good businesses.</p>
-        <!-- Work Image -->
-        <OptimizedImage 
-            src="/images/work.webp" 
-            alt="Work" 
-            className="w-full mb-24" 
+    <section class="content-section">
+      <div class="image-container">
+        <OptimizedImage
+          src="/images/work.webp"
+          alt="Work"
+          className="content-image-wide"
         />
-        <p class="body-xxl mb-12">I've always believed that design starts with people. Understand them first, and everything else follows.</p>
-
-        <p class="body-xxl text-dark-grey mb-24">(Not looking for new opportunities right now.)</p>
-
+      </div>
+    </section>
 
 
+  </div>
+</Layout>
 
-        <!-- Work Experience -->
-        <section class="mt-40">
-            <h2 class="text-2xl font-bold mb-12">Selected client experience, 1999 - 2025</h2>
-            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2">
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/alight.svg" alt="Alight" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/absolut-vodka.svg" alt="Absolut Vodka" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/amf-pension.svg" alt="AMF Pension" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/apotek-hjartat.svg" alt="Apotek Hjärtat" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/assa-abloy.svg" alt="Assa Abloy" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/bark.svg" alt="Bark" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/clas-ohlson.svg" alt="Clas Ohlson" class="max-h-[160px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/eon.svg" alt="E.On" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/elle.svg" alt="ELLE" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/frank-body.svg" alt="Frank Body" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/izettle.svg" alt="iZettle" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/google.svg" alt="Google" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/herman-miller.svg" alt="Herman Miller" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/hyperisland.svg" alt="Hyper Island" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/ica.svg" alt="ICA" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/ikea.svg" alt="IKEA" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/liftoff.svg" alt="Liftoff" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/loom.svg" alt="Loom" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/lysa.svg" alt="Lysa" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/nudie.svg" alt="Nudie Jeans" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/pandora.svg" alt="Pandora" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/Summer Health logo.svg" alt="Summer Health" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/suzuki.svg" alt="Suzuki" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/telia.svg" alt="Telia" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/swedbank.svg" alt="Swedbank" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/tiger-of-sweden.svg" alt="Tiger of Sweden" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/titan.svg" alt="Titan Space" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/toast.svg" alt="Toast" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/ueno.svg" alt="ueno" class="max-h-[60px] w-auto" />
-                </div>
-                <div class="bg-light-grey rounded-[4px] p-8 flex items-center justify-center h-[120px]">
-                    <img src="/logos/volvo.svg" alt="Volvo" class="max-h-[60px] w-auto" />
-                </div>
-            </div>
-        </section>
-    </div>
-</Layout> 
+<style>
+  .page-shell {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px 120px;
+  }
+
+  .hero-section {
+    padding-top: 140px;
+    padding-bottom: 96px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding-top: 120px;
+      padding-bottom: 72px;
+    }
+  }
+
+  .hero-content {
+    display: grid;
+    gap: 48px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    max-width: 18ch;
+    margin: 0 auto;
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 20px;
+    color: rgb(var(--color-text));
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .content-section {
+    margin-bottom: 96px;
+  }
+
+  .content-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    gap: 24px;
+  }
+
+  .image-container {
+    max-width: 960px;
+    margin: 0 auto 24px;
+  }
+
+  .content-image-wide {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .clients-callout {
+    margin-bottom: 96px;
+  }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  @media (min-width: 768px) {
+    .clients-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .clients-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .client-logo {
+    background: rgb(var(--color-background));
+    border-radius: 4px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+  }
+
+  .client-logo img {
+    max-height: 60px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  :global(.dark) .client-logo img {
+    filter: invert(1) brightness(1.2);
+  }
+</style>

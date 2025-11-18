@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import PersonSchema from '../components/PersonSchema.astro';
+import CalloutSection from '../components/CalloutSection.astro';
 
 const personSchema = {
   "@context": "https://schema.org",
@@ -28,6 +29,12 @@ const personSchema = {
 
 // Define interviews and podcasts data
 const appearances = [
+  {
+    title: "Design Buddy: Anton Stén on AI, Taste, and the Designer's Expanding Role",
+    url: "https://designbuddy.substack.com/p/anton-sten-on-ai-taste-and-the-designers",
+    date: "27 Oct 2025",
+    type: "interview"
+  },
   {
     title: "Zalet Podcast: Design in the Digital Age",
     url: "https://podcasts.apple.com/us/podcast/anton-st%C3%A9n/id1597353595?i=1000681686287",
@@ -80,48 +87,134 @@ const appearances = [
   image="/images/og/about.png"
 >
   <PersonSchema />
-  
-  <div class="max-w-[700px] mx-auto px-8 sm:px-6 mt-[20vh]">
-    <h1 class="text-black font-medium text-[48px] leading-[1.2] tracking-[-0.02em] sm:text-display mb-20">Hello, I'm Anton</h1>
 
-    <p class="body-xxl mb-12">I've been a younger brother for 44 years, loved dogs for 40, been into music for 35, worked as a designer for 28, supported Liverpool for 26, and lived in Sweden for 23.</p>
-
-    <OptimizedImage 
-      src="/images/anton.webp" 
-      alt="Anton Sten - UX Lead and Product Designer" 
-      className="w-full mb-20" 
-    />
-
-    <p class="body-xxl mb-12">If you only looked at the numbers, it might seem like not much happened after I turned 20. But of course, the opposite is true. Those twenty-something years hold almost everything: the person I became, the work I'm proud of, the life I built.</p>
-      
-    <p class="body-xxl mb-20">When I'm not designing, I'm usually outside with my wife Anna and our dog, Taylor (Swift). We live in an old house in the Swedish countryside. It's beautiful, but like most beautiful things, it's a little broken. There's always something to fix. I used to find that exhausting. Now I find it comforting. Some projects aren't supposed to be finished. You just live in them.</p>
-
-    <OptimizedImage 
-      src="/images/house.webp" 
-      alt="My beautiful old house in the Swedish countryside, surrounded by nature" 
-      className="w-full mb-20" 
-    />
-
-    <!-- Interviews and Podcasts Section -->
-    <section class="mb-20">
-      <h2 class="text-2xl font-bold mb-12">Interviews & Podcasts</h2>
-      <div class="space-y-8">
-        {appearances.map(appearance => (
-          <div>
-            <div class="flex justify-between items-start">
-              <h3 class="body-lg font-medium">
-                <a href={appearance.url} class="hover:text-green transition-colors" target="_blank" rel="noopener noreferrer">
-                  {appearance.title}
-                </a>
-              </h3>
-              <span class="body-sm text-dark-grey">
-                {appearance.date}
-              </span>
-            </div>
-            <div class="h-px bg-light-grey mt-8"></div>
-          </div>
-        ))}
+  <div class="page-shell">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="h1">Hello, I'm Anton</h1>
+        <div class="hero-copy">
+          <p class="h3">I've been a younger brother for 44 years, loved dogs for 40, been into music for 35, worked as a designer for 28, supported Liverpool for 26, and lived in Sweden for 23.</p>
+        </div>
       </div>
     </section>
+
+    <section class="content-section">
+      <div class="image-container">
+        <OptimizedImage
+          src="/images/anton.webp"
+          alt="Anton Sten - UX Lead and Product Designer"
+          className="content-image-wide"
+        />
+      </div>
+
+      <div class="content-wrapper">
+        <p class="h3 mb-6">If you only looked at the numbers, it might seem like not much happened after I turned 20. But of course, the opposite is true. Those twenty-something years hold almost everything: the person I became, the work I'm proud of, the life I built.</p>
+
+        <p class="h3 mb-12">When I'm not designing, I'm usually outside with my wife Anna and our dog, Taylor (Swift). We live in an old house in the Swedish countryside. It's beautiful, but like most beautiful things, it's a little broken. There's always something to fix. I used to find that exhausting. Now I find it comforting. Some projects aren't supposed to be finished. You just live in them.</p>
+      </div>
+
+      <div class="image-container">
+        <OptimizedImage
+          src="/images/house.webp"
+          alt="My beautiful old house in the Swedish countryside, surrounded by nature"
+          className="content-image-wide"
+        />
+      </div>
+    </section>
+
+    <CalloutSection title="Interviews & Podcasts" className="appearances-callout">
+      <div class="appearances-list">
+        {appearances.map((appearance) => (
+          <article class="appearance-item">
+            <time class="body text-muted" datetime={appearance.date}>
+              {appearance.date}
+            </time>
+            <h3 class="body-lg text-primary">
+              <a href={appearance.url} class="hover:text-accent transition-colors duration-150" target="_blank" rel="noopener noreferrer">
+                {appearance.title}
+              </a>
+            </h3>
+          </article>
+        ))}
+      </div>
+    </CalloutSection>
   </div>
-</Layout> 
+</Layout>
+
+<style>
+  .page-shell {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px 120px;
+  }
+
+  .hero-section {
+    padding-top: 140px;
+    padding-bottom: 96px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding-top: 120px;
+      padding-bottom: 72px;
+    }
+  }
+
+  .hero-content {
+    display: grid;
+    gap: 48px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    max-width: 18ch;
+    margin: 0 auto;
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 20px;
+    color: rgb(var(--color-text));
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .content-section {
+    margin-bottom: 96px;
+  }
+
+  .content-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    gap: 24px;
+  }
+
+  .image-container {
+    max-width: 960px;
+    margin: 0 auto 24px;
+  }
+
+  .content-image-wide {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .appearances-callout {
+    margin-bottom: 96px;
+  }
+
+  .appearances-list {
+    display: grid;
+    gap: 24px;
+  }
+
+  .appearance-item {
+    display: grid;
+    gap: 0;
+  }
+</style> 

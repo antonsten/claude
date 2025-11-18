@@ -1,44 +1,129 @@
 ---
-const { success } = Astro.props;
+import CalloutSection from './CalloutSection.astro';
+import Button from './ui/Button.astro';
+
+interface Props {
+	success?: boolean;
+	heading?: string;
+}
+
+const {
+	success = false,
+	heading = 'Get design insights, case studies, and lessons learned in your inbox—join 3,000+ designers and product people.'
+} = Astro.props as Props;
 ---
 
-<div class="bg-light-green/80 dark:bg-dark-surface/80 border border-green/20 dark:border-dark-accent/20 p-8 rounded-[4px]">
-    <p class="text-black dark:text-dark-text mb-8 text-[20px] leading-[26px] tracking-[-0.01em] font-regular">
-        Get design insights, case studies, and lessons learned in your inbox—join 3,000+ designers and product people.
-    </p>
-    <div id="form-container">
-        <form 
-            class="flex flex-col gap-4 sm:flex-row sm:gap-2"
-            id="newsletter-form"
-            autocomplete="off"
-        >
-            <input 
-                class="flex-1 w-full px-4 py-2 rounded-[4px] bg-white dark:bg-dark-bg focus:outline-none text-[16px] leading-[24px] tracking-[-0.01em] font-regular placeholder-[#A1A1AA] dark:placeholder-[#666666] border-0 text-black dark:text-dark-text" 
-                name="email_address" 
-                aria-label="Email Address" 
-                placeholder="Enter your email" 
-                required 
-                type="email"
-                id="email-input"
-            >
-            <button 
-                type="submit"
-                class="px-4 py-2 bg-green dark:bg-dark-accent text-white rounded-[4px] hover:bg-green/90 dark:hover:bg-dark-accent/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-[16px] leading-[24px] tracking-[-0.01em] font-medium whitespace-nowrap"
-                id="submit-button"
-            >
-                <span class="button-text">Sign up</span>
-                <span class="button-loading hidden">
-                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Subscribing...
-                </span>
-            </button>
-        </form>
-        <div id="form-message" class="mt-4 text-sm hidden"></div>
-    </div>
-</div>
+<CalloutSection
+	title="Newsletter"
+	background="#111111"
+	titleColor="#d1e8bd"
+	contentColor="#d1e8bd"
+	className="newsletter-wrapper"
+>
+	<div class="newsletter-content">
+		<p class="newsletter-copy body-lg">{heading}</p>
+		<div id="form-container">
+			<form
+				class="newsletter-form"
+				id="newsletter-form"
+				autocomplete="off"
+			>
+				<input
+					class="newsletter-input"
+					name="email_address"
+					aria-label="Email address"
+					placeholder="Enter your email"
+					required
+					type="email"
+					id="email-input"
+				>
+				<Button
+					type="submit"
+					id="submit-button"
+					variant="ghost"
+					className="newsletter-button"
+				>
+					<span class="button-text">Sign up</span>
+					<span class="button-loading hidden">
+						<svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+							<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+							<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+						</svg>
+						Subscribing...
+					</span>
+				</Button>
+			</form>
+			<div id="form-message" class="newsletter-message hidden"></div>
+		</div>
+	</div>
+</CalloutSection>
+
+<style>
+	.newsletter-content {
+		display: grid;
+		gap: 24px;
+	}
+
+	.newsletter-copy {
+		margin: 0;
+		color: #d1e8bd;
+	}
+
+	.newsletter-form {
+		display: flex;
+		gap: 12px;
+		align-items: center;
+	}
+
+	.newsletter-input {
+		flex: 1 1 auto;
+		min-width: 0;
+		padding: 14px 20px;
+		border-radius: 4px;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		background: #ffffff;
+		color: #1b1b1b;
+		font-size: 1rem;
+	}
+
+	.newsletter-input::placeholder {
+		color: rgba(107, 114, 128, 0.8);
+	}
+
+	.newsletter-input:focus {
+		outline: 2px solid rgba(0, 163, 92, 0.45);
+		outline-offset: 2px;
+	}
+
+	.newsletter-button {
+		white-space: nowrap;
+		background-color: rgb(var(--color-accent-soft));
+		color: rgb(var(--color-text));
+		padding-left: 24px;
+		padding-right: 24px;
+	}
+
+	.newsletter-button:hover {
+		opacity: 0.9;
+	}
+
+	.newsletter-message {
+		margin-top: 12px;
+		font-size: 0.875rem;
+		color: #d1e8bd;
+	}
+
+	@media (max-width: 900px) {
+		.newsletter-form {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.newsletter-button {
+			width: 100%;
+		}
+	}
+</style>
 
 <script>
 if (typeof window !== 'undefined') {
@@ -117,13 +202,13 @@ if (typeof window !== 'undefined') {
             if (!formMessage) return;
             formMessage.textContent = message;
             formMessage.classList.remove('hidden');
-            formMessage.classList.remove('text-green-600', 'dark:text-green-400', 'text-red-600', 'dark:text-red-400', 'text-yellow-600', 'dark:text-yellow-400');
+            formMessage.classList.remove('message-success', 'message-error', 'message-warning');
             if (type === 'success') {
-                formMessage.classList.add('text-green-600', 'dark:text-green-400');
+                formMessage.classList.add('message-success');
             } else if (type === 'error') {
-                formMessage.classList.add('text-red-600', 'dark:text-red-400');
+                formMessage.classList.add('message-error');
             } else if (type === 'warning') {
-                formMessage.classList.add('text-yellow-600', 'dark:text-yellow-400');
+                formMessage.classList.add('message-warning');
             }
         }
 
@@ -135,4 +220,18 @@ if (typeof window !== 'undefined') {
         });
     }
 }
-</script> 
+</script>
+
+<style is:global>
+    .newsletter-message.message-success {
+        color: #8ad5a8;
+    }
+
+    .newsletter-message.message-error {
+        color: #ffb3b3;
+    }
+
+    .newsletter-message.message-warning {
+        color: #ffe08a;
+    }
+</style> 

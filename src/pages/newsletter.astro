@@ -1,66 +1,223 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NewsletterForm from '../components/NewsletterForm.astro';
-import Testimonial from '../components/Testimonial.astro';
+
+interface NewsletterTestimonial {
+  title: string;
+  body: string[];
+  author: string;
+  role: string;
+  avatar?: string;
+}
+
+const newsletterTestimonials: NewsletterTestimonial[] = [
+  {
+    title: 'Inspired to write more',
+    body: [
+      "I value Anton's transparency and passion for writing as a crucial skill for designers.",
+      'His reflections have inspired me to start writing more and have helped me reconnect with my creative process.'
+    ],
+    author: 'Kendra Black',
+    role: 'Senior Web Designer'
+  },
+  {
+    title: 'A mini-masterclass every issue',
+    body: [
+      "Every time I get Anton's newsletter, it's like a mini-masterclass in Product Design—but without all the boring theory stuff.",
+      'He talks about design in this super practical, real-world way that I can actually apply to my projects right away. Plus, the links he throws in at the end are absolutely gold!'
+    ],
+    author: 'Brian Augsburger',
+    role: 'Designer',
+    avatar: '/images/author/avatar_brian_augsburger.png'
+  },
+  {
+    title: 'Always delivers the extra mile',
+    body: [
+      'An elite ultra-runner in the world of product design. Just when you think there is nothing left to give, he delivers that extra mile—straight to your inbox.', 
+      'Every time.'
+    ],
+    author: 'Archie Catic',
+    role: 'Designer'
+  }
+];
 
 // Get the success state from the URL
 const success = Astro.url.searchParams.get('success') === 'true';
 ---
 
-<Layout 
+<Layout
   title="Newsletter | Anton Sten – UX Lead & Product Designer"
   description="Subscribe to my newsletter for practical insights on product design, UX, and digital product development. Join a community of designers learning from real-world experience."
+  image="/images/og/newsletter.png"
+>
+  <div class="page-shell">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="h1">Newsletter</h1>
+        <div class="hero-copy">
+          <p class="h3">
+            If you want to keep up with what I'm working on—or just see what's happening in design and tech—the easiest way is to join my newsletter.
+          </p>
+          <p class="h3">People seem to like it. You might too.</p>
+        </div>
+      </div>
+    </section>
 
-  image="/images/og/newsletter.png">
-    <div class="max-w-[700px] mx-auto px-8 sm:px-6 mt-[20vh]">
-        <h1 class="text-black font-medium text-[48px] leading-[1.2] tracking-[-0.02em] sm:text-display mb-20">Newsletter</h1>
+    <section class="newsletter-section">
+      <NewsletterForm
+        success={success}
+        heading="Get design insights, case studies, and lessons learned in your inbox—join 3,000+ designers and product people."
+      />
+    </section>
 
-        <h3 class="body-xxl mb-24">If you want to keep up with what I'm working on—or just see what's happening in design and tech—the easiest way is to join my newsletter.<br /><br />People seem to like it. You might too.</h3>
-
-        <!-- Newsletter Section -->
-        <section class="mt-12">
-            <NewsletterForm success={success} />
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="mt-20">
-            <div class="grid gap-8 md:grid-cols-2">
-                <Testimonial
-                    bgColor="light-grey"
-                    quote={[
-                        "I value Anton's transparency and passion for writing as a crucial skill for designers. His reflections have inspired me to start writing more and have helped me reconnect with my creative process."
-                    ]}
-                    author="Kendra Black"
-                    role="Senior Web Designer"
-                />
-
-                <Testimonial
-                    bgColor="light-grey"
-                    quote={[
-                        "An elite ultra-runner in the world of product design. Just when you think there's nothing left to give, he delivers that extra mile—straight to your inbox. Every time."
-                    ]}
-                    author="Archie Catic"
-                    role="Designer"
-                />
-
-                <Testimonial
-                    bgColor="light-grey"
-                    quote={[
-                        "Every time I get Anton's newsletter, it's like a mini-masterclass in Product Design—but without all the boring theory stuff. He talks about design in this super practical, real-world way that I can actually apply to my projects right away. Plus, the links he throws in at the end are absolutely gold!"
-                    ]}
-                    author="Brian Augsburger"
-                    role="Designer"
-                />
-
-                <Testimonial
-                    bgColor="light-grey"
-                    quote={[
-                        "Anton's newsletter is a breath of fresh air in the design world. His insights are practical, actionable, and always grounded in real-world experience. It's like having a mentor in your inbox."
-                    ]}
-                    author="Sarah Chen"
-                    role="Product Designer"
-                />
+    <section class="testimonials-section">
+      <div class="testimonials-grid">
+        {newsletterTestimonials.map((testimonial) => (
+          <article class="testimonial-card">
+            <div class="testimonial-body">
+              <h3 class="h4">{testimonial.title}</h3>
+              <div class="testimonial-copy">
+                {testimonial.body.map((paragraph) => (
+                  <p class="body-lg">{paragraph}</p>
+                ))}
+              </div>
             </div>
-        </section>
-    </div>
-</Layout> 
+            <footer class="testimonial-meta">
+              {testimonial.avatar ? (
+                <img src={testimonial.avatar} alt={testimonial.author} width="40" height="40" loading="lazy" />
+              ) : (
+                <div class="testimonial-avatar-fallback" aria-hidden="true">
+                  {testimonial.author.charAt(0)}
+                </div>
+              )}
+              <div>
+                <p class="text-[14px] leading-[1.4] text-primary">{testimonial.author}</p>
+                <p class="text-[14px] leading-[1.4] text-muted">{testimonial.role}</p>
+              </div>
+            </footer>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-shell {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px 120px;
+  }
+
+  .hero-section {
+    padding-top: 140px;
+    padding-bottom: 96px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding-top: 120px;
+      padding-bottom: 72px;
+    }
+  }
+
+  .hero-content {
+    display: grid;
+    gap: 48px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    max-width: 18ch;
+    margin: 0 auto;
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 20px;
+    color: rgb(var(--color-text));
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .newsletter-section {
+    margin-bottom: 96px;
+  }
+
+  .testimonials-section {
+    margin-bottom: 96px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1120px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 28px;
+    border-radius: 4px;
+    background: rgb(var(--color-surface));
+  }
+
+  .testimonial-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1 1 auto;
+  }
+
+  .testimonial-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1 1 auto;
+    color: rgb(var(--color-text));
+  }
+
+  .testimonial-meta {
+    display: grid;
+    grid-template-columns: 40px auto;
+    gap: 12px;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .testimonial-meta img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .testimonial-avatar-fallback {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgb(var(--color-accent-soft));
+    color: rgb(var(--color-accent));
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+</style>

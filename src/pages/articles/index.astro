@@ -1,94 +1,83 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { formatDate } from '../../utils/date';
+import BookCallout from '../../components/BookCallout.astro';
 
-const articles = await getCollection('articles', ({ data }) => {
-    // Debug: Log each article as it's being processed
-    console.log('Processing article:', {
-        title: data.title,
-        date: data.date,
-        slug: data.slug
-    });
-    return true; // Include all articles
-});
+const articles = await getCollection('articles');
 
 const sortedArticles = articles.sort((a, b) => {
     const dateA = a.data.date ? new Date(a.data.date) : new Date(0);
     const dateB = b.data.date ? new Date(b.data.date) : new Date(0);
-    
-    // Debug: Log the dates being compared
-    console.log('Comparing dates:', {
-        a: { title: a.data.title, date: a.data.date, parsed: dateA },
-        b: { title: b.data.title, date: b.data.date, parsed: dateB }
-    });
-    
     return dateB.getTime() - dateA.getTime();
 });
 
-// Debug: Log all articles and their dates
-console.log('All articles:', articles.map(a => ({ 
-    title: a.data.title, 
-    date: a.data.date, 
-    parsedDate: a.data.date ? new Date(a.data.date) : null,
-    slug: a.slug 
-})));
-
-// Function to get first line of content
-function getFirstLine(content: string) {
-    const lines = content.split('\n');
-    // Skip frontmatter
-    let startIndex = 0;
-    for (let i = 0; i < lines.length; i++) {
-        if (lines[i].trim() === '---') {
-            startIndex = i + 1;
-            break;
-        }
-    }
-    // Find first non-empty line that's not a heading
-    for (let i = startIndex; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (line && !line.startsWith('#') && !line.startsWith('(')) {
-            return line;
-        }
-    }
-    return '';
-}
+const formattedArticles = sortedArticles.map((article) => ({
+    title: article.data.title,
+    slug: article.slug,
+    date: article.data.date,
+    formattedDate: article.data.date
+        ? new Date(article.data.date)
+              .toLocaleDateString('en-GB', {
+                  day: 'numeric',
+                  month: 'short',
+                  year: 'numeric'
+              })
+              .replace(/ /g, ' ')
+              .replace(/\./g, '')
+        : undefined
+}));
 ---
 
-<Layout title="Articles | Anton Sten – UX Lead & Product Designer" description="Browse my articles on UX, product design, and strategy."
-  image="/images/og/articles.png">
-    <div class="max-w-[700px] mx-auto px-8 sm:px-6">
-        <h1 class="text-black font-medium text-[48px] leading-[1.2] tracking-[-0.02em] sm:text-display mb-20 mt-[20vh]">Articles</h1>
-
-    
-        <p class="body-xxl mb-24">
-            Sharing what you know is one of the best ways to help people. Whether it's writing, speaking, or just talking to other designers, it almost always goes both ways.
-            <br><br>
-            Every conversation teaches me something too—something I didn't know I was missing. I end up seeing design, and the work around it, a little differently each time.
-            <br><br>
-            That's the real reason to share what you've learned. Not because you have all the answers, but because it keeps you learning too.
+<Layout
+  title="Articles | Anton Sten – UX Lead & Product Designer"
+  description="Browse my articles on UX, product design, and strategy."
+  image="/images/og/articles.png"
+>
+  <div class="mx-auto flex w-full max-w-[1080px] flex-col gap-24 px-5 pb-28 pt-36 md:pt-40">
+    <section class="grid gap-12 text-center">
+      <h1 class="h1 mx-auto max-w-[18ch]">Articles</h1>
+      <div class="mx-auto grid max-w-[600px] gap-5 text-left">
+        <p class="h3">
+          Sharing what you know is one of the best ways to help people. Whether it's writing, speaking, or just
+          talking to other designers, it almost always goes both ways.
         </p>
-        <h3 class="text-2xl font-bold mb-12">Recent articles</h3>
+        <p class="h3">
+          Every conversation teaches me something too—something I didn't know I was missing. I end up seeing design,
+          and the work around it, a little differently each time.
+        </p>
+        <p class="h3">
+          That's the real reason to share what you've learned. Not because you have all the answers, but because it keeps you learning too.
+        </p>
+      </div>
+    </section>
 
-        <div class="space-y-8">
-            {sortedArticles.map(article => (
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="body-lg font-medium">
-                            <a href={`/articles/${article.slug}`} class="hover:text-green transition-colors">
-                                {article.data.title}
-                            </a>
-                        </h3>
-                        {article.data.date && (
-                            <span class="body-sm text-dark-grey">
-                                {formatDate(article.data.date)}
-                            </span>
-                        )}
-                    </div>
-                    <div class="h-px bg-light-grey mt-8"></div>
-                </div>
-            ))}
+    <section>
+      <BookCallout
+        heading="Products People Actually Want"
+        copy="My book is finally out — a practical guide to building products people actually want."
+        ctaHref="/books/products-people-actually-want/"
+      />
+    </section>
+
+    <section>
+      <div class="mx-auto w-full max-w-[600px]">
+        <div class="grid">
+          {formattedArticles.map((article) => (
+            <article class="flex flex-col gap-2 py-5 md:flex-row md:items-baseline md:justify-between first:pt-0 last:pb-0">
+              <h3 class="body-lg text-primary">
+                <a href={`/articles/${article.slug}`} class="hover:text-accent transition-colors">
+                  {article.title}
+                </a>
+              </h3>
+              {article.formattedDate && (
+                <time class="body text-muted md:text-right" datetime={article.date?.toString()}>
+                  {article.formattedDate}
+                </time>
+              )}
+            </article>
+          ))}
         </div>
-    </div>
+      </div>
+    </section>
+  </div>
 </Layout> 
