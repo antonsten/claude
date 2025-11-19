@@ -91,38 +91,28 @@ const appearances = [
   <div class="page-shell">
     <section class="hero-section">
       <div class="hero-content">
-        <h1 class="h1">Hello, I'm Anton</h1>
-        <div class="hero-copy">
-          <p class="h3">I've been a younger brother for 44 years, loved dogs for 40, been into music for 35, worked as a designer for 28, supported Liverpool for 26, and lived in Sweden for 23.</p>
-        </div>
+        <h1 class="h1">About</h1>
       </div>
     </section>
 
     <section class="content-section">
-      <div class="image-container">
-        <OptimizedImage
-          src="/images/anton.webp"
-          alt="Anton Sten - UX Lead and Product Designer"
-          className="content-image-wide"
-        />
-      </div>
-
-      <div class="content-wrapper">
-        <p class="h3 mb-6">If you only looked at the numbers, it might seem like not much happened after I turned 20. But of course, the opposite is true. Those twenty-something years hold almost everything: the person I became, the work I'm proud of, the life I built.</p>
-
-        <p class="h3 mb-12">When I'm not designing, I'm usually outside with my wife Anna and our dog, Taylor (Swift). We live in an old house in the Swedish countryside. It's beautiful, but like most beautiful things, it's a little broken. There's always something to fix. I used to find that exhausting. Now I find it comforting. Some projects aren't supposed to be finished. You just live in them.</p>
+      <div class="content-wrapper mb-20">
+        <p class="h3">I've been a younger brother for 44 years, loved dogs for 40, been into music for 35, worked as a designer for 28, supported Liverpool for 26, and lived in Sweden for 23.</p>
+        <p class="h3">If you looked only at those numbers, it might seem like not much happened after I turned 20. The truth is the opposite. The last two decades are where almost everything happened — the work I'm proud of, the person I grew into, the life I built.</p>
+        <p class="h3">When I'm not designing, I'm usually outside with my wife Anna and our dog, Taylor (Swift), wandering around our old house in the Swedish countryside. It's beautiful and slightly broken, always giving us a new project. I used to find that tiring. Now I find it grounding. Some things aren't meant to be finished; you just live in them.</p>
+        <p class="h3">As a designer, I carry the same mindset: curiosity, patience, and the belief that good things are shaped over time.</p>
       </div>
 
       <div class="image-container">
-        <OptimizedImage
-          src="/images/house.webp"
-          alt="My beautiful old house in the Swedish countryside, surrounded by nature"
-          className="content-image-wide"
+        <img
+          src="/images/anton-taylor-house.png"
+          alt="Anton with Taylor and our house in the Swedish countryside"
+          class="content-image-wide"
         />
       </div>
     </section>
 
-    <CalloutSection title="Interviews & Podcasts" className="appearances-callout">
+    <CalloutSection title="Interviews & Podcasts" background="#FFFFFF" className="appearances-callout">
       <div class="appearances-list">
         {appearances.map((appearance) => (
           <article class="appearance-item">
@@ -188,14 +178,14 @@ const appearances = [
 
   .content-wrapper {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 48px auto;
     display: grid;
     gap: 24px;
   }
 
   .image-container {
     max-width: 960px;
-    margin: 0 auto 24px;
+    margin: 0 auto 48px;
   }
 
   .content-image-wide {

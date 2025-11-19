@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import CalloutSection from '../components/CalloutSection.astro';
+import WorkCase from '../components/WorkCase.astro';
+import { workCases, clientLogos } from '../data/workCases';
 ---
 
 <Layout
@@ -21,7 +23,16 @@ import CalloutSection from '../components/CalloutSection.astro';
       </div>
     </section>
 
-    <CalloutSection className="clients-callout">
+    <!-- Work Cases -->
+    <section class="work-cases-section">
+      {workCases.map((workCase) => (
+        <WorkCase workCase={workCase} />
+      ))}
+    </section>
+
+    <!-- Logo Grid -->
+    <section class="clients-section">
+      <h3 class="h3 clients-heading">Some of the companies I've partnered with over the past 25+ years.</h3>
       <div class="clients-grid">
         <div class="client-logo">
           <img src="/logos/absolut-vodka.svg" alt="Absolut Vodka" />
@@ -72,16 +83,19 @@ import CalloutSection from '../components/CalloutSection.astro';
           <img src="/logos/pandora.svg" alt="Pandora" />
         </div>
         <div class="client-logo">
+          <img src="/logos/spotify.svg" alt="Spotify" />
+        </div>
+        <div class="client-logo">
           <img src="/logos/Summer Health logo.svg" alt="Summer Health" />
         </div>
         <div class="client-logo">
           <img src="/logos/suzuki.svg" alt="Suzuki" />
         </div>
         <div class="client-logo">
-          <img src="/logos/telia.svg" alt="Telia" />
+          <img src="/logos/swedbank.svg" alt="Swedbank" />
         </div>
         <div class="client-logo">
-          <img src="/logos/swedbank.svg" alt="Swedbank" />
+          <img src="/logos/telia.svg" alt="Telia" />
         </div>
         <div class="client-logo">
           <img src="/logos/tiger-of-sweden.svg" alt="Tiger of Sweden" />
@@ -96,18 +110,19 @@ import CalloutSection from '../components/CalloutSection.astro';
           <img src="/logos/volvo.svg" alt="Volvo" />
         </div>
       </div>
-    </CalloutSection>
-
-    <section class="content-section">
-      <div class="image-container">
-        <OptimizedImage
-          src="/images/work.webp"
-          alt="Work"
-          className="content-image-wide"
-        />
-      </div>
     </section>
 
+    <!-- Final Full-Width Image -->
+    <section class="final-image-section">
+    <h3 class="h3 clients-heading">Most of my projects happen from this office in the Swedish countryside. I've worked remotely with US teams for 10+ years, and while I love getting together for offsites, this is where the best thinking happens.
+</h3>
+
+      <OptimizedImage
+        src="/images/work.webp"
+        alt="Anton Sten workspace"
+        className="final-image"
+      />
+    </section>
 
   </div>
 </Layout>
@@ -153,36 +168,54 @@ import CalloutSection from '../components/CalloutSection.astro';
     text-align: left;
   }
 
-  .content-section {
+  .work-cases-section {
     margin-bottom: 96px;
   }
 
-  .content-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
-    display: grid;
-    gap: 24px;
-  }
-
-  .image-container {
+  .final-image-section {
     max-width: 960px;
-    margin: 0 auto 24px;
+    margin: 0 auto 96px;
   }
 
-  .content-image-wide {
+  .final-image {
     width: 100%;
     display: block;
     border-radius: 4px;
+    margin-bottom: 96px;
   }
 
-  .clients-callout {
-    margin-bottom: 96px;
+  .final-image-caption {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+    letter-spacing: -0.01em;
+    color: rgb(var(--color-text));
+    text-align: left;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 0 48px;
+  }
+
+  @media (max-width: 768px) {
+    .final-image-caption {
+      padding: 0 24px;
+    }
+  }
+
+  .clients-section {
+    max-width: 960px;
+    margin: 0 auto 96px;
+  }
+
+  .clients-heading {
+    max-width: 600px;
+    margin: 0 auto 48px;
+    text-align: center;
   }
 
   .clients-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 1px;
   }
 
   @media (min-width: 768px) {
@@ -193,13 +226,13 @@ import CalloutSection from '../components/CalloutSection.astro';
 
   @media (min-width: 1024px) {
     .clients-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 
   .client-logo {
-    background: rgb(var(--color-background));
-    border-radius: 4px;
+    background: #FFFFFF;
+    border-radius: 0;
     padding: 32px;
     display: flex;
     align-items: center;
