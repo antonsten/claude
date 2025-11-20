@@ -2,52 +2,85 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout 
+<Layout
   title="Contact | Anton Sten – UX Lead & Product Designer"
-  description="Get in touch with me for product design collaborations, speaking engagements, or consulting opportunities. I'm based in Stockholm, Sweden, and available for remote work worldwide."
-
-  image="/images/og/contact.png">
-  <div class="min-h-screen bg-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
-      <div class="max-w-2xl mx-auto">
-        <div class="prose prose-lg mx-auto">
-          <h1 class="h1 mb-8">Contact</h1>
-          
-          <h2 class="text-2xl font-bold mb-6">Let's work together</h2>
-          
-          <div class="space-y-6">
-            <p>
-              I'm always interested in hearing about new projects and opportunities. Whether you're looking to collaborate on a project, have a question about my work, or just want to say hello, feel free to reach out.
-            </p>
-
-            <div class="space-y-4">
-              <div>
-                <h3 class="text-lg font-medium mb-2">Email</h3>
-                <a href="mailto:anton@antonsten.com" class="text-accent hover:opacity-80">
-                  anton@antonsten.com
-                </a>
-              </div>
-
-              <div>
-                <h3 class="text-lg font-medium mb-2">Social</h3>
-                <div class="space-y-2">
-                  <a href="https://twitter.com/antonsten" class="block text-accent hover:opacity-80">
-                    Twitter
-                  </a>
-                  <a href="https://linkedin.com/in/antonsten" class="block text-accent hover:opacity-80">
-                    LinkedIn
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <h3 class="text-lg font-medium mb-2">Location</h3>
-                <p>Stockholm, Sweden</p>
-              </div>
-            </div>
-          </div>
-        </div>
+  description="Get in touch with me for product design collaborations, speaking engagements, or consulting opportunities. I'm based in Sweden and available for remote work worldwide."
+  path="/contact/"
+  image="/images/og/contact.png"
+>
+  <div class="page-shell">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="h1">Contact</h1>
       </div>
-    </div>
+    </section>
+
+    <section class="content-section">
+      <div class="content-wrapper">
+        <p class="h3">I'm not actively exploring new roles right now, but I'm always happy to hear about interesting projects or teams. If you want to collaborate, have a question, or just want to say hello, feel free to reach out.</p>
+      </div>
+
+      <div class="contact-details">
+        <a href="mailto:anton@antonsten.com" class="h3 text-green hover:opacity-70 transition-opacity">
+          Email me
+        </a>
+      </div>
+    </section>
   </div>
-</Layout> 
+</Layout>
+
+<style>
+  .page-shell {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px 120px;
+  }
+
+  .hero-section {
+    padding-top: 140px;
+    padding-bottom: 96px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding-top: 120px;
+      padding-bottom: 72px;
+    }
+  }
+
+  .hero-content {
+    display: grid;
+    gap: 48px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    max-width: 18ch;
+    margin: 0 auto;
+  }
+
+  .content-section {
+    margin-bottom: 96px;
+  }
+
+  .content-wrapper {
+    max-width: 600px;
+    margin: 0 auto 48px;
+    display: grid;
+    gap: 24px;
+  }
+
+  .contact-details {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    gap: 32px;
+  }
+
+  .contact-item {
+    display: grid;
+    gap: 8px;
+  }
+</style>

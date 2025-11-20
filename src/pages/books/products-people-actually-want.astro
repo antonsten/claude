@@ -39,7 +39,7 @@ import { bookTestimonials } from '../../data/bookTestimonials';
       <div class="overview-intro">
         <div class="body-copy">
           <p class="h3">
-            Based on 25+ years of experience consulting for companies like IKEA, Herman Miller, Loom, Google, and Spotify, this book covers everything from user research and stakeholder communication to design systems and team leadership.
+            This book covers everything from user research and stakeholder communication to design systems and team leadership.
           </p>
           <p class="h3">
             Learn how to focus on what users actually need, communicate design decisions effectively, and build products people genuinely want to use.
@@ -51,14 +51,12 @@ import { bookTestimonials } from '../../data/bookTestimonials';
         </div>
       </div>
 
-      <CalloutSection className="learning-callout" title="You'll learn">
+      <CalloutSection className="learning-callout" title="You'll learn" background="#FFFFFF">
         <div class="learning-columns">
           <ul class="body-lg learning-list">
             <li>Why "everyone is a designer" and how to leverage diverse perspectives in your team</li>
             <li>The complete product design process that works in the real world, not just in case studies</li>
             <li>How to communicate design decisions and influence stakeholders who "prefer the other option because it looks more modern"</li>
-          </ul>
-          <ul class="body-lg learning-list">
             <li>Practical frameworks for user research that reveal what people actually need (not what they say they want)</li>
             <li>How to design for anyone without falling into the "design for everyone" trap</li>
           </ul>
@@ -169,27 +167,19 @@ import { bookTestimonials } from '../../data/bookTestimonials';
       </CalloutSection>
     </section>
 
-    <section class="author-section">
-      <div class="author-intro">
-        <h2 class="h2 text-center">About me</h2>
-        <div class="author-copy">
-          <p class="h3">
-            I've spent the past 25+ years designing and consulting for companies like IKEA, Herman Miller, Loom, Google, and Spotify. Right now, I'm Head of Design at Summer Health.
-          </p>
-          <p class="h3">
-            Along the way, <a href="/articles" class="text-accent underline decoration-2 underline-offset-4 hover:opacity-80">my writing</a> has found its way into the design community, and I've had the chance to speak at conferences and design schools around the world.
-          </p>
-          <p class="h3">
-            I'm based in Sweden, where I split my time between building products that matter, writing about design, and taking long walks with my wife and our dog, Taylor.
-          </p>
-        </div>
+    <CalloutSection title="About me" background="#FFFFFF" className="author-callout">
+      <div class="author-copy">
+        <p class="h3">
+          I've spent the past 25+ years designing and consulting for companies like IKEA, Herman Miller, Loom, Google, and Spotify. Right now, I'm Head of Design at Summer Health.
+        </p>
+        <p class="h3">
+          Along the way, <a href="/articles" class="text-accent underline decoration-2 underline-offset-4 hover:opacity-80">my writing</a> has found its way into the design community, and I've had the chance to speak at conferences and design schools around the world.
+        </p>
+        <p class="h3">
+          I'm based in Sweden, where I split my time between building products that matter, writing about design, and taking long walks with my wife and our dog, Taylor.
+        </p>
       </div>
-      <img
-        src="/images/book/anton-taylor.png"
-        alt="Anton with his dog Taylor"
-        class="author-image"
-      />
-    </section>
+    </CalloutSection>
   </div>
 </Layout>
 
@@ -357,16 +347,7 @@ import { bookTestimonials } from '../../data/bookTestimonials';
   }
 
   .learning-columns {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: 1fr;
-  }
-
-  @media (min-width: 768px) {
-    .learning-columns {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 32px;
-    }
+    display: block;
   }
 
   .learning-list {
@@ -376,6 +357,14 @@ import { bookTestimonials } from '../../data/bookTestimonials';
     margin: 0;
     display: grid;
     gap: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .learning-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 32px;
+    }
   }
 
   .insight-callout {
