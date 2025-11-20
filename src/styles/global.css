@@ -18,20 +18,6 @@
 	--color-accent-soft: 209 232 189;
 }
 
-.dark {
-	color-scheme: dark;
-	--color-background: 29 29 29;
-	--color-surface: 27 27 27;
-	--color-surface-elevated: 36 36 36;
-	--color-border: 68 68 68;
-	--color-border-strong: 140 140 140;
-	--color-text: 243 243 241;
-	--color-text-muted: 209 232 189;
-	--color-text-soft: 168 168 168;
-	--color-accent: 0 163 92;
-	--color-accent-soft: 33 68 53;
-}
-
 @layer base {
 	html {
 		font-family: 'Suisse Intl', system-ui, sans-serif;
