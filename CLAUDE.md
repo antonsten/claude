@@ -28,7 +28,18 @@ npm run add-slugs              # Add slugs to content files
 
 - **Content Collections**: Articles stored in `src/content/articles/` as MDX files with frontmatter
 - **Schema**: Defined in `src/content/config.ts` with Zod validation for articles, testimonials, and other content types
-- **Frontmatter fields**: title, description, date, readingTime, slug, image (all optional except title)
+- **File naming**: Articles must use `YYYY-MM-DD-slug.mdx` format (e.g., `2025-11-21-the-hidden-cost-of-shipping-too-fast.mdx`)
+- **Required frontmatter**:
+  ```yaml
+  ---
+  slug: the-hidden-cost-of-shipping-too-fast
+  title: The hidden cost of shipping too fast
+  description: A brief description of the article content.
+  date: 2025-11-21T00:00:00.000Z
+  readingTime: 4
+  ---
+  ```
+- **Frontmatter fields**: slug (matches filename slug), title, description, date (ISO format with T00:00:00.000Z), readingTime (estimated minutes), image (optional)
 
 ### Page Structure
 
