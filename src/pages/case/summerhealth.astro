@@ -1,0 +1,273 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+interface CaseImage {
+  src: string;
+  alt: string;
+  type?: 'image' | 'video';
+}
+
+interface CaseSection {
+  id: string;
+  title: string;
+  description: string;
+  images: CaseImage[];
+}
+
+// Summer Health case study sections
+const sections: CaseSection[] = [
+  {
+    id: 'brand',
+    title: 'Brand',
+    description: 'I shaped the core brand system — warm typography, a calm and confident color palette, and a tone that feels human instead of clinical.',
+    images: [
+      { src: '/images/cases/summerhealth/sh-brand-1.png', alt: 'Summer Health brand' },
+      { src: '/images/cases/summerhealth/sh-brand-2.png', alt: 'Summer Health identity' },
+    ]
+  },
+  {
+    id: 'imagery',
+    title: 'Imagery and illustrations',
+    description: 'I worked closely with <a href="https://www.timgilligan.co/" target="_blank" rel="noopener">Tim Gilligan</a> to define an illustration style that feels friendly, clear, and supportive across product and marketing.\n\nTogether with Celia Vera, I evolved that style as the brand matured. I also curated a set of images that feel warm, humane, and authentic so everything—product, marketing, and social—speaks the same visual language.',
+    images: [
+      { src: '/images/cases/summerhealth/sh-illustration-1.png', alt: 'Summer Health illustration' },
+      { src: '/images/cases/summerhealth/sh-illustration-2.png', alt: 'Summer Health illustration' },
+      { src: '/images/cases/summerhealth/sh-illustration-3.png', alt: 'Summer Health illustration' },
+      { src: '/images/cases/summerhealth/sh-image-1.png', alt: 'Summer Health imagery' },
+      { src: '/images/cases/summerhealth/sh-image-2.png', alt: 'Summer Health imagery' },
+      { src: '/images/cases/summerhealth/sh-image-3.png', alt: 'Summer Health imagery' },
+    ]
+  },
+  {
+    id: 'marketing',
+    title: 'Marketing',
+    description: 'In partnership with Celia Vera, I designed landing pages, campaign kits, and printed materials that helped explain the service clearly and build trust with parents.',
+    images: [
+      { src: '/images/cases/summerhealth/sh-marketing-6.png', alt: 'Marketing materials' },
+      { src: '/images/cases/summerhealth/sh-marketing-3.gif', alt: 'Marketing materials' },
+      { src: '/images/cases/summerhealth/sh-marketing-2.png', alt: 'Marketing materials' },
+      { src: '/images/cases/summerhealth/sh-marketing-4.png', alt: 'Marketing materials' },
+      { src: '/images/cases/summerhealth/sh-marketing-5.png', alt: 'Marketing materials' },
+      { src: '/images/cases/summerhealth/sh-marketing-1.png', alt: 'Marketing materials' },
+    ]
+  },
+  {
+    id: 'website',
+    title: 'Website',
+    description: 'Together with <a href="https://www.timgilligan.co/" target="_blank" rel="noopener">Tim Gilligan</a> and <a href="https://aaronrolston.com/" target="_blank" rel="noopener">Aaron Rolston</a>, we redesigned the entire site from the ground up to be faster, clearer, and more aligned with how parents search for pediatric information.',
+    images: [
+      { src: '/images/cases/summerhealth/sh-website-1.png', alt: 'Summer Health website' },
+      { src: '/images/cases/summerhealth/sh-website-2.png', alt: 'Summer Health website' },
+      { src: '/images/cases/summerhealth/sh-website-3.png', alt: 'Summer Health website' },
+    ]
+  },
+  {
+    id: 'app',
+    title: 'App experience',
+    description: 'Led the design of the full product experience — from onboarding to chat to medical records — creating something that feels simple on the surface but supportive in all the moments that matter.',
+    images: [
+      { src: '/images/cases/summerhealth/sh-app-1.png', alt: 'Summer Health app' },
+      { src: '/images/cases/summerhealth/sh-app-2.png', alt: 'Summer Health app' },
+      { src: '/images/cases/summerhealth/sh-app-3.png', alt: 'Summer Health app' },
+      { src: '/images/cases/summerhealth/sh-app-4.png', alt: 'Summer Health app' },
+      { src: '/images/cases/summerhealth/sh-app-5.png', alt: 'Summer Health app' },
+      { src: '/images/cases/summerhealth/sh-app-6.png', alt: 'Summer Health app' },
+      { src: '/images/cases/summerhealth/sh-app-7.png', alt: 'Summer Health app' },
+      { src: '/images/cases/summerhealth/sh-app-8.png', alt: 'Summer Health app' },
+      { src: '/images/cases/summerhealth/sh-app-9.png', alt: 'Summer Health app' },
+    ]
+  },
+  {
+    id: 'closing',
+    title: 'Final words',
+    description: 'At every stage, the goal has been the same: make pediatric care feel calm, clear, and available whenever parents need it.',
+    images: []
+  }
+];
+---
+
+<Layout
+  title="Summer Health Case Study | Anton Sten – UX Lead & Product Designer"
+  description="Case study: How I shaped the design of Summer Health's 24/7 pediatric care platform as founding designer and design lead."
+  image="/images/og/summerhealth.png"
+>
+  <div class="page-shell">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="h1">Summer Health</h1>
+        <div class="hero-copy">
+          <p class="h3">Summer Health is 24/7 pediatric care — a way for parents to get calm, fast answers instead of late-night panic or week-long waits.</p>
+          <p class="h3">I joined as the founding designer, setting the design principles, shaping the early brand, and building the first version of the product alongside the founding team.</p>
+          <p class="h3">As the company grew, I moved into the Head of Design role, evolving the brand, defining the product experience, and leading design across everything we shipped.</p>
+        </div>
+      </div>
+    </section>
+
+    {sections.filter(s => s.id !== 'closing').map((section) => (
+      <section class="case-section" id={section.id}>
+        <div class="case-section__content">
+          <div class="case-section__copy">
+            <h2 class="h2">{section.title}</h2>
+            {section.description.split('\n\n').map((paragraph) => (
+              <p class="body-lg" set:html={paragraph} />
+            ))}
+          </div>
+          {section.images.length > 0 && (
+            <div class="case-section__images">
+              {section.images.map((image) => (
+                <div class="case-image-wrapper">
+                  {image.type === 'video' ? (
+                    <video
+                      src={image.src}
+                      autoplay
+                      loop
+                      muted
+                      playsinline
+                      class="case-image"
+                    >
+                      <track kind="captions" />
+                    </video>
+                  ) : (
+                    <img src={image.src} alt={image.alt} class="case-image" loading="lazy" />
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    ))}
+
+    <section class="hero-section" id="closing">
+      <div class="hero-content">
+        <div class="hero-copy">
+          <p class="h3">At every stage, the goal has been the same: make pediatric care feel calm, clear, and available whenever parents need it.</p>
+        </div>
+        <a href="/work" class="back-link">Back to Work</a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-shell {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px 120px;
+  }
+
+  .hero-section {
+    padding-top: 140px;
+    padding-bottom: 96px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding-top: 120px;
+      padding-bottom: 72px;
+    }
+  }
+
+  .hero-content {
+    display: grid;
+    gap: 48px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    max-width: 18ch;
+    margin: 0 auto;
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 20px;
+    color: rgb(var(--color-text));
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .case-section {
+    margin-bottom: 96px;
+  }
+
+  .case-section__content {
+    background: rgb(var(--color-surface));
+    border-radius: 4px;
+    padding: 48px;
+  }
+
+  .case-section__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .case-section__copy h2 {
+    color: rgb(var(--color-text));
+  }
+
+  .case-section__copy p {
+    max-width: 600px;
+  }
+
+  .case-section__images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  #brand .case-section__images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #website .case-image-wrapper,
+  #app .case-image-wrapper {
+    padding: 40px;
+  }
+
+  .case-image-wrapper {
+    background: rgb(var(--color-background));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .case-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .back-link {
+    font-size: 1rem;
+    color: rgb(var(--color-accent));
+  }
+
+  @media (max-width: 768px) {
+    .case-section {
+      margin-bottom: 64px;
+    }
+
+    .case-section__content {
+      padding: 32px 24px;
+    }
+
+    .case-section__copy {
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .case-section__images {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+  }
+</style>

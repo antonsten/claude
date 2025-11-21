@@ -38,13 +38,18 @@
 	}
 
 	a {
-		color: inherit;
+		color: rgb(var(--color-accent));
 		text-decoration: none;
-		transition: color 150ms ease;
+		transition: text-decoration 150ms ease;
 	}
 
 	a:hover {
-		color: rgb(var(--color-accent));
+		text-decoration: underline;
+	}
+
+	/* Buttons should not underline on hover */
+	a.inline-flex:hover {
+		text-decoration: none;
 	}
 
 	::selection,

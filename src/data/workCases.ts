@@ -34,7 +34,8 @@ export const workCases: WorkCase[] = [
 			{ src: '/images/cases/case_summerhealth_2.png', alt: 'Summer Health interface', type: 'image' },
 			{ src: '/images/cases/case_summerhealth_3.png', alt: 'Summer Health features', type: 'image' }
 		],
-		imageLayout: '1+1+1'
+		imageLayout: '1+1+1',
+		link: '/case/summerhealth'
 	},
 	{
 		id: 'loom',
