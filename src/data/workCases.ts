@@ -89,9 +89,9 @@ export const workCases: WorkCase[] = [
 		projectDescription:
 			'Online grocery shopping should feel as quick and natural as grabbing chips off the shelf. That was the challenge.\n\nOver nine months with Ueno, I led the product design work: mapped every flow, designed the full shopping experience, and built a comprehensive design system ready for handoff. The project didn\'t launch, but the foundation was solid and complete.',
 		images: [
-			{ src: '/images/cases/case-zabka-1.webm', alt: 'Żabka app interface', type: 'video' },
-			{ src: '/images/cases/case-zabka-2.webm', alt: 'Żabka shopping experience', type: 'video' },
-			{ src: '/images/cases/case-zabka-3.webm', alt: 'Żabka checkout flow', type: 'video' }
+			{ src: '/images/cases/case-zabka-1.mp4', alt: 'Żabka app interface', type: 'video' },
+			{ src: '/images/cases/case-zabka-2.mp4', alt: 'Żabka shopping experience', type: 'video' },
+			{ src: '/images/cases/case-zabka-3.mp4', alt: 'Żabka checkout flow', type: 'video' }
 		],
 		imageLayout: '1+1+1'
 	},
@@ -104,8 +104,8 @@ export const workCases: WorkCase[] = [
 		projectDescription:
 			'Office layouts were already failing before the pandemic. Teams needed spaces that supported focus, collaboration, and hybrid work—but most companies didn\'t know where to start. That was the challenge.\n\nAs Design Director at SuperFriendly, I led the strategy and built a tool that asked companies about their work patterns and turned those answers into tailored office recommendations. It launched successfully… and then the pandemic arrived and changed everything overnight.',
 		images: [
-			{ src: '/images/cases/case_hermanmiller_1.webm', alt: 'Herman Miller workspace tool', type: 'video' },
-			{ src: '/images/cases/case_hermanmiller_2.webm', alt: 'Herman Miller office recommendations', type: 'video' }
+			{ src: '/images/cases/case_hermanmiller_1.mp4', alt: 'Herman Miller workspace tool', type: 'video' },
+			{ src: '/images/cases/case_hermanmiller_2.mp4', alt: 'Herman Miller office recommendations', type: 'video' }
 		],
 		imageLayout: '1.5+1.5'
 	},
@@ -118,7 +118,7 @@ export const workCases: WorkCase[] = [
 		projectDescription:
 			'Restaurants don\'t want marketing—they want useful ideas. Toast needed a way to drive traffic and email signups through content that felt genuinely helpful, not promotional.\n\nWorking with SuperFriendly, I helped build an online publication from the ground up: researched what operators actually cared about, created a design system to keep everything consistent, and shaped the UX so readers could quickly get to the content they needed. The result beat Toast\'s goals for both traffic and signups.',
 		images: [
-			{ src: '/images/cases/case_toast_1.webm', alt: 'Toast publication', type: 'video' },
+			{ src: '/images/cases/case_toast_1.mp4', alt: 'Toast publication', type: 'video' },
 			{ src: '/images/cases/case_toast_2.webp', alt: 'Toast content system', type: 'image' }
 		],
 		imageLayout: '1.5+1.5'
