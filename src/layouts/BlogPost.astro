@@ -37,7 +37,7 @@ const {
 const slugFromPath = Astro.url.pathname
   .replace(/^\/articles\//, '')
   .replace(/\/$/, '');
-const defaultOgImage = `/images/og/${slugFromPath}.png`;
+const defaultOgImage = `/images/og/${slugFromPath}.webp`;
 const ogImage = frontImage || defaultOgImage;
 
 const formattedDate = formatDate(date);

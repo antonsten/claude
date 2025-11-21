@@ -30,9 +30,9 @@ export const workCases: WorkCase[] = [
 		projectDescription:
 			'Parents shouldn\'t have to panic-search symptoms at 2am or wait days to get answers about a sick kid. That was the problem to solve.\n\nI joined as the founding designer and now lead the design team. I\'ve shaped everything from the warm, human brand to the core messaging, medical records flow, design system, and all ongoing product work.\n\nThe goal has always been the same: turn "should I be worried?" into a calm, instant conversation with a real pediatrician.',
 		images: [
-			{ src: '/images/cases/case_summerhealth_1.png', alt: 'Summer Health app', type: 'image' },
-			{ src: '/images/cases/case_summerhealth_2.png', alt: 'Summer Health interface', type: 'image' },
-			{ src: '/images/cases/case_summerhealth_3.png', alt: 'Summer Health features', type: 'image' }
+			{ src: '/images/cases/case_summerhealth_1.webp', alt: 'Summer Health app', type: 'image' },
+			{ src: '/images/cases/case_summerhealth_2.webp', alt: 'Summer Health interface', type: 'image' },
+			{ src: '/images/cases/case_summerhealth_3.webp', alt: 'Summer Health features', type: 'image' }
 		],
 		imageLayout: '1+1+1',
 		link: '/case/summerhealth'
@@ -46,7 +46,7 @@ export const workCases: WorkCase[] = [
 		projectDescription:
 			'Their design system, Lens, had grown messy and hard to maintain. Designers were spending more time fighting the system than shipping work.\n\nOver a 10-week contract, I rebuilt it from the ground up: refreshed the foundations (color, type), reorganized components with proper variables, created reusable patterns and templates, and documented everything clearly in Loom. The result was a system the team could actually rely on—faster, consistent, and far easier to use.',
 		images: [
-			{ src: '/images/cases/case_loom.png', alt: 'Loom design system', type: 'image' }
+			{ src: '/images/cases/case_loom.webp', alt: 'Loom design system', type: 'image' }
 		],
 		imageLayout: '1'
 	},

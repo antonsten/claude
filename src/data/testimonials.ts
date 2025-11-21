@@ -16,7 +16,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Emmett Shine',
     role: 'Founder, Little Plains',
-    avatar: '/images/author/avatar_emmett_shine.png'
+    avatar: '/images/author/avatar_emmett_shine.webp'
   },
   {
     title: 'A leader and a mentor',
@@ -26,7 +26,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Nicole Hampton',
     role: 'Managing Director, Bttr',
-    avatar: '/images/author/avatar_nicole_hampton.png'
+    avatar: '/images/author/avatar_nicole_hampton.webp'
   },
   {
     title: 'A deeply empathetic product builder',
@@ -37,7 +37,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Ellen DaSilva',
     role: 'CEO, Summer Health',
-    avatar: '/images/author/avatar_ellen_dasilva.png'
+    avatar: '/images/author/avatar_ellen_dasilva.webp'
   },
   {
     title: "Our design team at Loom couldn’t be happier",
@@ -47,7 +47,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Sean Thompson',
     role: 'Principal Designer, Loom',
-    avatar: '/images/author/avatar_sean_thompson.png'
+    avatar: '/images/author/avatar_sean_thompson.webp'
   },
   {
     title: 'He has quickly become one of my favorite collaborators',
@@ -57,7 +57,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Ryan Andersson',
     role: 'VP Global Research at Herman Miller',
-    avatar: '/images/author/avatar_ryan_anderson.png'
+    avatar: '/images/author/avatar_ryan_anderson.webp'
   },
   {
     title: 'A very structured design thinker',
@@ -67,7 +67,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Carrie Ko',
     role: 'Executive Strategy Director, ueno',
-    avatar: '/images/author/avatar_carrie_ko.png'
+    avatar: '/images/author/avatar_carrie_ko.webp'
   },
   {
     title: 'Delivers bloody good work',
@@ -77,7 +77,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Christian Wilsson',
     role: 'Head of Design, Spotify',
-    avatar: '/images/author/avatar_christian_wilsson.png'
+    avatar: '/images/author/avatar_christian_wilsson.webp'
   },
   {
     title: 'An example of mature leadership',
@@ -88,7 +88,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Jessi Hall',
     role: 'Producer',
-    avatar: '/images/author/avatar_jessi_hall.png'
+    avatar: '/images/author/avatar_jessi_hall.webp'
   },
   {
     title: 'Always hits the deadline',
@@ -98,7 +98,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Travis Schmeisser',
     role: 'Founder & Partner, First Principle',
-    avatar: '/images/author/avatar_travis_schmeisser.png'
+    avatar: '/images/author/avatar_travis_schmeisser.webp'
   },
   {
     title: 'Two steps ahead',
@@ -108,7 +108,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Lily Mathews',
     role: 'Senior Strategist',
-    avatar: '/images/author/avatar_lily_mathews.png'
+    avatar: '/images/author/avatar_lily_mathews.webp'
   },
   {
     title: 'A rare talent',
@@ -119,7 +119,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Emily Edwards',
     role: 'Senior Strategist, Tractorbeam',
-    avatar: '/images/author/avatar_emily_edwards.png'
+    avatar: '/images/author/avatar_emily_edwards.webp'
   },
   {
     title: 'Exceeded expectations',
@@ -129,7 +129,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Greg Henriques',
     role: 'Head of CX, Swedbank',
-    avatar: '/images/author/avatar_greg_henriques.png'
+    avatar: '/images/author/avatar_greg_henriques.webp'
   },
   {
     title: 'Exactly the design partner you need',
@@ -138,7 +138,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Rob Maigret',
     role: 'President, Titan Space',
-    avatar: '/images/author/avatar_rob_maigret.png'
+    avatar: '/images/author/avatar_rob_maigret.webp'
   },
   {
     title: 'A consultant you actually want',
@@ -148,7 +148,7 @@ export const testimonials: Testimonial[] = [
     ],
     author: 'Elsa Bernadotte',
     role: 'COO, Karma',
-    avatar: '/images/author/avatar_elsa_bernadotte.png'
+    avatar: '/images/author/avatar_elsa_bernadotte.webp'
   },
   {
     title: 'I sigh in relief when Anton is assigned to a project',
@@ -157,6 +157,6 @@ export const testimonials: Testimonial[] = [
       "And yes—his Finnish politeness makes everything smoother."    ],
     author: 'Caroline Gregory',
     role: 'Program Director',
-    avatar: '/images/author/avatar_caroline_gregory.png'
+    avatar: '/images/author/avatar_caroline_gregory.webp'
   }
 ];
