@@ -1,132 +1,93 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import CalloutSection from '../components/CalloutSection.astro';
 ---
 
 <Layout title="404 | Anton Sten – UX Lead & Product Designer" description="Page not found. Discover my latest articles and design resources." >
-    <div class="min-h-screen bg-canvas text-cloud-50">
-        <div class="max-w-[700px] mx-auto px-8 sm:px-6 mt-[20vh]">
-            <div class="-mx-8 sm:mx-0 mb-8">
-                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGoxbHJucXNmdmhwczB1ZGp5dDV2Y3gwam9hM3FpMmVzdnVhMDFldiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ta3v3I4GI1gH7Rqek6/giphy.gif" alt="Lost in space" class="w-full" />
-            </div>
-            
-            <h1 class="h3 text-cloud-50 font-medium mb-8">This page doesn't exist (or it moved).</h1>
-            
-            <p class="body-xxl mb-8">
-                Looks like you've taken a wrong turn. It happens.
+    <div class="page-shell">
+        <Hero title="Looks like you've taken a wrong turn. It happens.">
+            <p class="h3">
+                This page doesn't exist (or it moved).
             </p>
+        </Hero>
 
-            <!-- Broken Link Reporting Section -->
-            <div class="bg-surface border border-border p-6 md:p-8 md:rounded-[12px] -mx-8 md:mx-0 mb-16 shadow-lg">
-                <p class="body text-cloud-50/80 mb-4">
-                    I'd really appreciate it if you could let me know about this broken link. It helps me keep my site up to date!
-                </p>
-                        <div class="flex flex-col sm:flex-row gap-3">
-                            <a 
-                                id="emailLink"
-                                href="mailto:anton@antonsten.com?subject=Broken link on antonsten.com&body=Hi Anton,%0D%0A%0D%0AI found a broken link on your website:%0D%0A%0D%0AURL: %0D%0A%0D%0AThanks!"
-                                class="inline-flex items-center justify-center px-5 py-3 bg-accent text-white text-[14px] font-medium rounded-[10px] hover:bg-accent/80 transition-colors"
-                            >
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                </svg>
-                                Send me an email
-                            </a>
-                            <button 
-                                id="copyUrlBtn"
-                                class="inline-flex items-center justify-center px-5 py-3 bg-surface border border-border text-cloud-50/80 text-[14px] font-medium rounded-[10px] hover:border-accent hover:text-accent transition-colors"
-                            >
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                </svg>
-                                <span id="copyUrlText">Copy URL</span>
-                            </button>
-                        </div>
-            </div>
-            
-            <p class="body-xxl mb-24">
-                Here are some popular articles you might want to check out instead:
+        <!-- Broken Link Reporting Section -->
+        <CalloutSection title="Help me out" background="rgb(var(--color-accent-soft))" className="help-callout">
+            <p class="body text-text mb-4">
+                I'd really appreciate it if you could let me know about this broken link. It helps me keep my site up to date!
             </p>
-
-            <div class="space-y-8 mb-24">
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="body-lg font-medium">
-                            <a href="/articles/the-product-design-process/" class="hover:text-green transition-colors">
-                                The Product Design Process
-                            </a>
-                        </h3>
-                        <span class="body-sm text-muted">March 19, 2024</span>
-                    </div>
-                    <div class="h-px bg-border/70 mt-8"></div>
-                </div>
-
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="body-lg font-medium">
-                            <a href="/articles/the-solo-designer/" class="hover:text-green transition-colors">
-                                The Solo Designer: Lessons from a Startup Journey
-                            </a>
-                        </h3>
-                        <span class="body-sm text-muted">January 27, 2024</span>
-                    </div>
-                    <div class="h-px bg-border/70 mt-8"></div>
-                </div>
-
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="body-lg font-medium">
-                            <a href="/articles/uxstrategy/" class="hover:text-green transition-colors">
-                                Creating a UX Strategy
-                            </a>
-                        </h3>
-                        <span class="body-sm text-muted">April 23, 2024</span>
-                    </div>
-                    <div class="h-px bg-border/70 mt-8"></div>
-                </div>
-
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="body-lg font-medium">
-                            <a href="/articles/stakeholder/" class="hover:text-green transition-colors">
-                                The Stakeholder Interview
-                            </a>
-                        </h3>
-                        <span class="body-sm text-muted">March 25, 2024</span>
-                    </div>
-                    <div class="h-px bg-border/70 mt-8"></div>
-                </div>
-
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="body-lg font-medium">
-                            <a href="/articles/designers-write/" class="hover:text-green transition-colors">
-                                Why Designers Need to Write
-                            </a>
-                        </h3>
-                        <span class="body-sm text-muted">May 25, 2017</span>
-                    </div>
-                    <div class="h-px bg-border/70 mt-8"></div>
-                </div>
-
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="body-lg font-medium">
-                            <a href="/articles/uxlead/" class="hover:text-green transition-colors">
-                                Working as a UX-Lead
-                            </a>
-                        </h3>
-                        <span class="body-sm text-muted">April 1, 2024</span>
-                    </div>
-                    <div class="h-px bg-border/70 mt-8"></div>
-                </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a
+                    id="emailLink"
+                    href="mailto:anton@antonsten.com?subject=Broken link on antonsten.com&body=Hi Anton,%0D%0A%0D%0AI found a broken link on your website:%0D%0A%0D%0AURL: %0D%0A%0D%0AThanks!"
+                    class="inline-flex items-center justify-center px-5 py-3 bg-[#00A35C] text-white text-[14px] font-medium rounded-[4px] hover:bg-[#00A35C]/80 transition-colors"
+                >
+                    Send me an email
+                </a>
+                <button
+                    id="copyUrlBtn"
+                    class="inline-flex items-center justify-center px-5 py-3 bg-transparent text-text-muted text-[14px] font-medium rounded-[4px] hover:text-accent transition-colors"
+                >
+                    <span id="copyUrlText">Copy URL</span>
+                </button>
             </div>
+        </CalloutSection>
 
-            <div class="bg-surface border border-border p-8 md:rounded-[12px] -mx-8 md:mx-0 shadow-lg">
-                <p class="body text-cloud-50/80 mb-8">
-                    Still can't find what you're looking for? <a href="mailto:anton@antonsten.com" class="text-cloud-50 underline decoration-accent/50 underline-offset-[6px] hover:decoration-accent transition-colors">Send me an email</a> and I'll help you out.
-                </p>
+        <CalloutSection title="Popular articles" background="rgb(var(--color-surface))" className="writing-callout">
+            <div class="writing-list">
+                <article class="writing-item">
+                    <time class="body text-muted">19 Mar, 2024</time>
+                    <h3 class="body-lg text-primary">
+                        <a href="/articles/the-product-design-process/" class="hover:text-accent transition-colors duration-150">
+                            The Product Design Process
+                        </a>
+                    </h3>
+                </article>
+                <article class="writing-item">
+                    <time class="body text-muted">27 Jan, 2024</time>
+                    <h3 class="body-lg text-primary">
+                        <a href="/articles/the-solo-designer/" class="hover:text-accent transition-colors duration-150">
+                            The Solo Designer: Lessons from a Startup Journey
+                        </a>
+                    </h3>
+                </article>
+                <article class="writing-item">
+                    <time class="body text-muted">23 Apr, 2024</time>
+                    <h3 class="body-lg text-primary">
+                        <a href="/articles/uxstrategy/" class="hover:text-accent transition-colors duration-150">
+                            Creating a UX Strategy
+                        </a>
+                    </h3>
+                </article>
+                <article class="writing-item">
+                    <time class="body text-muted">25 Mar, 2024</time>
+                    <h3 class="body-lg text-primary">
+                        <a href="/articles/stakeholder/" class="hover:text-accent transition-colors duration-150">
+                            The Stakeholder Interview
+                        </a>
+                    </h3>
+                </article>
+                <article class="writing-item">
+                    <time class="body text-muted">25 May, 2017</time>
+                    <h3 class="body-lg text-primary">
+                        <a href="/articles/designers-write/" class="hover:text-accent transition-colors duration-150">
+                            Why Designers Need to Write
+                        </a>
+                    </h3>
+                </article>
+                <article class="writing-item">
+                    <time class="body text-muted">01 Apr, 2024</time>
+                    <h3 class="body-lg text-primary">
+                        <a href="/articles/uxlead/" class="hover:text-accent transition-colors duration-150">
+                            Working as a UX-Lead
+                        </a>
+                    </h3>
+                </article>
             </div>
-        </div>
+        </CalloutSection>
+
+
     </div>
     <script>
         window.addEventListener('load', () => {
@@ -146,20 +107,20 @@ import Layout from '../layouts/Layout.astro';
         // Copy URL functionality
         const copyUrlBtn = document.getElementById('copyUrlBtn');
         const copyUrlText = document.getElementById('copyUrlText');
-        
+
         if (copyUrlBtn && copyUrlText) {
             copyUrlBtn.addEventListener('click', async () => {
                 try {
                     await navigator.clipboard.writeText(window.location.href);
                     copyUrlText.textContent = 'Copied!';
-                    copyUrlBtn.classList.add('bg-accent', 'text-white');
-                    copyUrlBtn.classList.remove('bg-surface', 'border-border', 'text-cloud-50/80');
-                    
+                    copyUrlBtn.classList.add('text-accent');
+                    copyUrlBtn.classList.remove('text-text-muted');
+
                     setTimeout(() => {
                         if (copyUrlText) copyUrlText.textContent = 'Copy URL';
                         if (copyUrlBtn) {
-                            copyUrlBtn.classList.remove('bg-accent', 'text-white');
-                            copyUrlBtn.classList.add('bg-surface', 'border-border', 'text-cloud-50/80');
+                            copyUrlBtn.classList.remove('text-accent');
+                            copyUrlBtn.classList.add('text-text-muted');
                         }
                     }, 2000);
                 } catch (err) {
@@ -172,4 +133,34 @@ import Layout from '../layouts/Layout.astro';
             });
         }
     </script>
-</Layout> 
+</Layout>
+
+<style>
+  .page-shell {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px 120px;
+  }
+
+  .help-callout {
+    margin-bottom: 48px;
+  }
+
+  .writing-callout {
+    margin-bottom: 48px;
+  }
+
+  .writing-list {
+    display: grid;
+    gap: 24px;
+  }
+
+  .writing-item {
+    display: grid;
+    gap: 0;
+  }
+
+  .writing-item time {
+    color: rgb(var(--color-text-muted));
+  }
+</style>

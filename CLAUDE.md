@@ -62,7 +62,7 @@ npm run add-slugs              # Add slugs to content files
 - **Dark mode tokens**: `background #131313`, `surface #1B1B1B`, `surface-elevated #242424`, `border #444444`, `border-strong #8C8C8C`, `text #F3F3F1`, `text-muted #D1E8BD`, `text-soft #A8A8A8`, `accent #00A35C`, `accent-soft #214435`
 - **Type scale**: `h1 60/64 -3%`, `h2 26/32 -1%`, `h3 22/30 -1%`, `h4 20/26 -1%`, `body-sm 14/20 -1%`, `body 16/24 -1%`, `body-lg 18/26 -1%`, `body-xl 22/32 -1%`, captions uppercase with 0.08em tracking
 - **Spacing rhythm**: 8px increments, with Tailwind extensions for 18, 22, 26, 30 (4.5–7.5rem)
-- **Component cues**: Rounded 4px minimum, pill buttons, no shadows, rely on contrast/background layering
+- **Component cues**: Rounded 4px minimum, buttons use 4px rounded corners, no shadows, rely on contrast/background layering, never use icons in buttons
 
 ### Component Architecture
 
